@@ -1,0 +1,30 @@
+
+
+
+@media only screen and (max-width:1200px) {
+
+
+}
+
+
+@media only screen and (max-width:992px) {
+	
+
+	#header img {width: 120px;}
+	#header #logo {width: 170px;}
+
+	#top a {padding-top: 10px; padding-bottom: 10px;}
+
+	#content h1.stamped {padding: 20px 0 20px 70px; margin: 0 0 10px;}
+	#content h1 {font-size: 18px; line-height: 23px; margin-bottom: 0px;}
+
+	#share-box-selection .box .spacer {height: 30px;}
+}
+
+
+@media only screen and (max-width:767px) {
+
+	body {min-width: 320px;}
+
+
+}

@@ -1,0 +1,22 @@
+html, body {height: 100%; }
+
+.wrap {min-height: 100%; height: auto; margin: 0 auto -60px; padding: 0 0 60px; }
+.wrap > .container {padding: 10px 15px 20px; }
+
+.spacer30 {height: 30px; clear: both;}
+.spacer60 {height: 60px; clear: both;}
+.spacer90 {height: 90px; clear: both;}
+
+.divider60 {height: 60px; clear: both; margin: 0 0 60px; border-bottom: 1px solid #b9874d;}
+.divider30 {height: 30px; clear: both; margin: 0 0 30px; border-bottom: 1px solid #b9874d;}
+.divider15 {height: 15px; clear: both; margin: 0 0 30px; border-bottom: 1px solid #b9874d;}
+
+.border-top {border-top:1px solid #b9874d;}
+.border-bottom {border-bottom:1px solid #b9874d;}
+.border-right {border-right:1px solid #b9874d;}
+.border-left {border-left:1px solid #b9874d;}
+
+.no-left-padding {padding-left: 0}
+.no-top-padding {padding-top: 0}
+.no-right-padding {padding-right: 0}
+.no-bottom-padding {padding-bottom: 0}

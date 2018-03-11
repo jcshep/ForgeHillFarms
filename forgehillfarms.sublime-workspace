@@ -1,0 +1,1700 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"prod",
+				"product_id"
+			],
+			[
+				"rep",
+				"repeat-y"
+			],
+			[
+				"back",
+				"background-repeat"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"wptype",
+				"wptype	Wordpress Types Render Field - No PHP Wrapper"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"property",
+				"propertyid"
+			],
+			[
+				"Produc",
+				"ProductOrder"
+			],
+			[
+				"orde",
+				"ordered_products"
+			],
+			[
+				"prodcu",
+				"product_id"
+			],
+			[
+				"spe",
+				"specification_title"
+			],
+			[
+				"m",
+				"margin"
+			],
+			[
+				"subCate",
+				"subCategory"
+			],
+			[
+				"backgrou",
+				"background-position"
+			],
+			[
+				"macro",
+				"macro_categories"
+			],
+			[
+				"mac",
+				"macro_categories"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"pd",
+				"padding"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"cc",
+				"cc_exp_year"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"un",
+				"unclaimRace"
+			],
+			[
+				"str",
+				"strtotime"
+			],
+			[
+				"foreign",
+				"foreign_id"
+			],
+			[
+				"fore",
+				"foreign_id"
+			],
+			[
+				"usocr",
+				"usocrId"
+			],
+			[
+				"cur",
+				"currentPage"
+			],
+			[
+				"array",
+				"array"
+			],
+			[
+				"dob",
+				"dob_day"
+			],
+			[
+				"pass",
+				"password_reset"
+			],
+			[
+				"spec",
+				"specification_value"
+			],
+			[
+				"vendor",
+				"vendor_id"
+			],
+			[
+				"or",
+				"organization"
+			],
+			[
+				"user",
+				"userTypes"
+			],
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"availabl",
+				"availability"
+			],
+			[
+				"project",
+				"project_id"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"avail",
+				"availability-check"
+			],
+			[
+				"list",
+				"list_type"
+			],
+			[
+				"ov",
+				"ov	overflow: ${1:hidden};"
+			],
+			[
+				"strrep",
+				"str_replace"
+			],
+			[
+				"html",
+				"htmlspecialchars"
+			],
+			[
+				"p",
+				"padding"
+			],
+			[
+				"ta",
+				"text-align"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"Manu",
+				"manufacturer"
+			],
+			[
+				"search",
+				"search_icon"
+			],
+			[
+				"cart",
+				"cart_icon"
+			],
+			[
+				"product",
+				"product_id"
+			],
+			[
+				"promo_im",
+				"promo_image_filename"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"find",
+				"findbyPk"
+			],
+			[
+				"stat",
+				"static"
+			],
+			[
+				"price",
+				"price_details"
+			],
+			[
+				"produc",
+				"product_id"
+			],
+			[
+				"category",
+				"category_id"
+			],
+			[
+				"promo",
+				"promo_type"
+			],
+			[
+				"prom",
+				"promo_type"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"date",
+				"datepicker"
+			],
+			[
+				"unset",
+				"unsetAttributes"
+			],
+			[
+				"cel",
+				"cellpadding	Attr"
+			],
+			[
+				"c",
+				"cellspacing	Attr"
+			],
+			[
+				"Text",
+				"textField"
+			],
+			[
+				"t",
+				"type	Attr"
+			],
+			[
+				"featured",
+				"featured_products"
+			],
+			[
+				"fea",
+				"featured_products"
+			],
+			[
+				"x",
+				"xAxis"
+			],
+			[
+				"is",
+				"isset"
+			],
+			[
+				"bak",
+				"background-size"
+			],
+			[
+				"yii",
+				"yiibase	Yii Base URL"
+			],
+			[
+				"no",
+				"no-repeat"
+			],
+			[
+				"char",
+				"charge_total"
+			],
+			[
+				"cyber",
+				"cybersource_reply"
+			],
+			[
+				"categor",
+				"category_id"
+			],
+			[
+				"parent_",
+				"parent_id"
+			],
+			[
+				"y",
+				"yiilink	Yii Link"
+			],
+			[
+				"_",
+				"_GET"
+			],
+			[
+				"manuf",
+				"manufacturer"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"table-",
+				"table-cell"
+			],
+			[
+				"b",
+				"border"
+			],
+			[
+				"sta",
+				"static"
+			],
+			[
+				"jquery",
+				"jquery-ui"
+			],
+			[
+				"uc",
+				"ucwords"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"fon",
+				"font"
+			],
+			[
+				"url",
+				"urlencode"
+			],
+			[
+				"to",
+				"top"
+			],
+			[
+				"Specific",
+				"Specification"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"get_template",
+				"get_template_part"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"wptyp",
+				"wptypes	Wordpress Types Render Field"
+			],
+			[
+				"event_stat",
+				"event_status"
+			],
+			[
+				"cl",
+				"class	class …"
+			],
+			[
+				"wp",
+				"wpurl	Wordpress Blog Info URL"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"ma",
+				"maw	max-width"
+			],
+			[
+				"strto",
+				"strtotime"
+			],
+			[
+				"curre",
+				"current_date"
+			],
+			[
+				"get_tem",
+				"get_template_directory_uri"
+			],
+			[
+				"anima",
+				"animateDial"
+			],
+			[
+				"fade",
+				"fadeOut"
+			],
+			[
+				"transpar",
+				"transparent_bg"
+			],
+			[
+				"le",
+				"letter-spacing"
+			],
+			[
+				"clas",
+				"className"
+			],
+			[
+				"ls",
+				"letter-spacing"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"backg",
+				"background-size"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"r",
+				"relative"
+			],
+			[
+				"bl",
+				"block"
+			],
+			[
+				"ajax",
+				"AjaxQuestion"
+			],
+			[
+				"cour",
+				"course_category_id"
+			],
+			[
+				"post",
+				"_POST"
+			],
+			[
+				"tot",
+				"total_questions"
+			],
+			[
+				"corr",
+				"correct_answer_id"
+			],
+			[
+				"end",
+				"endif"
+			],
+			[
+				"coun",
+				"country"
+			],
+			[
+				"acc",
+				"access_code"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "SiteController.php",
+			"settings":
+			{
+				"buffer_size": 2223,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gcn.sublime-project",
+			"settings":
+			{
+				"buffer_size": 266,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "liv",
+		"selected_items":
+		[
+			[
+				"liv",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"package ",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"form",
+				"CodeFormatter: Format Code"
+			],
+			[
+				"format",
+				"CodeFormatter: Format Code"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"sublime",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"LiveReload: Enable/disable plugins",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"live",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"Snippet: yii",
+				"Snippet: Yii Image"
+			],
+			[
+				"Snippet: type",
+				"Snippet: Wordpress Types Render Field"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Wordpress Types Render Field"
+			],
+			[
+				"Snippet: wpty",
+				"Snippet: Wordpress Types Render Field"
+			],
+			[
+				"Snippet: typ",
+				"Snippet: Wordpress Types Render Field"
+			]
+		],
+		"width": 583.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/Users/john/Creative/Code/Yii2/USOCR/views/product-order/index.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/controllers/ProductController.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/product-order/view.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/controllers/PageController.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/home.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/controllers/ProductOrderController.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/controllers/UserController.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/rankings.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/controllers/SiteController.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/html/css/frontend.css",
+		"/Users/john/Creative/Code/Yii2/USOCR/models/User.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/layouts/profile.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/profile/race-history.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/config/params.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/controllers/StoreController.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/store/checkout.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/models/ProductOrder.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/contact.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/layouts/navbar.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/layouts/backend.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/layouts/frontend.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/user/signup-pro.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/96ED67F4-BD59-4321-98C7-7BAB62D930CA/params.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/07508542-0EB8-4D9A-BD6E-15857D0240E9/.htaccess",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/A7792627-B351-4697-973D-AF0D5E4C6745/style.css",
+		"/Users/john/Creative/Code/Yii2/USOCR/html/css/frontend-mediaqueries.css",
+		"/Users/john/Creative/Code/Yii2/USOCR/assets/FrontendAsset.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/models/RankingFilterForm.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/profile/verify-races.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/E2615059-E32E-46C1-A903-AED5A214B941/wp-config.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/62537FB8-8085-4BE2-8FFF-72D4C4C69B71/style.css",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/D2FA75B5-D057-4023-879C-A54C8F6418C3/page-about.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/A36F033C-5E26-4332-A7B1-15F14E765F27/page-contact.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/F5490CDE-5775-4586-BDEB-2CE5D9C907C7/footer.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/943A5907-F182-4343-9166-31DA5144D7F6/header.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/756CDAD7-61CF-4F4C-8E88-F042DD1C100B/header.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/33ED4E67-452C-448D-AB90-2012EFF69C1E/style.css",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/DB30E363-183D-486B-A2FD-C28F111EC676/logo_grid.php",
+		"/Users/john/Creative/Code/BallastPoint/wp-content/themes/ballastpoint_backup/logo_grid.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/68478815-4F4B-41CC-8BE6-8044EC350F40/page-portfolio.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/C98B8D6E-AC10-46BB-A89F-E5D65E0C192E/logo_grid.php",
+		"/Users/john/Creative/Code/BallastPoint/wp-content/themes/ballastpoint_backup/page-portfolio.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/A8053788-DC53-40B4-BBF3-F0F98E0BC144/page-home.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/CFB47613-0FF6-4212-9878-7D165A8E49D8/header.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/B15B6B29-22D2-4C82-82DC-1F71BE06E2E1/page-portfolio.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/user/signup-lite.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/B14CD416-0A10-4515-A5C5-2FCEBF4E5034/header.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/762065F1-4633-41B1-A96B-BD41737EA6FE/module-tabs.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/B18197BD-6F26-4EBC-AA71-D67CFB5B0438/page-portfolio.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/7029E84F-7F62-4E8E-8928-E65ED9A3583C/logo_grid.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/F1D2A105-F4DA-4176-B624-9B67EE0048B5/header.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/C4A7CD9C-B4C7-4C34-BF9B-58EF638F66B8/page-team.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/B07EEB1C-6794-4891-8D7D-9EFB68D9B8C2/teams.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/13CDAE18-4FFC-4508-801F-F224E28D45A9/module-tabs.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/01970879-DA54-42A4-9C8A-351BC63C169C/page-portfolio.php",
+		"/Users/john/Creative/Code/BallastPoint/wp-content/themes/ballastpoint_backup/page-team.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/46AEF26A-3299-459C-93E4-E8F364E01B0C/footer.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/8828ABDF-B417-4B3C-9012-D9517C1B9499/teams.php",
+		"/Users/john/Creative/Code/BallastPoint/wp-content/themes/ballastpoint_backup/header.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/01C16564-04D8-4B48-936F-C38F8CF9FAB5/footer.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/A642D918-E717-4A62-9A3D-9AA252C166E7/teams.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/21BDB1DA-A562-49C9-8AC8-D97A96559C10/module-tabs.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/0BA2CFCC-25D7-432A-92A8-23DB737A1EBE/page-home.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/4418B3B4-C944-499C-847A-74833B686043/teams.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/814090A5-B64E-4692-93C7-D46034077F69/footer.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/DF031FEC-5B67-4819-B2EB-142436699539/teams.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/44A2B81A-21C7-47E5-AA46-CDB5CD6899BC/page-about.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/9464ADDD-49A1-464A-A311-B5C77929C414/logo_grid.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/calendar.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/store/product.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/models/Product.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/layouts/store.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/0ECD8175-A118-45E0-9284-955ED40FD180/.htaccess",
+		"/Users/john/Creative/Code/Yii2/USOCR/html/.htaccess",
+		"/Users/john/Creative/Code/Yii2/USOCR/composer.json",
+		"/Users/john/Creative/Code/Yii2/USOCR/models/Transaction.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/event/_form.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/config/routes.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/membership.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/store/_product.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/store/category.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/event/index.php",
+		"/Users/john/Desktop/trip_travelers[trip_id-5530].csv",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/sponsors.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/event-services.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/about.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/_event.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/842052F1-62B8-40C7-AF3E-91FA3A3B7AA5/activate.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/45BF79A7-005E-4D24-AAB2-84870FB63CD9/page-home.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/2DEE7734-26F7-455C-9B67-A6F3C22375F9/page-home.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/profile/profile-default.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/layouts/backend-account.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/event/view.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/_form.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/post/_form.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/product/_form.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/product-specification/_form.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/profile/account-info.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/site/dashboard.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/site/error.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/site/login.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/store/cart.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/store/overview.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/user/_form.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/user/create.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/user/view.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/views/page/view.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/config/web.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/0B867812-B3AE-4822-95A9-E9237180BA48/page-vip-giveaway.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/1CBF0D19-9FB9-4310-9BCA-94900C4CB4F0/page-vip-giveaway-confirmation.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/D3A39C81-B32C-4F5D-B061-59FA4AFA85A3/page-home.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/EDFA90DD-2579-41BC-9BB8-D73832A6E0E8/mediaqueries.css",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/0C75F88A-2853-4CE9-B062-865FF44A80AD/style.css",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/3B182523-9777-4D76-A941-BD93D4434660/page-vip-giveaway.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/A2D5935F-EE2C-41A1-9537-091397866905/page-vip-giveaway-confirmation.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/6EE93587-BCCB-480E-AA97-FD618F149B5B/page-training-guide-thankyou.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/CD9C4A01-8077-4DC1-B44A-90426C9D8A1D/wrapper-start.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/AA749BBA-54C6-434C-891B-955B66DF0836/page-jobs.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/95A89ABF-FDAD-48D2-BC72-FC6E085F4A24/page-onecolumn.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/B5C29EE7-E20F-4300-94C1-6C8F98649A7F/style.css",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/400579B5-6709-4623-8009-FC3BD778B883/wrapper-start.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/E7DDFA45-F8C5-487E-BCAA-32BE2DBC56A4/style.css",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/227A68C7-D49F-4B17-8861-ACF08BF4C78E/page-home.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/80E3F3CC-819E-427A-90B9-EB47B4217483/wrapper-start.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/C0E7DBD9-7FD8-403E-A4BE-B3FFD26FAF6D/style.css",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/CF941292-5F28-4CF8-8375-BA0BF252EF00/params.php",
+		"/Users/john/Creative/Code/Yii2/USOCR/models/SearchEvent.php",
+		"/Users/john/Library/Caches/Cleanup At Startup/Transmit/CDF63C8A-D00F-432A-B0C6-9F8750F65509/page-race-fullwidth.php"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"<project>",
+			"/Users/john/Creative/Code/Yii/MetalDetectors/protected/modules/shop/views",
+			"/Users/john/Creative/Code/Yii/MetalDetectors/protected/modules/shop/models",
+			"/Users/john/Creative/Code/Yii/MetalDetectors/protected/modules/shop/controllers",
+			"/Users/john/Creative/Code/Yii/MetalDetectors/protected/modules/shop/views",
+			"/Users/john/Creative/Code/Yii/MetalDetectors/protected/modules/shop",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"cart",
+			"cartit",
+			"signup-lite",
+			"foreign",
+			"verify",
+			"amount",
+			"verify",
+			"foreign",
+			"payment-errors",
+			"home",
+			"filter-cont",
+			"possibleClaims",
+			"verify",
+			"search",
+			"profile",
+			"filter",
+			"fname",
+			"direct",
+			"style",
+			"team_description",
+			"text",
+			"panel_1",
+			"fancy",
+			"#modu",
+			"filter",
+			"login",
+			"profeat",
+			"pro",
+			"transaction",
+			"ranking",
+			"#top-10-header .nav-tabs > li > a",
+			"rankin",
+			" grey-topo-bg",
+			"ranking",
+			"Fira Sans",
+			"export",
+			"filter",
+			"hidden",
+			"welcome",
+			"hidden-",
+			"membership",
+			"your account",
+			"qty",
+			"rankings",
+			"filter",
+			"#filter",
+			"toggle",
+			"membership",
+			"col-md",
+			"dob_day",
+			"delete-image/<?= $model->id ?>/?image",
+			"10",
+			"#gform_wrapper_10",
+			".training_guide",
+			"#menu-main .menu-item a",
+			"profile-container",
+			"more-info",
+			"\"",
+			"#filter",
+			"#filt",
+			"calendar",
+			"state",
+			"spacer",
+			"buttons",
+			"profile",
+			"guest",
+			"array",
+			"arraymap",
+			"modal",
+			"callAPI",
+			"ranking",
+			"#slider",
+			"slider",
+			".home #step_ad img",
+			"piece",
+			"custom",
+			"'http://rankings-test.azurewebsites.net/",
+			"http://rankings-test.azurewebsites.net/",
+			"http://usocr.azurewebsites.net",
+			".page-catering .catering-grid h3",
+			"variation",
+			"select",
+			"product_id",
+			"price",
+			"profile",
+			"modal",
+			"redac",
+			"select",
+			"redirect",
+			"beforevalidate",
+			"post",
+			".page-order .details",
+			"arrayhelp",
+			"sanitizeStringForUrl",
+			"slug",
+			"afterfind",
+			", '",
+			"property_link",
+			"$output[propertyLink]",
+			"search",
+			"button",
+			"contentstri",
+			"onload",
+			"contentString",
+			"google",
+			"map_canvas",
+			"google",
+			"small",
+			"reference",
+			"references_small_text",
+			"html .woocommerce ul.products li.product, html .woocommerce-page ul.products li.product",
+			"checkout",
+			"images",
+			"affili",
+			"images",
+			"wp-content/themes/lexercise2015/images",
+			"images/",
+			"public/images",
+			"public/image",
+			"  ",
+			"#testimonials #hero .left p",
+			"#online_therapy #panel_3 #therapists .teletherapist h4",
+			"#hero h2",
+			"apply",
+			"about",
+			"#about #page_content .inside",
+			"dropdown",
+			"passe "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Open Sans",
+			"col-sm",
+			"delete-image/<?= $model->id ?>?image",
+			"#gform_wrapper_12",
+			".vip_giveaway",
+			"'",
+			"Yii::$app->params['rankingApi'].'",
+			"Yii::$app->params['rankingApi']",
+			"http://rankings-test.azurewebsites.net/",
+			",'",
+			"$property_link",
+			"wp-content/themes/lexercise2015/images/screener",
+			"wp-content/themes/lexercise2015/images",
+			" ",
+			"AddToCartForm",
+			" src=\"http://icondesignfl.com/email/mm_press/",
+			"font-weight: 200",
+			"font-weight: 100",
+			"Html",
+			"SearchProductCategory",
+			"send-message",
+			"5%",
+			".menu-item.menu-item-2031",
+			".menu-item-2031",
+			"Urologix",
+			"adjusted_date",
+			"Urologix",
+			"adjusted_date",
+			"Urologix",
+			"adjusted_date",
+			"child_categories",
+			"id",
+			"2_23_15",
+			"2_10_15",
+			"$submitfind",
+			"$findform",
+			"#posts",
+			"#resource",
+			"Resource",
+			"ResourceHasCategory",
+			"Resource",
+			"Resourceres",
+			"Resource",
+			"",
+			"Resource",
+			"",
+			"#header #menu-main",
+			"redirect",
+			"<?php echo Yii::app()->request->baseUrl; ?>",
+			" + ",
+			"\"",
+			"class=\"form-group\"",
+			"img src=\"http://s254172785.onlinehome.us/eblast_11_23_14/",
+			"",
+			"bootstrap",
+			"",
+			"$url ",
+			"beta/",
+			"http://162.243.44.127/metaldetectors/beta/all-purpose",
+			"iradio",
+			"manufacturer",
+			"iradio",
+			"manufacturer",
+			"Manufacturer",
+			"form-group",
+			"237b11",
+			"40a62c",
+			"ad9680",
+			"988471",
+			"1f5e9c",
+			"3a7bbb",
+			"form-group",
+			"class=\"tabs_nav_dropdown\"",
+			"",
+			"\"proxima-nova\",sans-serif",
+			"$value",
+			"\"proxima-nova\",sans-serif",
+			"<?php bloginfo('url'); ?>",
+			".gform_wrapper",
+			"#obstacle_list.featured",
+			"background-color",
+			" ",
+			"",
+			"admin_form",
+			"',",
+			"'=>'",
+			"=>'",
+			"'",
+			"",
+			"<a target=\"_blank\" href=",
+			"9_9_13",
+			"florida",
+			"<?php echo Yii::app()->request->baseUrl; ?>",
+			"Chicago",
+			"<div>",
+			"grade8",
+			"#dashboard .settings",
+			"../0i",
+			"",
+			"p",
+			"paragraph"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "SiteController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 567.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "gcn.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								266,
+								266
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 493.0
+	},
+	"pinned_build_system": "",
+	"project": "gcn.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"order",
+				"controllers/ProductOrderController.php"
+			],
+			[
+				"hom",
+				"views/page/home.php"
+			],
+			[
+				"ordervi",
+				"views/product-order/view.php"
+			],
+			[
+				"pro",
+				"controllers/ProductController.php"
+			],
+			[
+				"profi",
+				"views/layouts/profile.php"
+			],
+			[
+				"fron",
+				"html/css/frontend.css"
+			],
+			[
+				"user",
+				"models/User.php"
+			],
+			[
+				"race",
+				"views/profile/race-history.php"
+			],
+			[
+				"param",
+				"config/params.php"
+			],
+			[
+				"usercon",
+				"controllers/UserController.php"
+			],
+			[
+				"site",
+				"controllers/SiteController.php"
+			],
+			[
+				"page",
+				"controllers/PageController.php"
+			],
+			[
+				"rankin",
+				"views/page/rankings.php"
+			],
+			[
+				"orderind",
+				"views/product-order/index.php"
+			],
+			[
+				"cont",
+				"views/page/contact.php"
+			],
+			[
+				"back",
+				"views/layouts/backend.php"
+			],
+			[
+				"nav",
+				"views/layouts/navbar.php"
+			],
+			[
+				"productord",
+				"models/ProductOrder.php"
+			],
+			[
+				"stro",
+				"controllers/StoreController.php"
+			],
+			[
+				"chec",
+				"views/store/checkout.php"
+			],
+			[
+				"para",
+				"config/params.php"
+			],
+			[
+				"par",
+				"config/params.php"
+			],
+			[
+				"sit",
+				"controllers/SiteController.php"
+			],
+			[
+				"pag",
+				"controllers/PageController.php"
+			],
+			[
+				"ran",
+				"views/page/rankings.php"
+			],
+			[
+				"sign",
+				"views/user/signup-pro.php"
+			],
+			[
+				"front",
+				"assets/FrontendAsset.php"
+			],
+			[
+				"med",
+				"html/css/frontend-mediaqueries.css"
+			],
+			[
+				"ranki",
+				"views/page/rankings.php"
+			],
+			[
+				"us",
+				"models/User.php"
+			],
+			[
+				"rank",
+				"views/page/rankings.php"
+			],
+			[
+				"ho",
+				"views/page/home.php"
+			],
+			[
+				"si",
+				"views/user/signup-lite.php"
+			],
+			[
+				"prod",
+				"views/store/product.php"
+			],
+			[
+				"cal",
+				"views/page/calendar.php"
+			],
+			[
+				"store",
+				"views/layouts/store.php"
+			],
+			[
+				"produ",
+				"views/store/product.php"
+			],
+			[
+				"tran",
+				"models/Transaction.php"
+			],
+			[
+				"_fo",
+				"views/event/_form.php"
+			],
+			[
+				"home",
+				"views/page/home.php"
+			],
+			[
+				"rout",
+				"config/routes.php"
+			],
+			[
+				"mem",
+				"views/page/membership.php"
+			],
+			[
+				"_pro",
+				"views/store/_product.php"
+			],
+			[
+				"cate",
+				"views/store/category.php"
+			],
+			[
+				"ind",
+				"views/event/index.php"
+			],
+			[
+				"font",
+				"html/css/frontend.css"
+			],
+			[
+				"prodorder",
+				"controllers/ProductOrderController.php"
+			],
+			[
+				"sin",
+				"views/user/signup-pro.php"
+			],
+			[
+				"cat",
+				"views/store/category.php"
+			],
+			[
+				"cale",
+				"views/page/calendar.php"
+			],
+			[
+				"spon",
+				"views/page/sponsors.php"
+			],
+			[
+				"event",
+				"views/page/event-services.php"
+			],
+			[
+				"abou",
+				"views/page/about.php"
+			],
+			[
+				"_ev",
+				"views/page/_event.php"
+			],
+			[
+				"calen",
+				"views/page/calendar.php"
+			],
+			[
+				"prof",
+				"views/profile/profile-default.php"
+			],
+			[
+				"_eve",
+				"views/page/_event.php"
+			],
+			[
+				"even",
+				"views/page/event-services.php"
+			],
+			[
+				"fro",
+				"html/css/frontend.css"
+			],
+			[
+				"about",
+				"views/page/about.php"
+			],
+			[
+				"view",
+				"views/page/view.php"
+			],
+			[
+				"profil",
+				"views/layouts/profile.php"
+			],
+			[
+				"usercreat",
+				"views/user/create.php"
+			],
+			[
+				"logi",
+				"views/site/login.php"
+			],
+			[
+				"web",
+				"config/web.php"
+			],
+			[
+				"asset",
+				"assets/FrontendAsset.php"
+			],
+			[
+				"dash",
+				"views/site/dashboard.php"
+			],
+			[
+				"prod_fo",
+				"views/product/_form.php"
+			],
+			[
+				"prod_for",
+				"views/product/_form.php"
+			],
+			[
+				"profile",
+				"views/layouts/profile.php"
+			],
+			[
+				"searc",
+				"models/SearchEvent.php"
+			],
+			[
+				"age",
+				"controllers/PageController.php"
+			],
+			[
+				"product_fo",
+				"views/product/_form.php"
+			],
+			[
+				"_even",
+				"views/page/_event.php"
+			],
+			[
+				"spons",
+				"views/page/sponsors.php"
+			],
+			[
+				"contact",
+				"views/site/contact.php"
+			],
+			[
+				"user_fo",
+				"views/user/_form.php"
+			],
+			[
+				"accoun",
+				"views/profile/account-info.php"
+			],
+			[
+				"usercont",
+				"controllers/UserController.php"
+			],
+			[
+				"_for",
+				"views/product/_form.php"
+			],
+			[
+				"use",
+				"models/User.php"
+			],
+			[
+				"event_ser",
+				"views/page/modules/event_services_secondary.php"
+			],
+			[
+				"event_s",
+				"views/page/modules/event_services.php"
+			],
+			[
+				"parm",
+				"config/params.php"
+			],
+			[
+				"sposn",
+				"views/page/sponsors.php"
+			],
+			[
+				"defa",
+				"views/page/default.php"
+			],
+			[
+				"produc_for",
+				"views/product/_form.php"
+			],
+			[
+				"add",
+				"models/AddToCartForm.php"
+			],
+			[
+				"cart",
+				"views/store/cart.php"
+			],
+			[
+				"check",
+				"views/store/checkout.php"
+			],
+			[
+				"prodvar",
+				"models/ProductVariation.php"
+			],
+			[
+				"stor",
+				"controllers/StoreController.php"
+			],
+			[
+				"car",
+				"views/store/cart.php"
+			],
+			[
+				"prodvie",
+				"views/product/view.php"
+			],
+			[
+				"prodind",
+				"views/product/index.php"
+			],
+			[
+				"page_fo",
+				"views/page/_form.php"
+			],
+			[
+				"produc",
+				"models/Product.php"
+			],
+			[
+				"sstor",
+				"controllers/StoreController.php"
+			],
+			[
+				"ord",
+				"models/ProductOrder.php"
+			],
+			[
+				"userind",
+				"views/user/index.php"
+			],
+			[
+				"index",
+				"views/event/index.php"
+			],
+			[
+				"upd",
+				"views/event/update.php"
+			],
+			[
+				"orderco",
+				"controllers/ProductOrderController.php"
+			],
+			[
+				"log",
+				"views/site/login.php"
+			],
+			[
+				"bac",
+				"views/layouts/backend.php"
+			],
+			[
+				"das",
+				"views/site/dashboard.php"
+			],
+			[
+				"ordercont",
+				"controllers/ProductOrderController.php"
+			],
+			[
+				"bx",
+				"assets/BxSliderAsset.php"
+			],
+			[
+				"sto",
+				"controllers/StoreController.php"
+			],
+			[
+				"sot",
+				"controllers/StoreController.php"
+			],
+			[
+				"ordervie",
+				"views/product-order/view.php"
+			],
+			[
+				"prodor",
+				"models/ProductOrder.php"
+			],
+			[
+				"prodcat",
+				"controllers/ProductCategoryController.php"
+			],
+			[
+				"orderview",
+				"views/product-order/view.php"
+			],
+			[
+				"searpro",
+				"models/SearchProduct.php"
+			],
+			[
+				"searchord",
+				"models/SearchProductOrder.php"
+			],
+			[
+				"searord",
+				"models/SearchProductOrder.php"
+			],
+			[
+				"prodinde",
+				"views/product/index.php"
+			],
+			[
+				"ch",
+				"views/store/checkout.php"
+			],
+			[
+				"prodvari",
+				"models/ProductVariation.php"
+			],
+			[
+				"rod",
+				"views/profile/profile-default.php"
+			],
+			[
+				"speci",
+				"models/ProductSpecification.php"
+			],
+			[
+				"prodcon",
+				"controllers/ProductController.php"
+			],
+			[
+				"prodfo",
+				"views/product/_form.php"
+			],
+			[
+				"sig",
+				"views/user/signup-lite.php"
+			],
+			[
+				"conta",
+				"models/ContactForm.php"
+			],
+			[
+				"filte",
+				"models/RankingFilterForm.php"
+			],
+			[
+				"sing",
+				"views/user/signup-pro.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 190.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

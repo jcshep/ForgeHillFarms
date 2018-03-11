@@ -1,0 +1,27 @@
+{
+	"folders":
+	[
+		{
+			"path": "assets"
+		},
+		{
+			"path": "config"
+		},
+		{
+			"path": "controllers"
+		},
+		{
+			"path": "models"
+		},
+		{
+			"path": "views"
+		},
+		{
+			"folder_exclude_patterns":
+			[
+				"assets","feeds","images"
+			],
+			"path": "web"
+		}
+	]
+}
