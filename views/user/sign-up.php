@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 
+
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Project */
 
@@ -12,11 +14,14 @@ $this->title = 'Register for the 2018 Season';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="page user-create">
+<div id="content" class="page user-create">
 
+	<div class="spacer30"></div>
+	
+	<div class="container">
 	<div class="row">
 
-		<div class="col-sm-6 col-sm-offset-3 bg-white">
+		<div class="col-sm-8 col-sm-offset-2 bg-white">
 			
 			<h2><?= Html::encode($this->title) ?></h2>
 			
@@ -49,18 +54,38 @@ $this->title = 'Register for the 2018 Season';
 
 					<?= $form->field($model, 'membership_type') ->radioList(['full' => 'Full', 'half' => 'Half', 'free'=>'Free'], ['class'=>'membership-selection', 
 							
-                                'item' => function($index, $label, $name, $checked, $value) {
+                                'item' => function($index, $label, $name, $checked, $value) use ($model) {
+                                		
+                                		$checked = $value == $model->membership_type ? 'checked' : NULL;
 
-                                		// switch ($value) {
-                                		// 	case 'value': # code... break;
-                                		// }
+                                		$return = '<label class="modal-radio '.$checked.'" data-membership-type="' . $value . '">';
+	                                    $return .= '<div class="inside">';
+	                                    $return .= '<input type="radio" name="' . $name . '" value="' . $value . '" '. $checked .' tabindex="3">';
 
-	                                    $return = '<label class="modal-radio" data-membership-type="' . $value . '">';
-	                                    $return .= '<input type="radio" name="' . $name . '" value="' . $value . '" tabindex="3">';
-	                                    $return .= '<i></i>';
-	                                    $return .= '<h3>' . ucwords($label) . '</h3>';
-	                                    $return .= '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis pretium enim at rhoncus. </p>';
+                                		switch ($value) {
+                                			case 'full': # code... break;
+											$return .= '<h3>' . ucwords($label) . ' SHARE</h3>';
+	                                    	$return .= '<p>Suitable for a family of four or more.</p>';
+	                                    	$return .= '<h3>$650 SHARE</h3>';
+                                		}
+
+                                		switch ($value) {
+                                			case 'half': # code... break;
+											$return .= '<h3>' . ucwords($label) . ' SHARE</h3>';
+	                                    	$return .= '<p>Suitable for an individual or a couple</p>';
+	                                    	$return .= '<h3>$375 SHARE</h3>';
+                                		}
+
+                                		switch ($value) {
+                                			case 'free': # code... break;
+											$return .= '<h3>' . ucwords($label) . ' SHARE</h3>';
+	                                    	$return .= '<p>Suitable for an individual or a couple</p>';
+	                                    	$return .= '<h3><small>FULL SHARE</small> $32 <br> <small>HALF SHARE</small> $18</h3>';
+                                		}
+
+	                                    
 	                                    $return .= '<div class="price"></div>';
+	                                    $return .= '</div>';
 	                                    $return .= '</label>';
 	                                    return $return;
 	                                }
@@ -79,7 +104,7 @@ $this->title = 'Register for the 2018 Season';
 					</div>
 
 
-					<div class="form-group submit-group text-center">
+					<div class="form-group submit-group text-center" style="display:<?php if($model->membership_type) {echo 'block';} else {echo 'none';} ?>"">
 						<?= Html::submitButton($model->isNewRecord ? 'Create Account' : 'Update', ['class' => 'btn btn-primary btn-lg']) ?>
 						<div></div>
 						<a href="login" class="btn btn-default">Already a member?</a>
@@ -92,6 +117,8 @@ $this->title = 'Register for the 2018 Season';
 
 		</div>
 	</div> <!-- row -->
+
+	</div><!-- container -->
 
 
 </div>

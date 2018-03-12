@@ -44,7 +44,7 @@ RedactorAsset::register($this);
 		<div class="row">
 			<div class="col-sm-6">
 				<?php if (!\Yii::$app->user->isGuest) { ?>
-					<a href="/user/login">LOGOUT</a>						
+					<a href="/user/logout">LOGOUT</a>						
 				<?php } else { ?>											
 					<a href="/user/login">LOGIN</a>	
 				<?php } ?>		

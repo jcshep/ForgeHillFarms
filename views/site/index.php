@@ -62,7 +62,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 										<?= Page::renderBlock('full-share-copy'); ?>
 									</p>	
 
-									<a href="/user/sign-up" class="btn btn-primary">BUY A FULL SHARE</a>
+									<a href="/user/sign-up?type=full" class="btn btn-primary">BUY A FULL SHARE</a>
 								</span>
 							</div>
 
@@ -86,7 +86,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 										<?= Page::renderBlock('half-share-copy'); ?>
 									</p>	
 
-									<a href="/user/sign-up" class="btn btn-primary">BUY A HALF SHARE</a>
+									<a href="/user/sign-up?type=half" class="btn btn-primary">BUY A HALF SHARE</a>
 								</span>
 							</div>
 						</div> <!--col-->
@@ -114,7 +114,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 								<?= Page::renderBlock('alacarte-copy'); ?>
 							</p>	
 
-							<a href="/user/sign-up" class="btn btn-secondary">SIGN UP FOR A-LA-CARTE</a>
+							<a href="/user/sign-up?type=free" class="btn btn-secondary">SIGN UP FOR A-LA-CARTE</a>
 						</span>
 					</div>
 

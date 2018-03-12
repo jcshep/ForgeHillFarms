@@ -84,7 +84,7 @@ class UserController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             if (\Yii::$app->user->identity->access_level == 'admin') {
-                    return $this->redirect(['/admin']);
+                    return $this->redirect(['/']);
                 } else {
                     return $this->redirect(['/user/account']);
                 }
@@ -110,7 +110,11 @@ class UserController extends Controller
             return $this->redirect(Yii::$app->params['siteUrl']);
         }
 
-         $model = new User();
+        $model = new User();
+
+        $model->membership_type = Yii::$app->request->get('type');
+
+        
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 

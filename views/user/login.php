@@ -12,9 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page page-login">
 
-
+    <div id="content">
         <div class="row">
             <div class="col-md-4 col-md-offset-4 bg-white">
+
+                <div class="spacer30"></div>
                 
                 <h2><?= Html::encode($this->title) ?></h2>
 
@@ -49,12 +51,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                 <div class="form-group">
-                        <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                        <a href="sign-up" class="btn btn-success">Create Account</a>
-                        <a href="forgot-password" class="btn btn-default">Forgot Password?</a>
+                    <div class="row">
+                        <div class="col-sm-6"><?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?></div> <!--col-->
+                        <div class="col-sm-6"><a href="sign-up" class="btn btn-secondary btn-block">Create Account</a></div> <!--col-->        
+                    </div> <!--row-->
+                    <div class="spacer15"></div>
+                    <a href="forgot-password" class="btn btn-default btn-block">Forgot Password?</a>
+         
                 </div>
 
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
+    </div>
 </div>

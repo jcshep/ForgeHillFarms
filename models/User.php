@@ -58,6 +58,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
+            'cc' => 'Credit Card',
+            'cc_zip' => 'Billing Zip',
             'email' => 'Email',
             'password' => 'Password',
             'fname' => 'First Name',

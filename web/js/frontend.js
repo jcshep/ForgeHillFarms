@@ -9,8 +9,8 @@ $(document).ready(function() {
 
 		console.log(membership);
 
-		$(this).addClass('active');
-		$('.membership-selection .modal-radio').not(this).removeClass('active');
+		$(this).addClass('checked');
+		$('.membership-selection .modal-radio').not(this).removeClass('checked');
 
 		if(membership == 'full' || membership == 'half') {
 			$('.credit-card-form').slideDown();
@@ -18,7 +18,7 @@ $(document).ready(function() {
 			$('.credit-card-form').slideUp();
 		}
 
-		$('.user-create .submit-group .btn-primary').fadeIn();
+		$('.user-create .submit-group').fadeIn();
 
 	});
 
