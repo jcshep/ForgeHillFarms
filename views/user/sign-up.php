@@ -3,15 +3,18 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-
-
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Project */
 
 $this->title = 'Register for the 2018 Season';
 // $this->params['breadcrumbs'][] = ['label' => 'Projects', 'url' => ['index']];
 // $this->params['breadcrumbs'][] = $this->title;
+
+
+$this->registerJsFile('https://js.stripe.com/v2/');
+$this->registerJs("Stripe.setPublishableKey('".Yii::$app->params['stripePublishableKey']."');",  yii\web\View::POS_END);
+$this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+
 ?>
 
 <div id="content" class="page user-create">
@@ -29,7 +32,15 @@ $this->title = 'Register for the 2018 Season';
 
 			<div class="project-form">
 
-					<?php $form = ActiveForm::begin(); ?>
+
+
+					<?php $form = ActiveForm::begin(['id'=>'payment-form']); ?>
+
+					<?php if($model->errors) { ?>
+					<div class="alert bg-danger">
+						<?= $form->errorSummary($model); ?>
+					</div>
+					<?php } ?>
 
 					<div class="row">
 						<div class="col-md-6"><?= $form->field($model, 'fname')->textInput() ?></div>
@@ -95,7 +106,7 @@ $this->title = 'Register for the 2018 Season';
 					<div class="spacer30"></div>
 
 
-					<div class="credit-card-form">
+					<div class="credit-card-form" <?php if($model->membership_type == 'half' || $model->membership_type == 'full') echo 'style="display:block"'; ?>>
 						<?php echo $this->render('_ccform', [
 								'model'=>$model,
 								'form'=>$form]

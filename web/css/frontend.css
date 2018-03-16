@@ -22,6 +22,8 @@ a:hover {color: #B93A26}
 .valign-top {align-self: flex-start; }
 .valign-bottom {align-self: flex-end;}
 
+.hspacer {width: 30px; display: inline-block;}
+
 .btn {outline: none; border-radius: 0; line-height: 45px; padding: 0 30px; letter-spacing: 1.5px; font-size: 12px; font-weight: 500; text-transform: uppercase;
 	transition: all .3s linear;
 	-webkit-transition: all .3s linear;
@@ -29,6 +31,7 @@ a:hover {color: #B93A26}
 }
 .btn-primary {background: #B93A26; border-color: #B93A26; color: #FEF8EB}
 .btn-primary:hover {background: #9A1F0D; border-color: #9A1F0D;}
+.btn-primary[disabled], .btn-primary[disabled]:hover {background: #B93A26; border-color: #B93A26; color: #FEF8EB}
 
 .btn-secondary {background: transparent; border-color: #B93A26; color: #B93A26}
 .btn-secondary:hover {background:#B93A26 ; border-color: #9A1F0D; color: #FEF8EB}
@@ -70,9 +73,7 @@ a:hover {color: #B93A26}
 
 .user-create .credit-card-form {display: none;}
 
-#account {}
-#account h4 {margin: 0 auto; padding: 0 0 10px; line-height: 20px;}
-#account h4 span {font-size: 11px; text-transform: uppercase; padding-left: 20px; color: #5cb85c}
+
 
 
 
@@ -150,10 +151,14 @@ a:hover {color: #B93A26}
 
 #pickup-time-options p {margin: 0;}
 
+#account .container {max-width: 900px;}
+#account .membership-type {color: #FFF; background: #174375; display: inline-block;line-height: 30px; padding: 0 30px; margin-top: 0; text-transform: uppercase;}
+#account h4 {margin: 0 auto; padding: 0 0 10px; line-height: 20px;}
+#account h4 span {font-size: 11px; text-transform: uppercase; padding-left: 20px; color: #5cb85c}
 
 
 
-
+.payment-errors {color: #B93A26;}
 
 
 

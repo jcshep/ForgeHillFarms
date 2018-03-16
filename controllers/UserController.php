@@ -30,7 +30,7 @@ class UserController extends Controller
                                                 }
                     ],
                     [
-                        'actions' => ['account'],
+                        'actions' => ['account','sign-up'],
                         'roles' => ['@'],
                         'allow' => true,
                     ],
@@ -99,7 +99,7 @@ class UserController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect(['/']);
     }
 
 
@@ -107,18 +107,19 @@ class UserController extends Controller
     public function actionSignUp()
     {
         if (!\Yii::$app->user->isGuest) {
-            return $this->redirect(Yii::$app->params['siteUrl']);
+            return $this->redirect(['/user/account']);
         }
 
         $model = new User();
 
         $model->membership_type = Yii::$app->request->get('type');
-
-        
+        $model->cc_token = Yii::$app->request->post('stripeToken');
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
-            if($model->save()) {
+
+
+            if($model->charge() && $model->save()) {
 
                 //Send activation email
                 // Yii::$app->mailer->compose('/mail/default',[

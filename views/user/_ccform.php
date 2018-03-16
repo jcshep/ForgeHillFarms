@@ -6,15 +6,13 @@
 
 
 
-<?php if($model->errors) { ?>
-<div class="alert bg-danger">
-	<?= $form->errorSummary($model); ?>
-</div>
-<?php } ?>
+
+
+<div class="payment-errors"></div>
 
 <div class="row">
 	<div class="col-sm-12">
-		<?php echo $form->field($model, 'cc')->textInput() ?>
+		<?php echo $form->field($model, 'cc')->textInput(['data-stripe'=> 'number']) ?>
 		<?php 
 									// $form->field($order, 'cc')
 									// 	 ->textInput(['data-stripe' => 'number'])
@@ -56,6 +54,7 @@
 	</div>
 
 	<div class="col-md-3 col-xs-3">
-			<?= $form->field($model, 'cc_zip')->textInput() ?>
-		</div>
+		<?= $form->field($model, 'cc_zip')->textInput() ?>
+	</div>
+
 </div> <!--row-->

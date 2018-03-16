@@ -52,7 +52,9 @@ RedactorAsset::register($this);
 			</div> <!--col-->
 			<div class="col-sm-6 text-right">
 				<?php if (!\Yii::$app->user->isGuest) { ?>
-					<a href="/user/sign-up">MY ACCOUNT</a>
+					Welcome, <?= Yii::$app->user->identity->fname ?> <?= Yii::$app->user->identity->lname ?></span>
+					<div class="hspacer"></div>
+					<a href="/user/account">MY ACCOUNT</a>
 				<?php } else { ?>						
 					<a href="/user/sign-up">SIGNUP</a>
 				<?php } ?>				

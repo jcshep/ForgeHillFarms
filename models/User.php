@@ -86,6 +86,62 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
 
+
+    // public function createStripeCustomer() {
+
+    //     try {
+    //         $response = \Stripe\Customer::create(array(
+    //             "description" => "Customer for abigail.white@example.com",
+    //             "source" => "tok_mastercard" // obtained with Stripe.js
+    //         ));
+    //     catch (\Exception $e) {
+
+    //     }
+    // }
+
+
+
+    public function charge() {
+
+        if($this->membership_type == 'free')
+            return true;
+
+        \Stripe\Stripe::setApiKey(Yii::$app->params['stripeSecretKey']);
+
+        try {
+            $response = \Stripe\Charge::create(array(
+              "amount" => $this->membership_type == 'full' ? 6500 : 3750,
+              "currency" => "usd",
+              "source" => $this->cc_token, // obtained with Stripe.js
+              "description" => "Charge for ".$this->fname." ".$this->lname
+            ));
+
+            // $this->stripe_id = $customer->id;
+
+            return true;
+        } 
+
+        catch (\Stripe\Error\InvalidRequest $a) {
+            $error = $a->getMessage();
+            $this->addError('cc',$error );
+        }
+
+        catch(\Stripe\Error\Card $c) {
+            $error = $c->getMessage();
+            $this->addError('cc',$error );
+        }
+
+        catch (\Exception $e) {
+            $error = $e->getMessage();
+            $this->addError('cc',$error );
+        }
+
+        $this->addError('cc', 'There was an error processing your card.');
+        return false;
+
+    }
+
+
     public static function findByPasswordResetToken($token)
     {
         $expire = \Yii::$app->params['user.passwordResetTokenExpire'];
