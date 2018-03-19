@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Page;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -62,8 +63,14 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
 					</div>
 					
 					<div class="spacer30"></div>
-
-					<?= $form->field($model, 'membership_type') ->radioList(['full' => 'Full', 'half' => 'Half', 'free'=>'Free'], ['class'=>'membership-selection', 
+					<?php  
+						$options = [
+							'full'=>Page::renderBlock('option-1'),
+							'half'=>Page::renderBlock('option-2'),
+							'free'=>Page::renderBlock('option-3'),
+						];
+					?>
+					<?= $form->field($model, 'membership_type') ->radioList($options, ['class'=>'membership-selection', 
 							
                                 'item' => function($index, $label, $name, $checked, $value) use ($model) {
                                 		
@@ -75,22 +82,22 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
 
                                 		switch ($value) {
                                 			case 'full': # code... break;
-											$return .= '<h3>' . ucwords($label) . ' SHARE</h3>';
+											$return .= '<h3>' . ucwords($label) . '</h3>';
 	                                    	$return .= '<p>Suitable for a family of four or more.</p>';
 	                                    	$return .= '<h3>$650 SHARE</h3>';
                                 		}
 
                                 		switch ($value) {
                                 			case 'half': # code... break;
-											$return .= '<h3>' . ucwords($label) . ' SHARE</h3>';
+											$return .= '<h3>' . ucwords($label) . '</h3>';
 	                                    	$return .= '<p>Suitable for an individual or a couple</p>';
 	                                    	$return .= '<h3>$375 SHARE</h3>';
                                 		}
 
                                 		switch ($value) {
                                 			case 'free': # code... break;
-											$return .= '<h3>' . ucwords($label) . ' SHARE</h3>';
-	                                    	$return .= '<p>Suitable for an individual or a couple</p>';
+											$return .= '<h3>' . ucwords($label) . '</h3>';
+	                                    	$return .= '<p>Purchase share boxes individually</p>';
 	                                    	$return .= '<h3><small>FULL SHARE</small> $32 <br> <small>HALF SHARE</small> $18</h3>';
                                 		}
 

@@ -20,7 +20,8 @@
 	
 	<div class="editable">
 		<?= Page::editBlock('member-cta-image','image','Edit Image', 'content'); ?>
-		<img src="/uploads/<?= Page::renderBlock('member-cta-image'); ?>" alt="">		
+		<img src="/uploads/<?= Page::renderBlock('member-cta-image'); ?>" alt="">	
+		<?= Page::removeImage('member-cta-image','image','Edit Image', 'hero'); ?>	
 	</div>
 	
 	<div class="spacer15"></div>

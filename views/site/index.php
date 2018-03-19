@@ -10,6 +10,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 	<div class="container editable">
 		<?= Page::editBlock('home-hero-image','image','Edit Image', 'hero'); ?>
 		<img src="/uploads/<?= Page::renderBlock('home-hero-image'); ?>" alt="">	
+		<?= Page::removeImage('home-hero-image','image','Edit Image', 'hero'); ?>
 	</div>
 </div>
 
@@ -51,7 +52,10 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 							<div class="box">
 								<span class="inner">
 									<div class="row upper">
-										<div class="col-sm-8">FULL SHARE</div> <!--col-->
+										<div class="col-sm-8 editable text-uppercase">
+											<?= Page::editBlock('option-1','text','Edit Plan Name', 'top', 'share-box-selection'); ?>
+											<?= Page::renderBlock('option-1'); ?>
+										</div> <!--col-->
 										<div class="col-sm-4 text-right">$650</div> <!--col-->
 									</div> <!--row-->
 
@@ -62,7 +66,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 										<?= Page::renderBlock('full-share-copy'); ?>
 									</p>	
 
-									<a href="/user/sign-up?type=full" class="btn btn-primary">BUY A FULL SHARE</a>
+									<a href="/user/sign-up?type=full" class="btn btn-primary">SIGN UP FOR <?= Page::renderBlock('option-1'); ?></a>
 								</span>
 							</div>
 
@@ -75,7 +79,10 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 							<div class="box">
 								<span class="inner">
 									<div class="row upper">
-										<div class="col-sm-8">HALF SHARE</div> <!--col-->
+										<div class="col-sm-8 editable text-uppercase">
+											<?= Page::editBlock('option-2','text','Edit Plan Name', 'bottom', 'share-box-selection'); ?>
+											<?= Page::renderBlock('option-2'); ?>
+										</div> <!--col-->
 										<div class="col-sm-4 text-right">$375</div> <!--col-->
 									</div> <!--row-->
 
@@ -86,7 +93,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 										<?= Page::renderBlock('half-share-copy'); ?>
 									</p>	
 
-									<a href="/user/sign-up?type=half" class="btn btn-primary">BUY A HALF SHARE</a>
+									<a href="/user/sign-up?type=half" class="btn btn-primary">SIGN UP FOR <?= Page::renderBlock('option-2'); ?></a>
 								</span>
 							</div>
 						</div> <!--col-->
@@ -100,7 +107,10 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 					<div class="box">
 						<span class="inner">
 							<div class="row upper">
-								<div class="col-sm-6">HALF SHARE</div> <!--col-->
+								<div class="col-sm-6 editable text-uppercase">
+									<?= Page::editBlock('option-3','text','Edit Plan Name', 'bottom', 'share-box-selection'); ?>
+									<?= Page::renderBlock('option-3'); ?>
+								</div> <!--col-->
 								<div class="col-sm-6 text-right">
 									<small>FULL SHARE</small> $32<br>
 									<small>HALF SHARE</small> $18
@@ -114,7 +124,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 								<?= Page::renderBlock('alacarte-copy'); ?>
 							</p>	
 
-							<a href="/user/sign-up?type=free" class="btn btn-secondary">SIGN UP FOR A-LA-CARTE</a>
+							<a href="/user/sign-up?type=free" class="btn btn-secondary">SIGN UP FOR <?= Page::renderBlock('option-3'); ?></a>
 						</span>
 					</div>
 

@@ -11,6 +11,8 @@ img {max-width: 100%;}
 
 .clear {clear: both;}
 
+.text-uppercase {text-transform: uppercase;}
+
 a {outline: none !important; text-decoration: none !important; color: #B93A26;
 	transition: all .3s linear;
 	-webkit-transition: all .3s linear;
@@ -172,6 +174,7 @@ a:hover {color: #B93A26}
 	box-shadow:         4px 4px 12px 0px rgba(50, 50, 50, 0.47);
 }
 .edit.corner, .edit-link.corner {left: auto; top: 20px; right: 20px;}
+.edit-link.edit-image {font-weight: 700; font-size: 14px; padding: 5px; height: auto; position: absolute; bottom: 0; right: 10px; z-index: 5; left: auto; top: auto;}
 .edit.lower {left: -10px; bottom: -10px; top: auto;}
 .edit.static, .edit-link.static {position: static; top: auto; left: auto;}
 .edit.right, .edit-link.right {top: 0; right: 20px; left: auto}

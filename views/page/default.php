@@ -10,6 +10,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 	<div class="container">
 		<?= Page::editBlock('hero-image-'.$model->slug,'image','Edit Image', 'hero'); ?>
 		<img src="/uploads/<?= Page::renderBlock('hero-image-'.$model->slug); ?>" alt="">
+		<?= Page::removeImage('hero-image-'.$model->slug,'image','Edit Image', 'hero'); ?>
 	</div>
 </div>
 
@@ -41,10 +42,12 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 				
 				<div class="editable">
 				<?= Page::editBlock('content-image-'.$model->slug,'image','Edit Image', 'content'); ?>
+				<?= Page::removeImage('content-image-'.$model->slug,'image','Edit Image', 'hero'); ?>
 				<?php if ($image = Page::renderBlock('content-image-'.$model->slug)): ?>
 					<img src="/uploads/<?= Page::renderBlock('content-image-'.$model->slug); ?>" alt="">	
 					<div class="spacer30"></div>
 				<?php endif ?>
+
 				</div>
 				
 				<div class="editable">

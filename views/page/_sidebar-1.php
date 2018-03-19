@@ -40,6 +40,7 @@
 	<div class="editable">
 		<?= Page::editBlock('sidebar-image-1','image','Edit Image'); ?>
 		<img src="/uploads/<?= Page::renderBlock('sidebar-image-1'); ?>" alt="">
+		<?= Page::removeImage('sidebar-image-1','image','Edit Image', 'hero'); ?>
 	</div>	
 	<div class="spacer15"></div>
 	<div class="editable">

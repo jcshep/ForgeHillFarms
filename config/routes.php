@@ -9,6 +9,8 @@ return  [
     'home' => 'site/home',
     'admin' => 'admin/index',
 
+    'page/remove-image/<slug:\w+(-\w+)*>' => 'page/remove-image',
+
     // Page Redirection
     '<slug:\w+(-\w+)*>' => 'page/index',
     

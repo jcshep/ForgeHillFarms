@@ -31,7 +31,7 @@ class PageController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
-                    [   'actions' => ['admin', 'view', 'create', 'update', 'delete', 'get-content', 'set-content'],
+                    [   'actions' => ['admin', 'view', 'create', 'update', 'delete', 'get-content', 'set-content','remove-image'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() {
@@ -253,6 +253,15 @@ class PageController extends Controller
     }
 
 
+
+    public function actionRemoveImage($slug)
+    {   
+            
+        $model = \app\models\ContentBlock::findOne(['slug'=>$slug]);
+        $model->delete();
+
+        return $this->redirect(Yii::$app->request->referrer);
+    }
 
 
 

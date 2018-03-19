@@ -72,6 +72,15 @@ class Page extends \yii\db\ActiveRecord
     }
 
 
+    public static function removeImage($slug) {
+        $data = NULL;
+
+        if(User::isAdmin()) 
+            $data = '<a href="/page/remove-image/'.$slug.'" id="anchor-'.$slug.'" class="edit-link edit-image">x</a>';
+        return $data;
+    }
+
+
     public static function editBlockUrl($url) {
         $data = NULL;
         if(User::isAdmin()) 
