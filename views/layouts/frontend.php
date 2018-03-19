@@ -37,12 +37,13 @@ RedactorAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+<div id="slide-out" class="visible-xs"><?= Page::nav(); ?></div>
 
 <div id="top">
 	<div class="container">
 		
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-xs-6">
 				<?php if (!\Yii::$app->user->isGuest) { ?>
 					<a href="/user/logout">LOGOUT</a>						
 				<?php } else { ?>											
@@ -50,11 +51,12 @@ RedactorAsset::register($this);
 				<?php } ?>		
 				
 			</div> <!--col-->
-			<div class="col-sm-6 text-right">
+			<div class="col-xs-6 text-right">
 				<?php if (!\Yii::$app->user->isGuest) { ?>
-					Welcome, <?= Yii::$app->user->identity->fname ?> <?= Yii::$app->user->identity->lname ?></span>
+					<span class="hidden-xs">Welcome, <?= Yii::$app->user->identity->fname ?> <?= Yii::$app->user->identity->lname ?></span>
 					<div class="hspacer"></div>
 					<a href="/user/account">MY ACCOUNT</a>
+
 				<?php } else { ?>						
 					<a href="/user/sign-up">SIGNUP</a>
 				<?php } ?>				
@@ -64,10 +66,17 @@ RedactorAsset::register($this);
 	</div>
 </div>
 
-<div class="spacer30"></div>
+<div class="spacer30 hidden-xs"></div>
 
 <div id="header">
 	<div class="container text-center">
+
+		<div class="visible-xs" id="hamburger">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="valign">
@@ -91,7 +100,7 @@ RedactorAsset::register($this);
 				</div>					
 			</div> <!--col-->
 		</div> <!--row-->
-		<div class="spacer30"></div>
+		<div class="spacer30 hidden-xs"></div>
 		<div class="border"></div>
 	</div>
 </div>
@@ -125,24 +134,25 @@ RedactorAsset::register($this);
 			</div> <!--col-->
 			<div class="col-sm-9">
 				<div class="row">
-					<div class="col-sm-3">
+					<div class="col-sm-3 hidden-xs">
 						<ul>
 							<?= Page::nav(); ?>
 						</ul>
 					</div> <!--col-->
 					<div class="col-sm-3">
 						<ul>
-							<li><a href="" target="_blank">Facebook</a></li>
-							<li><a href="" target="_blank">Instagram</a></li>
-							<li><a href="" target="_blank">Twitter</a></li>
+							<li><a href="https://www.facebook.com/forgehillfarm/" target="_blank">Facebook</a></li>
+							<li><a href="https://www.instagram.com/forgehill/" target="_blank">Instagram</a></li>
 						</ul>
+						<div class="spacer30 visible-xs"></div>
 					</div> <!--col-->
 					<div class="col-sm-3">
 						<?= Page::editBlock('footer-address','text','Edit Address', 'top', 'footer'); ?>
-						<?= Page::renderBlock('footer-address'); ?>						
+						<?= Page::renderBlock('footer-address'); ?><br>				
 						<a href="mailto:info@forgehillfarms.com">INFO@FORGEHILLFARMS.COM</a>
 					</div> <!--col-->
 					<div class="col-sm-3 text-right">
+						<div class="spacer30 visible-xs"></div>
 						<img src="/images/footer-stamp.svg" alt="">
 					</div> <!--col-->
 				</div> <!--row-->

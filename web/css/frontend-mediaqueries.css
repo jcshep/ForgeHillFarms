@@ -24,7 +24,30 @@
 
 @media only screen and (max-width:767px) {
 
-	body {min-width: 320px;}
+	body {min-width: 320px; position: relative;}
+	
+	#header {padding: 15px 0;}
+	#header .valign {height: auto; padding: 20px 0;}
+	#header .border-sides {border: none;}
+	#header .border {border-width: 2px}
+	#pickup-time-options {text-align: center;}
+	#nav {display: none;}
 
+	#hamburger {width: 40px; position: absolute; right: 15px; top: 0px; height: 38px; z-index: 9999; display: block; background: #174375;}
+	#hamburger .top {height: 4px; background: #FFF; top: 8px; position: absolute; width: 70%; left: 15%;}
+	#hamburger .middle {height: 4px; background: #FFF; top: 17px; position: absolute; width: 70%;left: 15%;}
+	#hamburger .bottom {height: 4px; background: #FFF; top: 26px; position: absolute; width: 70%;left: 15%;}
 
+	#slide-out {position:fixed; width: 60%; right:-60%; top: 0; background: #174375; height: 100%; z-index: 9999; overflow: scroll;  margin: 0; padding: 0;}
+	#slide-out ul {background: transparent; top: auto; left: auto; position: relative; border-radius: 0; padding: 0; margin: 0; border-bottom: 1px solid #11355E;;}
+	#slide-out ul li {display: block; line-height: 25px; border-bottom: 1px solid #1C59A4; border-top: 1px solid #11355E; float: none !important;}
+	#slide-out ul li a {display: block; text-align: left; padding: 0 20px; color: #CCC; line-height: 44px; font-size: 15px;}
+	#slide-out ul li .sub-menu {position: relative; width: auto; top: auto; box-shadow: 0;  background: #111; display: none; padding: 5px 0;}
+	#slide-out ul li .sub-menu li {border-bottom: 0; border-top:0;}
+	#slide-out ul li .sub-menu li a {padding: 0 0 0 30px; font-size: 14px; line-height: 30px;}
+	#slide-out ul li .sub-menu li .sub-menu li a {padding: 0 0 0 50px}
+
+	#footer {text-align: center; padding: 40px 0 20px;}
+	#footer img {margin-bottom: 20px;}
+	#footer .text-right {text-align: center;}
 }

@@ -72,87 +72,27 @@ class PageController extends Controller
 
 
 
-        // Set up filtering form for rankings page
-
-        if($slug == 'rankings') {
-
-            //Set up ranking for rankings page
-            $args = [
-                'gender' => NULL,
-                'ageGroup' => NULL,
-                'sortBy' => 'rankOverall',
-                'sortDirection' => 'asc',
-                'skip' => 0,
-                'take' => 100,
-                'birthYear' => NULL,
-                'memberUsocrID' => NULL,
-                'memberID' => NULL,
-            ];
-            $rankings = \app\models\User::GetOverallRankings($args)->results;
-
-            // If filter submitted, replace rankings with filtered rankings
-            $filter = new \app\models\RankingFilterForm();
-            if($filter->load(Yii::$app->request->post()) && $filter->validate()) {
-                
-                // Get filtered rankings
-                $args = [
-                    "gender" => $filter->gender,
-                    "ageGroup" => $filter->age_group,
-                    "searchText" =>  $filter->fname.' '.$filter->lname,
-                    "sortBy" => "rankOverall",
-                    "sortDirection" => "ASC",
-                    "skip" => 0,
-                    "take" => 100
-                ];
-
-                $rankings = \app\models\User::GetFiltered($args);
-                $rankings = $rankings->results;
-
-                // echo '<pre>';
-                // var_dump($rankings);
-                // echo '</pre>';
-                // $rankings = NULL;
-            }
-        
-        } //end rankings
+       
 
 
 
         // Load contact form on contact page
-        $slug == 'contact' ? $contactForm = new \app\models\ContactForm() : $contactForm = NULL ;
+        $slug == 'contact-us' ? $contactForm = new \app\models\ContactForm() : $contactForm = NULL ;
 
         //Check if contact form is submitted
-        if ($slug == 'contact' && $contactForm->load(Yii::$app->request->post()) && $contactForm->validate()) {
+        if ($slug == 'contact-us' && $contactForm->load(Yii::$app->request->post()) && $contactForm->validate()) {
                
+               // $contactForm->contact('jcshep@gmail.com');
+
                 Yii::$app->session->setFlash('contactFormSubmitted');
 
-                return $this->redirect('/contact');
+                return $this->redirect('/contact-us');
         }
-
-
-        // Load events on event page
-        if($slug == 'calendar') {
-            $searchEvent = new \app\models\SearchEvent();
-            $dataProvider = $searchEvent->search(Yii::$app->request->queryParams);
-        } 
-
-
-
-
-        // Load events for home page
-        if($slug == 'home') {
-            $searchEvent = new \app\models\SearchEvent();
-            $dataProvider = $searchEvent->search(Yii::$app->request->queryParams, 5);
-        } 
 
 
         return $this->render($viewFile, [
             'model' => $model,
-            'rankings' => $rankings,
             'contactForm' => $contactForm,
-            'calendar' => $dataProvider,
-            'searchEvent' => $searchEvent,
-            'filter' => $filter
         ]);
     }
 

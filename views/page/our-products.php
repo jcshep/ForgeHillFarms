@@ -21,58 +21,10 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 	<div class="container">
 		<div class="row">
 			
-			<div class="col-sm-3">
-				
-				<div class="border"></div>
-				<div class="spacer30"></div>
-				
-				<div id="sidebar">
-
-					<h3>Farm Info</h3>
-					<div class="editable">
-						<?= Page::editBlock('farm-info', 'text', 'Edit Copy', 'corner', 'content'); ?>
-						<?= Page::renderBlock('farm-info'); ?>
-						<a href="mailto:info@forgehillfarms.com">INFO@FORGEHILLFARMS.COM</a>
-					</div>
-
-					
-					<div class="spacer30"></div>
-					<div class="border"></div>
-					<div class="spacer30"></div>
-
 			
-					<form id="newsletter-signup" method="POST">
-						<h3>Sign Up For Updates</h3>
-						<div class="alert alert-success static">Thank You! Your email has been added.</div>
-
-						<label>Name</label>
-						<input type="text" name="name" class="form-control name">
-
-						<label>Email</label>
-						<input type="email" name="email" class="form-control email">
-
-						<input type="submit" value="submit" name="submit" class="form-control">
-					</form>
 
 
-					<div class="spacer30"></div>
-					<div class="border"></div>
-					<div class="spacer30"></div>
-
-					<h3>Become A Member</h3>
-					<div class="editable">
-						<?= Page::editBlock('member-cta', 'text', 'Edit Copy', 'corner', 'content'); ?>
-						<?= Page::renderBlock('member-cta'); ?>
-						<div class="spacer15"></div>
-						<a href="/user/sign-up" class="btn btn-secondary btn-sm">Sign Up Today</a>
-					</div>
-
-				</div> <!-- sidebar -->
-	
-			</div> <!--col-->
-
-
-			<div class="col-sm-9">
+			<div class="col-sm-9 col-sm-push-3">
 				
 				<div class="border"></div>
 				<div class="spacer30"></div>
@@ -131,6 +83,60 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 
 
 			</div> <!--col-->
+
+
+			
+			<div class="col-sm-3 col-sm-pull-9">
+				
+				<div class="border"></div>
+				<div class="spacer30"></div>
+				
+				<div id="sidebar">
+
+					<h3>Farm Info</h3>
+					<div class="editable">
+						<?= Page::editBlock('farm-info', 'text', 'Edit Copy', 'corner', 'content'); ?>
+						<?= Page::renderBlock('farm-info'); ?>
+						<a href="mailto:info@forgehillfarms.com">INFO@FORGEHILLFARMS.COM</a>
+					</div>
+
+					
+					<div class="spacer30"></div>
+					<div class="border"></div>
+					<div class="spacer30"></div>
+
+			
+					<form id="newsletter-signup" method="POST">
+						<h3>Sign Up For Updates</h3>
+						<div class="alert alert-success static">Thank You! Your email has been added.</div>
+
+						<label>Name</label>
+						<input type="text" name="name" class="form-control name">
+
+						<label>Email</label>
+						<input type="email" name="email" class="form-control email">
+
+						<input type="submit" value="submit" name="submit" class="form-control">
+					</form>
+
+
+					<div class="spacer30"></div>
+					<div class="border"></div>
+					<div class="spacer30"></div>
+
+					<h3>Become A Member</h3>
+					<div class="editable">
+						<?= Page::editBlock('member-cta', 'text', 'Edit Copy', 'corner', 'content'); ?>
+						<?= Page::renderBlock('member-cta'); ?>
+						<div class="spacer15"></div>
+						<a href="/user/sign-up" class="btn btn-secondary btn-sm">Sign Up Today</a>
+					</div>
+
+				</div> <!-- sidebar -->
+	
+			</div> <!--col-->
+
+
 
 		
 			<!-- Sidebar -->

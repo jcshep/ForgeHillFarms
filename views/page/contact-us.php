@@ -1,6 +1,8 @@
 <?php
 
 use app\models\Page;
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 
 $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandywine';
 ?>
@@ -21,40 +23,55 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 	<div class="container">
 		<div class="row">
 			
-			<div class="col-sm-3">
-				
-				<div class="border"></div>
-				<div class="spacer30"></div>
-				
-				<?php echo $this->render('/page/_sidebar-3'); ?>
-	
-			</div> <!--col-->
+			
 
 
-			<div class="col-sm-6">
+			<div class="col-sm-6 col-sm-push-3">
 				
 				<div class="border"></div>
 				<div class="spacer30"></div>
 				
 				<h1>Contact Us</h1>
 
-				<form action="">
-					<label>Name</label>
-					<input type="text" name="name" class="form-control name">
+				<?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
-					<label>Email</label>
-					<input type="email" name="email" class="form-control email">
+			        <div class="alert alert-success">
+			            Thank you for contacting us. We will respond to you as soon as possible.
+			        </div>
 
-					<label>Subject</label>
-					<input type="text" name="subject" class="form-control email">
+				    <?php else: ?>
 
-					<label>Message</label>
-					<textarea name="message" id=""></textarea>
+			                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+								
+								<?= $form->errorSummary($contactForm); ?>
+								
+			                    <?= $form->field($contactForm, 'name') ?>
 
-					<input type="submit" value="submit" name="submit" class="form-control">
-				</form>
+			                    <?= $form->field($contactForm, 'email') ?>
+
+			                    <?= $form->field($contactForm, 'subject') ?>
+
+			                    <?= $form->field($contactForm, 'body')->textArea(['rows' => 6]) ?>
 
 
+			                    <div class="form-group">
+			                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+			                    </div>
+
+			                <?php ActiveForm::end(); ?>
+
+				    <?php endif; ?>
+
+
+			</div> <!--col-->
+
+			<div class="col-sm-3 col-sm-pull-6">
+				
+				<div class="border"></div>
+				<div class="spacer30"></div>
+				
+				<?php echo $this->render('/page/_sidebar-3'); ?>
+	
 			</div> <!--col-->
 
 		

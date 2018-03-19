@@ -76,5 +76,22 @@ $(document).ready(function() {
 
 
 
+	// Slide Out Menu
+	$("#hamburger").click(function() {
+		if($("#slide-out").hasClass("expanded")) {
+			$('#slide-out').animate({right: '-60%'}, 200, function() {
+			    $("#slide-out").removeClass("expanded");
+			  });
+			$('body').animate({left: '0%'}, 200);
+		} else {
+			$('#slide-out').animate({right: '0%'}, 200, function() {
+			    $("#slide-out").addClass("expanded");
+			  });
+			$('body').animate({left: '-60%'}, 200);
+			// $('body').animate({marginRight: '60%'}, 200);
+		}
+	});
+
+
 
 });

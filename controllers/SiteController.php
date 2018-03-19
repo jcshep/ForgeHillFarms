@@ -24,12 +24,17 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['send-form'],
+                        'allow' => true,
+                    ],
                 ],
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'send-form' => ['post'],
                 ],
             ],
         ];
@@ -54,6 +59,8 @@ class SiteController extends Controller
     }
 
 
+
+
     public function actionNewsletterSignup() {
 
         $newsletter = new Newsletter();
@@ -61,7 +68,7 @@ class SiteController extends Controller
         $newsletter->name = Yii::$app->request->post('name');
         $newsletter->save();
 
-        echo 'success';
+        return 'success';
     }
 
 

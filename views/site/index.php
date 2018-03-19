@@ -15,7 +15,8 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 </div>
 
 
-<div class="spacer30"></div>
+<div class="spacer30 hidden-xs"></div>
+<div class="spacer15 visible-xs"></div>
 
 
 <div id="content">
@@ -139,7 +140,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 					<div class="col-sm-7">
 						<?= Page::editBlock('pickup-times-copy','wysiwyg', 'Edit Copy', 'top', 'pickup-times'); ?>
 						<?= Page::renderBlock('pickup-times-copy'); ?>
-						<a href="/our-products">LEARN MORE ABOUT OUR PRODUCTS</a>
+						<a href="/our-products" class="hidden-xs">LEARN MORE ABOUT OUR PRODUCTS</a>
 					</div> <!--col-->
 					<div class="col-sm-5 times">
 						<div class="border red"></div>
@@ -148,6 +149,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 							<div class="col-sm-6">
 								<?= Page::editBlock('pickup-times-1-copy','wysiwyg', 'Edit', 'top', 'pickup-times'); ?>
 								<?= Page::renderBlock('pickup-times-1-copy'); ?>
+								<div class="spacer30 visible-xs"></div>
 							</div> <!--col-->
 							<div class="col-sm-6">
 								<?= Page::editBlock('pickup-times-2-copy','wysiwyg', 'Edit', 'top', 'pickup-times'); ?>
@@ -158,7 +160,9 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 						<div class="border red"></div>
 					</div> <!--col-->
 				</div> <!--row-->
-
+				
+				<div class="spacer30 visible-xs"></div>
+				
 			</div> <!--col-->
 
 
@@ -170,10 +174,6 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 		</div> <!--row-->
 	</div>
 </div>
-
-
-
-
 
 
 
