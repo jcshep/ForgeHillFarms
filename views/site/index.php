@@ -137,10 +137,8 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 
 				<div class="row" id="pickup-times">
 					<div class="col-sm-7">
-						<?= Page::editBlock('pickup-times-copy','text', 'Edit Copy', 'top', 'pickup-times'); ?>
+						<?= Page::editBlock('pickup-times-copy','wysiwyg', 'Edit Copy', 'top', 'pickup-times'); ?>
 						<?= Page::renderBlock('pickup-times-copy'); ?>
-						<p>The pickup times are available from the first week of June to the last full week in October (22 weeks).</p>
-						<p>We will offer a Thanksgiving pick up in November. Because we are only in our second year of operation out we are continuing to offer discounted memberships.</p>
 						<a href="/our-products">LEARN MORE ABOUT OUR PRODUCTS</a>
 					</div> <!--col-->
 					<div class="col-sm-5 times">
