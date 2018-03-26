@@ -81,21 +81,21 @@ RedactorAsset::register($this);
 			<div class="col-sm-4">
 				<div class="valign">
 					<div class="valign-top"></div>
-					<img src="/images/tag.svg" alt="GREAT FOOD GREATER PURPOSE">
+					<img src="/images/tag.png" alt="GREAT FOOD GREATER PURPOSE" class="header-img-1">
 					<div class="valign-bottom"></div>
 				</div>				
 			</div> <!--col-->
 			<div class="col-sm-4 border-sides">
 				<div class="valign">
 					<div class="valign-top"></div>
-					<a href="/"><img id="logo" src="/images/logo.svg" alt="Forge Hill Farms"></a>
+					<a href="/"><img id="logo" src="/images/logo.png" alt="Forge Hill Farms"></a>
 					<div class="valign-bottom"></div>
 				</div>					
 			</div> <!--col-->
 			<div class="col-sm-4">
 				<div class="valign">
 					<div class="valign-top"></div>
-						<img src="/images/address.svg" alt="GREAT FOOD GREATER PURPOSE">
+						<img src="/images/address.png" alt="GREAT FOOD GREATER PURPOSE" class="header-img-2">
 					<div class="valign-bottom"></div>
 				</div>					
 			</div> <!--col-->

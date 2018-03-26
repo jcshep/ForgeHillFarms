@@ -47,6 +47,10 @@
 	#slide-out ul li .sub-menu li a {padding: 0 0 0 30px; font-size: 14px; line-height: 30px;}
 	#slide-out ul li .sub-menu li .sub-menu li a {padding: 0 0 0 50px}
 
+	.user-create .membership-selection label {width: auto; float: none; height: auto; margin-bottom: 30px;}
+	#user-membership_type label:nth-child(2) {margin: inherit; margin-bottom: 30px;}
+	.user-create .membership-selection label .inside {height: auto}
+
 	#footer {text-align: center; padding: 40px 0 20px;}
 	#footer img {margin-bottom: 20px;}
 	#footer .text-right {text-align: center;}

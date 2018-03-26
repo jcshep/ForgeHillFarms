@@ -24,7 +24,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 			
 
 
-			<div class="col-sm-9 col-sm-push-3">
+			<div class="col-md-9 col-md-push-3">
 				
 				<div class="border"></div>
 				<div class="spacer30"></div>
@@ -86,7 +86,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 
 
 			
-			<div class="col-sm-3 col-sm-pull-9">
+			<div class="col-md-3 col-md-pull-9 hidden-sm hidden-xs">
 				
 				<div class="border"></div>
 				<div class="spacer30"></div>

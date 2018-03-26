@@ -25,7 +25,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 			
 
 
-			<div class="col-sm-6 col-sm-push-3">
+			<div class="col-md-6 col-md-push-3 col-sm-8">
 				
 				<div class="border"></div>
 				<div class="spacer30"></div>
@@ -52,7 +52,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 			</div> <!--col-->
 
 
-			<div class="col-sm-3 col-sm-pull-6">
+			<div class="col-md-3 col-md-pull-6 hidden-sm hidden-xs">
 				
 				<div class="border"></div>
 				<div class="spacer30"></div>
@@ -63,7 +63,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 
 		
 			<!-- Sidebar -->
-			<div class="col-sm-3">
+			<div class="col-md-3 col-sm-4">
 				<?php echo $this->render('/page/_sidebar-2'); ?>
 			</div> <!--col-->
 			<!-- Sidebar -->

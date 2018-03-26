@@ -33,7 +33,7 @@
 	</div>
 
 	<div class="spacer30"></div>
-	<div class="separator"></div>
+	<div class="border"></div>
 	<div class="spacer30"></div>
 
 	<h3>From The Farmers</h3>
