@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\User;
+use app\models\ProductWeek;
 
 /**
- * SearchUser represents the model behind the search form about `app\models\User`.
+ * SearchProductWeek represents the model behind the search form of `app\models\ProductWeek`.
  */
-class SearchUser extends User
+class SearchProductWeek extends ProductWeek
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class SearchUser extends User
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['fname', 'lname', 'email','membership_type'], 'safe'],
+            [['id', 'product_id', 'week_start', 'week_end'], 'integer'],
         ];
     }
 
@@ -39,9 +38,11 @@ class SearchUser extends User
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $week_start, $week_end)
     {
-        $query = User::find();
+        $query = ProductWeek::find();
+
+        // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,14 +56,15 @@ class SearchUser extends User
             return $dataProvider;
         }
 
+        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'product_id' => $this->product_id,
+            'week_start' => $this->week_start,
+            'week_end' => $this->week_end,
         ]);
 
-        $query->andFilterWhere(['like', 'fname', $this->fname])
-            ->andFilterWhere(['like', 'lname', $this->lname])
-            ->andFilterWhere(['like', 'membership_type', $this->membership_type])
-            ->andFilterWhere(['like', 'email', $this->email]);
+        $query->andFilterWhere(['week_start' => $week_start]);
 
         return $dataProvider;
     }

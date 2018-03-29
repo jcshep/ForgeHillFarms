@@ -62,7 +62,11 @@ BackendAsset::register($this);
                         'activateParents' => 1,
                         'submenuTemplate' => "\n<ul class='dropdown-menu' role='menu'>\n{items}\n</ul>\n",
                         'items' => [
-                            ['label' => 'Dashboard', 'url' => ['site/dashboard']],
+                            // ['label' => 'Dashboard', 'url' => ['site/dashboard']],
+                            ['label' => 'Weekly Overview', 'url' => ['admin/weekly-overview']],
+                            
+                            ['label' => 'Scheduled Pickups', 'url' => ['admin/scheduled-pickups']],
+
                             ['label' => 'Pages', 
                                 'options'=>['class'=>'dropdown'],
                                 'url' => ['/page/admin'],
@@ -73,41 +77,27 @@ BackendAsset::register($this);
                                     ['label' => 'Create', 'url' => ['page/create']],
                                 ]
                             ],
-                            ['label' => 'Produce & Goods', 
-                                'options'=>['class'=>'dropdown'],
-                                'url' => ['/menu-item/index'],
-                                'items' => [
-                                    ['label' => 'View All', 'url' => ['menu-item/index']],
-                                    ['label' => 'View', 'url' => ['menu-item/view']],
-                                    ['label' => 'Update', 'url' => ['menu-item/update']],
-                                    ['label' => 'Create', 'url' => ['menu-item/create']],
-                                ]
-                            ],
-                            ['label' => 'Produce Categories', 
-                                'options'=>['class'=>'dropdown'],
-                                'url' => ['/menu-category/index'],
-                                'items' => [
-                                    ['label' => 'View All', 'url' => ['menu-category/index']],
-                                    ['label' => 'View', 'url' => ['menu-category/view']],
-                                    ['label' => 'Update', 'url' => ['menu-category/update']],
-                                    ['label' => 'Create', 'url' => ['menu-category/create']],
-                                ]
-                            ],
-
-                            ['label' => 'Weekly Overview', 'url' => ['order/export']],
+                            
+                            
 
                             ['label' => 'Membership Types', 'url' => ['order/export']],
 
                             ['label' => 'Users', 
                                 'options'=>['class'=>'dropdown'],
-                                'url' => ['/user/index'],
+                                'url' => ['/admin/users'],
                                 'items' => [
-                                    ['label' => 'View All', 'url' => ['user/index']],
-                                    ['label' => 'Create', 'url' => ['user/create']],
+                                    ['label' => 'View All', 'url' => ['admin/users']],
+                                    ['label' => 'Create', 'url' => ['admin/user-create']],
                                 ]
                             ],
 
-                            ['label' => 'Email Generator', 'url' => ['order/export']],
+                            ['label' => 'Emails', 
+                                'url' => ['admin/emails'],
+                                'options'=>['class'=>'dropdown'],
+                                'items' => [
+                                    ['label' => 'View All', 'url' => ['admin/email-generator']],
+                                ]
+                            ],
 
                             ['label' => 'Export', 'url' => ['order/export']],
 
@@ -118,6 +108,15 @@ BackendAsset::register($this);
             <?php } //end if guest ?>
             
             <div class="col-md-10">
+                
+                <?php if($flashMessage = Yii::$app->session->getFlash('error')): ?>
+                    <div class="alert alert-danger"><?= $flashMessage ?></div>
+                <?php endif; ?>
+
+                <?php if($flashMessage = Yii::$app->session->getFlash('success')): ?>
+                    <div class="alert alert-success"><?= $flashMessage ?></div>
+                <?php endif; ?>
+
                 <?= Breadcrumbs::widget([
                     'homeLink' => [
                         'label' => 'Dashboard',

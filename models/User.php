@@ -11,7 +11,6 @@ use kartik\password\StrengthValidator;
 
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
-    public $id;
     public $username;
     public $authKey;
     public $accessToken;
@@ -27,6 +26,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public $save_cc;
     public $cc_token;
 
+    public static function tableName()
+    {
+        return 'user';
+    }
 
     public function rules()
     {
@@ -34,10 +37,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
             [['email'], 'email'],
             [['email'], 'unique'],
-            [['email', 'password', 'password_repeat', 'fname', 'lname'], 'required'],
+            [['email', 'fname', 'lname','phone'], 'required'],
             [['password'], StrengthValidator::className(), 'preset'=>'normal', 'userAttribute'=>'email'],
-            [['access_level','membership_type','phone'], 'string', 'max' => 11],
-            ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match" ],
+            [['access_level','membership_type','phone'], 'string', 'max' => 11],   
+            [['password_change','password_change_repeat'], 'string'],
+            [['created'],'integer'],
+
+            // Insert
+            ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match", 'on' => 'insert'],
+            [['password', 'password_repeat'], 'required', 'on' => 'insert'],
 
 
             // Password Reset
@@ -110,7 +118,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
         try {
             $response = \Stripe\Charge::create(array(
-              "amount" => $this->membership_type == 'full' ? 6500 : 3750,
+              "amount" => $this->membership_type == 'full' ? 65000 : 37500,
               "currency" => "usd",
               "source" => $this->cc_token, // obtained with Stripe.js
               "description" => "Charge for ".$this->fname." ".$this->lname
@@ -118,7 +126,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
             // $this->stripe_id = $customer->id;
 
-            return true;
+            // echo '<pre>';
+            // var_dump($response);
+            // echo '</pre>';
+            // die();
+            
+            if($response->status == 'succeeded')
+                return true;
         } 
 
         catch (\Stripe\Error\InvalidRequest $a) {
@@ -223,8 +237,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             if($insert) {
                 $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
                 $this->auth_key = \Yii::$app->security->generateRandomString();
+                $this->created = time();
             }
-
 
             // Password Reset Scenario
             if($this->scenario == 'passwordReset') {
@@ -232,10 +246,16 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
                 $this->auth_key = \Yii::$app->security->generateRandomString();
             }
 
-
             return true;
         } 
         return false;        
+    }
+
+
+    public function resetPassword() 
+    {
+        $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password_change);
+        $this->auth_key = \Yii::$app->security->generateRandomString();
     }
 
 

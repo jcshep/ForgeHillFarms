@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\User;
+use app\models\Email;
 
 /**
- * SearchUser represents the model behind the search form about `app\models\User`.
+ * SearchEmail represents the model behind the search form of `app\models\Email`.
  */
-class SearchUser extends User
+class SearchEmail extends Email
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class SearchUser extends User
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['fname', 'lname', 'email','membership_type'], 'safe'],
+            [['id', 'send_date', 'created'], 'integer'],
+            [['type', 'content_area_1', 'content_area_2', 'content_area_3', 'send_to'], 'safe'],
         ];
     }
 
@@ -41,7 +41,9 @@ class SearchUser extends User
      */
     public function search($params)
     {
-        $query = User::find();
+        $query = Email::find();
+
+        // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,14 +57,18 @@ class SearchUser extends User
             return $dataProvider;
         }
 
+        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'send_date' => $this->send_date,
+            'created' => $this->created,
         ]);
 
-        $query->andFilterWhere(['like', 'fname', $this->fname])
-            ->andFilterWhere(['like', 'lname', $this->lname])
-            ->andFilterWhere(['like', 'membership_type', $this->membership_type])
-            ->andFilterWhere(['like', 'email', $this->email]);
+        $query->andFilterWhere(['like', 'type', $this->type])
+            ->andFilterWhere(['like', 'content_area_1', $this->content_area_1])
+            ->andFilterWhere(['like', 'content_area_2', $this->content_area_2])
+            ->andFilterWhere(['like', 'content_area_3', $this->content_area_3])
+            ->andFilterWhere(['like', 'send_to', $this->send_to]);
 
         return $dataProvider;
     }

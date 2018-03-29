@@ -78,7 +78,7 @@ RedactorAsset::register($this);
 		</div>
 
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-4 hidden-xs">
 				<div class="valign">
 					<div class="valign-top"></div>
 					<img src="/images/tag.png" alt="GREAT FOOD GREATER PURPOSE" class="header-img-1">
@@ -92,7 +92,7 @@ RedactorAsset::register($this);
 					<div class="valign-bottom"></div>
 				</div>					
 			</div> <!--col-->
-			<div class="col-sm-4">
+			<div class="col-sm-4 hidden-xs">
 				<div class="valign">
 					<div class="valign-top"></div>
 						<img src="/images/address.png" alt="GREAT FOOD GREATER PURPOSE" class="header-img-2">

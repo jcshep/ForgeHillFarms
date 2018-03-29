@@ -3,6 +3,7 @@ html, body {height: 100%; }
 .wrap {min-height: 100%; height: auto; margin: 0 auto -60px; padding: 0 0 60px; }
 .wrap > .container {padding: 10px 15px 20px; }
 
+.spacer15 {height: 15px; clear: both;}
 .spacer30 {height: 30px; clear: both;}
 .spacer60 {height: 60px; clear: both;}
 .spacer90 {height: 90px; clear: both;}
@@ -20,3 +21,33 @@ html, body {height: 100%; }
 .no-top-padding {padding-top: 0}
 .no-right-padding {padding-right: 0}
 .no-bottom-padding {padding-bottom: 0}
+
+h1 small {font-size: 18px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: #888}
+
+.weekly-overview .table th {height: 1px; padding: 0; margin: 0;}
+
+.field-email-send_to label.control-label {font-weight: bold;}
+.field-email-send_to label {display: block; font-weight: normal;}
+
+.trumbowyg-box.trumbowyg-editor-visible {min-height: 150px; }
+
+.trumbowyg-editor {min-height: 100px; }
+.wysiwyg {height: 100px;}
+
+.email-preview {width: 100%; border: 1px solid #CCC; height: 1000px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

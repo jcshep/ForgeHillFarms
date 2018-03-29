@@ -49,20 +49,6 @@ class UserController extends Controller
         ];
     }
 
-    /**
-     * Lists all User models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new SearchUser();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
 
 
 
@@ -110,7 +96,7 @@ class UserController extends Controller
             return $this->redirect(['/user/account']);
         }
 
-        $model = new User();
+        $model = new User(['scenario' => 'insert']);
 
         $model->membership_type = Yii::$app->request->get('type');
         $model->cc_token = Yii::$app->request->post('stripeToken');
@@ -233,7 +219,7 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new User(['scenario' => 'insert']);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -244,24 +230,7 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Updates an existing User model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
+    
 
     /**
      * Deletes an existing User model.

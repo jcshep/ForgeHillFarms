@@ -11,6 +11,8 @@ return  [
 
     'page/remove-image/<slug:\w+(-\w+)*>' => 'page/remove-image',
 
+    '<controller:\w+>/<action:\w+>/<id:\d+>/<s:\d+>/<e:\d+>' => '<controller>/<action>',
+
     // Page Redirection
     '<slug:\w+(-\w+)*>' => 'page/index',
     

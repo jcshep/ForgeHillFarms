@@ -17,10 +17,16 @@ class BackendAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $css = [
+    public $css = [        
+        'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',        
+        'js/trumbo/ui/trumbowyg.min.css',
         'css/backend.css',
     ];
     public $js = [
+        'js/trumbo/plugins/cleanpaste/trumbowyg.cleanpaste.min.js',
+        'js/trumbo/trumbowyg.min.js',
+
+        'js/backend.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

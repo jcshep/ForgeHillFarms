@@ -27,7 +27,7 @@
 	body {min-width: 320px; position: relative;}
 	
 	#header {padding: 15px 0;}
-	#header .valign {height: auto; padding: 20px 0;}
+	#header .valign {height: auto; padding:15px 0 25px;}
 	#header .border-sides {border: none;}
 	#header .border {border-width: 2px}
 	#pickup-time-options {text-align: center;}
@@ -50,6 +50,8 @@
 	.user-create .membership-selection label {width: auto; float: none; height: auto; margin-bottom: 30px;}
 	#user-membership_type label:nth-child(2) {margin: inherit; margin-bottom: 30px;}
 	.user-create .membership-selection label .inside {height: auto}
+
+	#content h1.stamped {background-size: auto; font-size: 27px; line-height: 38px; padding-left: 90px;}
 
 	#footer {text-align: center; padding: 40px 0 20px;}
 	#footer img {margin-bottom: 20px;}
