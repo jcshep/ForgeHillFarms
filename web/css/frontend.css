@@ -71,6 +71,9 @@ a:hover {color: #B93A26}
 #user-membership_type label:nth-child(2) {margin: 0 3.5%; }
 #user-membership_type label:nth-child(3) {margin-right: 0;}
 
+.user-create.revision .membership-selection label {width: 48%}
+.user-create.revision .membership-selection label:nth-child(2) {width: 48%; float: right; margin: 0 !important;}
+
 .user-create .submit-group .btn-primary {margin-bottom: 15px;}
 
 .user-create .credit-card-form {display: none;}

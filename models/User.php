@@ -47,6 +47,8 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match", 'on' => 'insert'],
             [['password', 'password_repeat'], 'required', 'on' => 'insert'],
 
+            // Payment Revison
+            [['cc', 'cvc', 'cc_zip', 'cc_token'], 'required', 'on' => 'revision'],
 
             // Password Reset
             [['password_change','password_change_repeat'], 'required', 'on' => 'passwordReset'],
@@ -154,6 +156,48 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return false;
 
     }
+
+
+
+
+    public function revisePayment() {
+
+        \Stripe\Stripe::setApiKey(Yii::$app->params['stripeSecretKey']);
+
+        try {
+            $response = \Stripe\Charge::create(array(
+              "amount" => $this->membership_type == 'full' ? 58500 : 33750,
+              "currency" => "usd",
+              "source" => $this->cc_token, // obtained with Stripe.js
+              "description" => "Remaining Balance Charge for ".$this->fname." ".$this->lname
+            ));
+
+            
+            if($response->status == 'succeeded')
+                return true;
+        } 
+
+        catch (\Stripe\Error\InvalidRequest $a) {
+            $error = $a->getMessage();
+            $this->addError('cc',$error );
+        }
+
+        catch(\Stripe\Error\Card $c) {
+            $error = $c->getMessage();
+            $this->addError('cc',$error );
+        }
+
+        catch (\Exception $e) {
+            $error = $e->getMessage();
+            $this->addError('cc',$error );
+        }
+
+        $this->addError('cc', 'There was an error processing your card.');
+        return false;
+
+    }
+
+
 
 
     public static function findByPasswordResetToken($token)

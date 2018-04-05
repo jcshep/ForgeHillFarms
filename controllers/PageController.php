@@ -82,7 +82,7 @@ class PageController extends Controller
         //Check if contact form is submitted
         if ($slug == 'contact-us' && $contactForm->load(Yii::$app->request->post()) && $contactForm->validate()) {
                
-               // $contactForm->contact('jcshep@gmail.com');
+               $contactForm->contact('jcshep@gmail.com');
 
                 Yii::$app->session->setFlash('contactFormSubmitted');
 

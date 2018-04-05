@@ -1,10 +1,20 @@
 
 
+
+
 <div class="spacer30"></div>
 
 <div id="account">
 	
 	<div class="container">
+
+		<?php if($flashMessage = Yii::$app->session->getFlash('error')): ?>
+			<div class="alert alert-danger"><?= $flashMessage ?></div>
+		<?php endif; ?>
+
+		<?php if($flashMessage = Yii::$app->session->getFlash('success')): ?>
+			<div class="alert alert-success"><?= $flashMessage ?></div>
+		<?php endif; ?>
 		
 		<div id="content">
 		<div class="row">

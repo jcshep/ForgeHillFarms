@@ -55,6 +55,8 @@ use yii\widgets\ActiveForm;
 					<?php echo $form->errorSummary($product); ?>
 
 					<?= $form->field($product, 'name')->textInput(['maxlength' => true])->label('Product Name') ?>
+
+                    <?= $form->field($product, 'description')->textInput(['maxlength' => true])->label('Pricing') ?>
 					
 					<?= $form->field($product, 'type')->hiddenInput(['value' => $type])->label(false) ?>
 

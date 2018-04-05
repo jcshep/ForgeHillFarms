@@ -30,7 +30,7 @@ class UserController extends Controller
                                                 }
                     ],
                     [
-                        'actions' => ['account','sign-up'],
+                        'actions' => ['account','sign-up', 'payment-revision'],
                         'roles' => ['@'],
                         'allow' => true,
                     ],
@@ -72,7 +72,8 @@ class UserController extends Controller
             if (\Yii::$app->user->identity->access_level == 'admin') {
                     return $this->redirect(['/']);
                 } else {
-                    return $this->redirect(['/user/account']);
+                    return $this->goBack();
+                    // return $this->redirect(['/user/account']);
                 }
         }
         return $this->render('login', [
@@ -230,7 +231,37 @@ class UserController extends Controller
         }
     }
 
+
+
+
+    public function actionPaymentRevision()
+    {
+
+        $model = User::findOne(Yii::$app->user->identity->id);
+        $model->scenario = 'revision';
+
+        $model->cc_token = Yii::$app->request->post('stripeToken');
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->revisePayment()) {
+            
+
+            Yii::$app->session->setFlash('success','Thank you for finalizing your payment.');
+            return $this->redirect('/user/account');
+
+        } else {
+            return $this->render('payment-revision', [
+                'model' => $model,
+            ]);
+        }
+
+
+    }
+
+
+
     
+
+
 
     /**
      * Deletes an existing User model.
@@ -260,6 +291,7 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 
 
     
