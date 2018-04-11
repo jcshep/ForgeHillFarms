@@ -186,7 +186,7 @@ class UserController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('passwordResetComplete');
-            return $this->redirect(['user/login']);
+            return $this->redirect(['/user/login']);
         }
 
         return $this->render('reset-password', [
