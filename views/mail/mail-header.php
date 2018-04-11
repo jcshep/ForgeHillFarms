@@ -48,13 +48,18 @@
             font-size:14px; line-height: 150%
         }
 
+        p {font-family: 'Roboto Mono', monospace; color: #05426b;}
+
         /* What it does: Stops email clients resizing small text. */
         * {
             -ms-text-size-adjust: 100%;
             -webkit-text-size-adjust: 100%;
         }
 
-        h1 {text-transform: uppercase; letter-spacing: 2px; line-height: 33px;}
+        .footer a {color: #FFF; text-decoration: none;}
+        .footer p {color: #FFF;}
+
+        h1 {text-transform: uppercase; letter-spacing: 2px; line-height: 33px; font-family: 'Roboto Mono', monospace; color:#05426b;}
 
         /* What it does: Centers email on Android 4.4 */
         div[style*="margin: 16px 0"] {
@@ -230,11 +235,8 @@
 
 
         <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
-        <!-- Preview Text Spacing Hack : BEGIN -->
-        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; ">
-	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
-        </div>
-        <!-- Preview Text Spacing Hack : END -->
+
+
 
 
 

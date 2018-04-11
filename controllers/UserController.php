@@ -109,13 +109,11 @@ class UserController extends Controller
             if($model->charge() && $model->save()) {
 
                 //Send activation email
-                // Yii::$app->mailer->compose('/mail/default',[
-                //     'auth_key' => $model->auth_key
-                //     ])
-                // ->setFrom('info@globaltravelalliance.com')
-                // ->setTo($model->email)
-                // ->setSubject('Global Travel Alliance - Account Activation')
-                // ->send();
+                Yii::$app->mailer->compose('/mail/welcome')
+                ->setFrom(Yii::$app->params['adminEmail'])
+                ->setTo($model->email)
+                ->setSubject('Welcome')
+                ->send();
 
                 // Yii::$app->session->setFlash('accountCreated');
 

@@ -11,11 +11,13 @@ use yii\helpers\Url;
 $this->title = 'Password Reset';
 
 ?>
-<div class="page page-password-reset">
+<div class="page page-login">
 
-
+    <div id="content">
         <div class="row">
             <div class="col-md-4 col-md-offset-4 bg-white">
+
+                <div class="spacer30"></div>
                 
                 <h2><?= Html::encode($this->title) ?></h2>
 
@@ -40,4 +42,5 @@ $this->title = 'Password Reset';
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
+    </div>
 </div>

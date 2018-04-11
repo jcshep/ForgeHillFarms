@@ -14,7 +14,7 @@
         
 
         <!-- Full Bleed Background Section : BEGIN -->
-        <table role="presentation" bgcolor="#174375" cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
+        <table role="presentation" class="footer" bgcolor="#174375" cellspacing="0" cellpadding="0" border="0" align="center" width="100%">
             <tr>
                 <td valign="top" align="center">
                     <div style="max-width: 600px; margin: auto;" class="email-container">
@@ -26,7 +26,7 @@
                         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
                                 <td style="padding: 40px; text-align: center;  font-size: 15px; line-height: 140%; color: #ffffff;">
-                                    <p style="margin: 0;">FORGE HILL FARMS  |  404 CREEK ROAD  |  DOWNINGTOWN, PA 19335</p>
+                                    <p style="margin: 0 0 30px;">FORGE HILL FARMS  |  404 CREEK ROAD  |  DOWNINGTOWN, PA 19335</p>
                                     <img src="https://forgehillfarms.com/images/email-footer-icon.png" alt="Anvil">
                                 </td>
                             </tr>
