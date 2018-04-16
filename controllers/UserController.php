@@ -110,10 +110,10 @@ class UserController extends Controller
 
                 //Send activation email
                 Yii::$app->mailer->compose('/mail/welcome')
-                ->setFrom(Yii::$app->params['adminEmail'])
-                ->setTo($model->email)
-                ->setSubject('Welcome')
-                ->send();
+                    ->setFrom(Yii::$app->params['adminEmail'])
+                    ->setTo($model->email)
+                    ->setSubject('Welcome')
+                    ->send();
 
                 // Yii::$app->session->setFlash('accountCreated');
 

@@ -72,17 +72,15 @@ class PageController extends Controller
 
 
 
-       
-
-
-
         // Load contact form on contact page
         $slug == 'contact-us' ? $contactForm = new \app\models\ContactForm() : $contactForm = NULL ;
+
+
 
         //Check if contact form is submitted
         if ($slug == 'contact-us' && $contactForm->load(Yii::$app->request->post()) && $contactForm->validate()) {
                
-               $contactForm->contact('jcshep@gmail.com');
+                $contactForm->contact();
 
                 Yii::$app->session->setFlash('contactFormSubmitted');
 
