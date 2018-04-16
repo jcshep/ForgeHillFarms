@@ -47,7 +47,7 @@ class ContactForm extends Model
     {
         if ($this->validate()) {
             Yii::$app->mailer->compose()
-                ->setTo('jcshep@gmail.com')
+                ->setTo(Yii::$app->params['adminEmail'])
                 ->setFrom([Yii::$app->params['adminEmail'] => $this->name])
                 ->setReplyTo([$this->email => $this->name])
                 ->setSubject($this->subject)
