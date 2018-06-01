@@ -2,6 +2,7 @@
 
 use app\models\ProductWeek;
 
+$membership_type = Yii::$app->user->identity->membership_type;
 ?>
 
 
@@ -32,11 +33,10 @@ use app\models\ProductWeek;
 			<div class="col-sm-6">
 
 				<div class="box">
-					<span class="membership-type">Membership Level: <strong><?= Yii::$app->user->identity->membership_type ?></strong></span>
+					<span class="membership-type">Membership Level: <strong><?= $membership_type ?></strong></span>
 					<div class="inner">
-						<div class="upper text-center">SELECT YOUR PICKUP DAY</div>
+						<h3 class="text-center">Select your pickup day</h3>
 
-						<div class="spacer30"></div>
 						
 						<div id="pickup-selection">
 
@@ -50,17 +50,32 @@ use app\models\ProductWeek;
 								<a href="" class="btn btn-secondary btn-block disabled <?php if($pickup && $pickup->day == 'thursday') echo 'active' ?>"><i class="fa fa-check"></i> Thursday</a>			
 							<?php endif ?>
 								
-							<a href="" data-day="saturday" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'saturday') echo 'active' ?>"><i class="fa fa-check"></i> Saturday <?php echo date('F j', strtotime('next saturday')) ?></a>
-							<a href="" data-day="opt-out" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'opt-out') echo 'active' ?>"><i class="fa fa-check"></i> Opt Out</a>
+								<a href="" data-day="saturday" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'saturday') echo 'active' ?>"><i class="fa fa-check"></i> Saturday <?php echo date('F j', strtotime('next saturday')) ?></a>
 							
+							<?php if ($membership_type != 'free'): ?>
+								<a href="" data-day="opt-out" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'opt-out') echo 'active' ?>"><i class="fa fa-check"></i> Opt Out</a>
+							<?php endif ?>
+							
+							
+							<?php if ($membership_type == 'free'): ?>
+								<div class="spacer15"></div>
+								<h3 class="text-center">Select share size</h3>
+								<a href="" data-size="full" class="btn btn-secondary btn-block size active"><i class="fa fa-check"></i> Full $32</a>
+								<a href="" data-size="half" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Half $18</a>
+
+							<?php endif ?>
+
 
 							<div class="hidden">
 								<input type="radio" name="Pickup[day]" value="thursday" class="thursday" <?php if($pickup && $pickup->day == 'thursday') echo 'checked' ?>>
 								<input type="radio" name="Pickup[day]" value="saturday" class="saturday" <?php if($pickup && $pickup->day == 'saturday') echo 'checked' ?>>
 								<input type="radio" name="Pickup[day]" value="opt-out" class="opt-out" <?php if($pickup && $pickup->day == 'opt-out') echo 'checked' ?>>
+
+								<input type="radio" name="Pickup[size]" value="half" class="half size" <?php if($membership_type == 'half') echo 'checked' ?>>
+								<input type="radio" name="Pickup[size]" value="full" class="full size" <?php if($membership_type == 'full' || $membership_type == 'free') echo 'checked' ?>>
 							</div>
 							
-							<div class="spacer15"></div>
+							<div class="spacer30"></div>
 							
 							<?php if(ProductWeek::getWeeklyAddons()): ?>	
 

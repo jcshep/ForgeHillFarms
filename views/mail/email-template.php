@@ -56,7 +56,7 @@
 	                        </td>
 	                        <!-- Column : END -->
                             
-                            <?php //if ($model->type == 'weekly'): ?>
+                            <?php if ($model->type == 'weekly'): ?>
                                                             
 	                        <!-- Column : BEGIN -->
 	                        <td class="stack-column-center right" valign="top">
@@ -68,7 +68,7 @@
 	                        </td>
 	                        <!-- Column : END -->
 
-                            <?php //endif ?>
+                            <?php endif ?>
 	                    </tr>
 	                </table>
 	            </td>

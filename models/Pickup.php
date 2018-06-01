@@ -34,7 +34,7 @@ class Pickup extends \yii\db\ActiveRecord
             [['user_id'], 'required'],
             [['user_id', 'week'], 'integer'],
             [['addons'], 'safe'],
-            [['day'], 'string', 'max' => 11],
+            [['day', 'size'], 'string', 'max' => 11],
         ];
     }
 

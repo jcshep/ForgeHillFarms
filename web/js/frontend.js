@@ -107,4 +107,17 @@ $(document).ready(function() {
 	});
 
 
+	// Account - Select Pickup Size
+	$("#pickup-selection .size").click(function() {
+		var size = $(this).data('size');
+
+		$("#pickup-selection .size").not(this).removeClass('active');
+		$(this).addClass('active');
+		
+		$("input[type=radio]."+size).prop("checked", true);
+
+		return false;
+	});
+
+
 });

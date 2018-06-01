@@ -139,7 +139,7 @@ a:hover {color: #B93A26}
 	-webkit-transition: all .3s linear;
 	-moz-transition: all .3s linear;
 }
-.box .inner {padding: 40px 30px; display: block; border: 2px solid #174375;}
+.box .inner {padding: 20px 30px; display: block; border: 2px solid #174375;}
 .box:hover {background: #F5F1E6;}
 .box .spacer {height: 130px; display: block}
 .box .upper {font-size: 17px; font-weight: 700;}

@@ -283,6 +283,9 @@ class UserController extends Controller
             $model->week = AppHelper::getCurrentWeekDates()['start'];
         }
 
+        // If user is free member
+            // perform charge
+            // If successful, save 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success','Your pickup day has been saved.');
