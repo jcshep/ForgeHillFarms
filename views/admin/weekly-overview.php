@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div> <!--col-->
 		<div class="col-sm-4 text-right">
 			<div class="spacer30"></div>
-			<a href="" class="btn btn-success"><i class="fa fa-envelope"></i> Generate Email</a>
+			<a href="/admin/email-generator" class="btn btn-success"><i class="fa fa-envelope"></i> Generate Email</a>
 		</div> <!--col-->
 	</div> <!--row-->
 	

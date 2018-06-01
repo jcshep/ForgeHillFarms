@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\AppHelper;
 use app\models\User;
+use app\models\Pickup;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -37,25 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="row">
 		
 		
-
-		<div class="col-sm-6">
-			<div class="panel panel-default">
-				<div class="panel-heading"><h4>Thursday</h4></div>
-				<div class="panel-body">
-					<p><em>No Scheudled Pickups</em></p>
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-sm-6">
-			<div class="panel panel-default">
-				<div class="panel-heading"><h4>Saturday</h4></div>
-				<div class="panel-body">
-					<p><em>No Scheudled Pickups</em></p>
-				</div>
-			</div>
-		</div>
-
 		<div class="col-sm-6">
 			<div class="panel panel-default">
 				<div class="panel-heading"><h4>Not yet selected a pickup time</h4></div>
@@ -66,26 +48,48 @@ $this->params['breadcrumbs'][] = $this->title;
 							<th width="20%"></th>
 						</tr>
 						<?php foreach (User::find()->all() as $user): ?>
-							<tr>
-								<td><?= $user->fname ?> <?= $user->lname ?></td>
-								<td>
-									<?php  
-									if($user->membership_type == 'free') 
-										echo '<div class="text-center"><div class="btn btn-xs btn-success">FREE</div></div>';                                    
+							<?php if (!Pickup::findOne(['user_id'=>$user->id])): ?>							
+								<tr>
+									<td><?= $user->fname ?> <?= $user->lname ?></td>
+									<td>
+										<?php  
+										if($user->membership_type == 'free') 
+											echo '<div class="text-center"><div class="btn btn-xs btn-success">FREE</div></div>';                                    
 
-									if($user->membership_type == 'half') 
-										echo '<div class="text-center"><div class="btn btn-xs btn-primary">HALF</div></div>';       
+										if($user->membership_type == 'half') 
+											echo '<div class="text-center"><div class="btn btn-xs btn-primary">HALF</div></div>';       
 
-									if($user->membership_type == 'full') 
-										echo '<div class="text-center"><div class="btn btn-xs btn-info">FULL</div></div>';  
-									?>
-								</td>
-							</tr>
+										if($user->membership_type == 'full') 
+											echo '<div class="text-center"><div class="btn btn-xs btn-info">FULL</div></div>';  
+										?>
+									</td>
+								</tr>
+							<?php endif ?>
 						<?php endforeach ?>
 					</table>
 				</div>
 			</div>
 		</div>
+
+		
+		<div class="col-sm-6">
+
+			<?= $this->render('_scheduled-pickups-day', ['day'=>'thursday']); ?>
+
+			<?= $this->render('_scheduled-pickups-day', ['day'=>'saturday']); ?>
+
+			<?= $this->render('_scheduled-pickups-day', ['day'=>'opt-out']); ?>
+
+		</div>
+		
+
+
+		
+
+
+
+
+		
 
 	</div> <!--row-->
 	

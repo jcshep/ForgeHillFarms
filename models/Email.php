@@ -18,6 +18,9 @@ use Yii;
  */
 class Email extends \yii\db\ActiveRecord
 {
+
+    public $test_email;
+
     /**
      * @inheritdoc
      */
@@ -34,7 +37,8 @@ class Email extends \yii\db\ActiveRecord
         return [
             [['created'], 'integer'],
             [['send_to'], 'required'],
-            [['content_area_1', 'content_area_2', 'content_area_3','send_date'], 'string'],
+            [['test_email'], 'email'],
+            [['content_area_1', 'content_area_2', 'content_area_3','send_date', 'status'], 'string'],            
             [['type'], 'string', 'max' => 11],
         ];
     }
@@ -56,6 +60,41 @@ class Email extends \yii\db\ActiveRecord
         ];
     }
 
+
+
+    public function send($test = NULL) 
+    {
+
+        $users = User::find()->select('email')->where(['membership_type'=>$this->send_to])->asArray()->all();
+
+        if($test)
+            $users = array(['email'=>$this->test_email]);
+
+        $subject = 'Forge Hill Farms | Weekly Pickup Notification';
+
+        if($this->type == 'newsletter')
+            $subject = 'A message from Forge Hill Farms';
+
+        $messages = [];
+
+        if ($users) {
+                    
+            foreach ($users as $user) {
+                $messages[] = Yii::$app->mailer->compose('/mail/email-template', [
+                    'model'=>$this
+                ])
+                ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
+                ->setSubject( $subject)
+                ->setTo($user['email']);
+            }
+
+            Yii::$app->mailer->sendMultiple($messages);
+        }
+
+    }
+
+
+
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -64,11 +103,10 @@ class Email extends \yii\db\ActiveRecord
                 $this->created = time();
             }
 
-
             if($this->send_to && is_array($this->send_to))
                 $this->send_to = json_encode($this->send_to);
 
-            if($this->send_date)
+            if($this->send_date && !is_numeric($this->send_date))
                 $this->send_date = strtotime($this->send_date);
 
             return true;

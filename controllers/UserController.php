@@ -6,6 +6,8 @@ use Yii;
 use app\models\User;
 use app\models\SearchUser;
 use app\models\LoginForm;
+use app\models\Pickup;
+use app\models\AppHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -30,7 +32,7 @@ class UserController extends Controller
                                                 }
                     ],
                     [
-                        'actions' => ['account','sign-up', 'payment-revision'],
+                        'actions' => ['account','sign-up', 'payment-revision','set-pickup'],
                         'roles' => ['@'],
                         'allow' => true,
                     ],
@@ -54,8 +56,20 @@ class UserController extends Controller
 
     public function actionAccount()
     {
+        // Get pickup if exists
+        $pickup = Pickup::find()->where([
+            'week'=>AppHelper::getCurrentWeekDates()['start'],
+            'user_id'=>Yii::$app->user->identity->id
+        ])->one();
+
+        $addons = NULL;
+        if ($pickup && $pickup->addons) {
+            $addons = json_decode($pickup->addons);
+        }
+
         return $this->render('account', [
-            
+            'pickup'=>$pickup,
+            'addons'=>$addons
         ]);
     }
 
@@ -256,6 +270,27 @@ class UserController extends Controller
     }
 
 
+
+    public function actionSetPickup()
+    {
+        Yii::$app->controller->enableCsrfValidation = false;
+
+        if(Yii::$app->request->post('id')) {
+            $model = Pickup::findOne(Yii::$app->request->post('id'));
+        } else {
+            $model = new Pickup();
+            $model->user_id = Yii::$app->user->identity->id;
+            $model->week = AppHelper::getCurrentWeekDates()['start'];
+        }
+
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success','Your pickup day has been saved.');
+        } 
+
+        return $this->redirect(Yii::$app->request->referrer);
+        
+    }
 
     
 

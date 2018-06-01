@@ -29,6 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter'=>false,
             ],
             [
+                'attribute'=>'status',                
+                'filter'=>false,
+            ],
+            [
                 'attribute'=>'send_date',
                 'format'=>'date',
                 'filter'=>false,

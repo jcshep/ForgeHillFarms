@@ -55,6 +55,8 @@ a:hover {color: #B93A26}
 .no-right-padding {padding-right: 0}
 .no-bottom-padding {padding-bottom: 0}
 
+
+
 .user-create {}
 
 .user-create .membership-selection {text-align: center;}
@@ -129,18 +131,19 @@ a:hover {color: #B93A26}
 #all-product-list .border {border-bottom: 2px solid #FFF;}
 
 #share-box-selection {}
-#share-box-selection .box {color: #174375; border: 1px solid #174375; display: block; padding: 2px;
+#share-box-selection h2 {line-height: 24px}
+#share-box-selection .pricing {font-size: 24px;}
+
+.box {color: #174375; border: 1px solid #174375; display: block; padding: 2px;
 	transition: all .3s linear;
 	-webkit-transition: all .3s linear;
 	-moz-transition: all .3s linear;
 }
-#share-box-selection .box .inner {padding: 40px 30px; display: block; border: 2px solid #174375;}
-#share-box-selection .box:hover {background: #F5F1E6;}
-#share-box-selection .box .spacer {height: 130px; display: block}
-#share-box-selection .box .upper {font-size: 17px; font-weight: 700;}
-#share-box-selection .box .upper small {font-size: 11px;}
-#share-box-selection h2 {line-height: 24px}
-#share-box-selection .pricing {font-size: 24px;}
+.box .inner {padding: 40px 30px; display: block; border: 2px solid #174375;}
+.box:hover {background: #F5F1E6;}
+.box .spacer {height: 130px; display: block}
+.box .upper {font-size: 17px; font-weight: 700;}
+.box .upper small {font-size: 11px;}
 
 #sidebar .date {background: #FFF; color: #B93A26; margin: 0 auto; display: inline-block; font-weight: 700; padding: 0 10px; line-height: 22px; margin: 0 0 25px;}
 #sidebar h3 {margin-bottom: 15px; padding: 0;}
@@ -151,6 +154,14 @@ a:hover {color: #B93A26}
 #sidebar #product-list label {text-transform: uppercase; font-size: 11px;}
 #sidebar #product-list input[type="submit"] {border: none; color: #FFF; text-align: left; padding: 0; text-transform: uppercase; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 0;}
 
+.weekly-product-list {padding: 0 0 40px; margin: 0;}
+.weekly-product-list li {list-style-type: none; font-size: 15px; margin-bottom: 5px; color: #FFF;}
+
+#account .date {background: #174375; color: #FFF; margin: 0 auto; display: inline-block; font-weight: 700; padding: 0 10px; line-height: 22px; margin: 0 0 25px;}
+#account .weekly-product-list li {color: #174375}
+
+
+
 #content input {border: 2px solid #174375; border-radius: 0; background: transparent; margin-bottom: 15px;}
 #content label {text-transform: uppercase; font-size: 11px;}
 #content input[type="submit"] {border: none; color: #174375; text-align: left; padding: 0; text-transform: uppercase; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 0; box-shadow: none;}
@@ -160,11 +171,21 @@ a:hover {color: #B93A26}
 #pickup-time-options p {margin: 0;}
 
 #account .container {max-width: 900px;}
-#account .membership-type {color: #FFF; background: #174375; display: inline-block;line-height: 30px; padding: 0 30px; margin-top: 0; text-transform: uppercase;}
+#account .membership-type {color: #FFF; background: #174375; display: block;line-height: 40px; padding: 0 30px; margin-top: 0; text-transform: uppercase; margin: 0; text-align: center;}
 #account h4 {margin: 0 auto; padding: 0 0 10px; line-height: 20px;}
 #account h4 span {font-size: 11px; text-transform: uppercase; padding-left: 20px; color: #5cb85c}
+#account .btn.disabled {color: #777; border-color: #777;}
 
-
+#pickup-selection .btn {position: relative;}
+#pickup-selection .btn.active {background: #9A1F0D; color: #FFF}
+#pickup-selection .btn i {font-size: 22px; position: absolute; bottom: 12px; left: 15px; color: #FFF; opacity: 0; }
+#pickup-selection .btn.active i {opacity: 1;}
+#pickup-selection .alert {display: none; margin: 0;}
+#pickup-selection input[type="submit"] {display: block; text-align: center; border: 1px solid #174375;}
+#pickup-selection input[type="submit"]:hover {background: #174375; color: #FFF}
+#pickup-selection input[type="checkbox"] {border: 1px solid #174375; border-radius: 0; margin: 0 0 5px;}
+#pickup-selection label {display: block; text-align: center;}
+#pickup-selection .add-ons {padding: 15px 0 0}
 
 .payment-errors {color: #B93A26;}
 

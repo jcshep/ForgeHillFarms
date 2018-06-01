@@ -21,7 +21,8 @@ class FrontendAsset extends AssetBundle
         'css/frontend.css',
         'css/frontend-mediaqueries.css',
         'js/trumbo/ui/trumbowyg.min.css',
-        'https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:400,500,700'
+        'https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:400,500,700',
+        'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',  
     ];
     public $js = [
         'js/trumbo/trumbowyg.min.js',

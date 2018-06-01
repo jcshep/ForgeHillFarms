@@ -1,5 +1,6 @@
 <?php  
 	use app\models\Page;
+	use app\models\ProductWeek;
 ?>
 
 
@@ -10,10 +11,10 @@
 		<div class="text-center">
 			<h3>This Weeks Haul</h3>
 			<div class="date"><?php echo date('m.d.Y') ?></div>
+			<?php echo ProductWeek::generateWeeklyList(); ?>
 		</div>
 		
-		<p>Please check back with us during the season to receive our weekly updates.</p>
-		<p>You can also enter your email to receive notifications of events, weekly harvest updates, and more.</p>
+		
 		
 		<div class="border"></div>
 		<div class="spacer30"></div>

@@ -164,12 +164,45 @@ class AdminController extends Controller
          if($id)
            $model = Email::findOne($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-            Yii::$app->session->setFlash('success','Email Saved');
-            return $this->redirect(['email-generator', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
             
+            if (Yii::$app->request->post('send-now')) {                
+                Yii::$app->session->setFlash('success','Email Sent');
+                $model->status = 'sent';
+                $model->send_date = date("Y-m-d H:i:s");
+                $model->send();
+                $model->save();                                
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+
+            if (Yii::$app->request->post('saved')) { 
+                Yii::$app->session->setFlash('success','Email Saved');
+                $model->status = 'saved';
+                $model->save();
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+
+            if (Yii::$app->request->post('scheduled')) { 
+                Yii::$app->session->setFlash('success','Email Scheduled');
+                $model->status = 'scheduled';
+                $model->save();
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+
+
+            if (Yii::$app->request->post('test-email')) { 
+                Yii::$app->session->setFlash('success','Test Email Sent');
+                $model->status = 'saved';
+                $model->send('test');
+                $model->save();
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+
+
+            return $this->redirect(['email-generator', 'id' => $model->id]);            
         }
+
+        
 
         return $this->render('email-generator', [
             'model' => $model,

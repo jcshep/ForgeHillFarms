@@ -94,4 +94,17 @@ $(document).ready(function() {
 
 
 
+	// Account - Select Pickup Day
+	$("#pickup-selection .day").click(function() {
+		var day = $(this).data('day');
+
+		$("#pickup-selection .day").not(this).removeClass('active');
+		$(this).addClass('active');
+		
+		$("input[type=radio]."+day).prop("checked", true);
+
+		return false;
+	});
+
+
 });

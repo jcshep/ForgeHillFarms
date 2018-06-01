@@ -205,6 +205,9 @@
 
         }
 
+        .weekly-product-list {padding: 20px 0; margin: 0;}
+        .weekly-product-list li {list-style-type: none; font-size: 14px; margin-bottom: 3px; color: #FFF; font-family: 'Roboto Mono',monospace;}
+
     </style>
     <!-- Progressive Enhancements : END -->
 

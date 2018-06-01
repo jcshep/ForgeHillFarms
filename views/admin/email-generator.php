@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use  yii\jui\DatePicker;
+use  app\models\User;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 
@@ -55,24 +56,43 @@ $this->params['breadcrumbs'][] = 'Update';
 		            <?php 
 						if($model->send_to) $model->send_to = json_decode($model->send_to);
 						echo $form->field($model, 'send_to')->checkboxList(
-							[0 => 'Full Members', 1 => 'Half Members', 2 => 'Free Members (Buyers Club)', 3 => 'Newsletter']
+							['full' => 'Full Members', 'half' => 'Half Members', 'free' => 'Free Members (Buyers Club)', 'newsletter' => 'Newsletter']
 				   		);
 				   	?>
+					<div class="spacer30"></div>
+					<?= $form->field($model, 'test_email')->textInput(['maxlength' => true])->label('Send to Preview Email') ?>
+					<input type="submit" name="test-email" value="Send Test" class="btn btn-info btn-xs">
+
 				</div> <!--col-->
 
 			</div> <!--row-->
 			
 			<div class="spacer30"></div>
 
-		   <div class="form-group">
-				<?= Html::submitButton($model->isNewRecord ? 'Create & Preview' : 'Save & Update Preview', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-				<div class="btn btn-info">Send Now</div>
+		   <div class="form-group">				
+				<?php if ($model->isNewRecord): ?>
+					<input type="submit" name="saved" value="Create & Preview" class="btn btn-success">			
+				<?php endif ?>
+
+				<?php if (!$model->isNewRecord && $model->status != 'sent'): ?>
+					<input type="submit" name="saved" value="Save & Update Preview" class="btn btn-success">
+					<input type="submit" name="send-now" value="Send Now" class="btn btn-info">					
+					<input type="submit" name="scheduled" value="Schedule" class="btn btn-info">		
+				<?php endif ?>
+
+				<?php if ($model->status == 'sent'): ?>
+					<div class="alert alert-info">This email was sent on <?= date('F j', $model->send_date) ?> at <?= date('g:ia', $model->send_date) ?></div>
+					<input type="submit" disabled="" name="saved" value="Save & Update Preview" class="btn btn-success">
+					<input type="submit" disabled="" name="send-now" value="Send Now" class="btn btn-info">		
+					<input type="submit" disabled="" name="scheduled" value="Schedule" class="btn btn-info">				
+				<?php endif ?>
 			</div>
 
 		<?php ActiveForm::end(); ?>
 
 		<div class="spacer30"></div>
-
+		
+		
 
 		<?php if (!$model->isNewRecord): ?>
 			
@@ -81,11 +101,6 @@ $this->params['breadcrumbs'][] = 'Update';
 
 		<?php endif ?>
 		
-
-
-
-
-
 
 
 
