@@ -59,7 +59,8 @@ use app\models\ProductWeek;
 								<input type="radio" name="Pickup[day]" value="saturday" class="saturday" <?php if($pickup && $pickup->day == 'saturday') echo 'checked' ?>>
 								<input type="radio" name="Pickup[day]" value="opt-out" class="opt-out" <?php if($pickup && $pickup->day == 'opt-out') echo 'checked' ?>>
 							</div>
-		
+							
+							<div class="spacer15"></div>
 							
 							<?php if(ProductWeek::getWeeklyAddons()): ?>	
 
