@@ -47,8 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
 							<th width="70%">Name</th>
 							<th width="20%"></th>
 						</tr>
+	
+
 						<?php foreach (User::find()->all() as $user): ?>
-							<?php if (!Pickup::findOne(['user_id'=>$user->id])): ?>							
+							<?php if (!Pickup::find()->where(['user_id'=>$user->id, 'week'=>AppHelper::getCurrentWeekDates()['start']])->all()): ?>							
 								<tr>
 									<td><?= $user->fname ?> <?= $user->lname ?></td>
 									<td>
