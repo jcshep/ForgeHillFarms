@@ -306,7 +306,7 @@ class AdminController extends Controller
 
         $pickups = Pickup::find()->joinWith('user')->where([
                 'week'=>AppHelper::getCurrentWeekDates()['start'],
-            ])->orderBy('user.membership_type')->all();
+            ])->orderBy('pickup.day, user.membership_type')->all();
         
         if ($pickups) :
             
@@ -336,7 +336,7 @@ class AdminController extends Controller
             fputcsv($file, explode('|',$line));
         }
         fclose($file);
-        
+
         exit;
         // return $this->redirect(Yii::$app->request->referrer);
 
