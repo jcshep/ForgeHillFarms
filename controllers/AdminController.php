@@ -306,25 +306,28 @@ class AdminController extends Controller
 
         $pickups = Pickup::find()->joinWith('user')->where([
                 'week'=>AppHelper::getCurrentWeekDates()['start'],
-            ])->orderBy('pickup.day, user.membership_type')->all();
+            ])->orderBy('pickup.day DESC, user.membership_type')->all();
         
         if ($pickups) :
             
             foreach ($pickups as $pickup):
 
-                $addons = '';
-                if ($pickup->addons):
-                    foreach (json_decode($pickup->addons) as $addon):
-                        $addons .= $addon.', ';
-                    endforeach;
-                endif;
+                if($pickup->day != 'opt-out') :
 
-                $list[] = 
-                    $pickup->day.'|'.
-                    $pickup->size.'|'.
-                    $pickup->user->fname.' '.$pickup->user->lname.'|'.                    
-                    $pickup->user->phone.'|'.                    
-                    $addons;                
+                    $addons = '';
+                    if ($pickup->addons):
+                        foreach (json_decode($pickup->addons) as $addon):
+                            $addons .= $addon.', ';
+                        endforeach;
+                    endif;
+
+                    $list[] = 
+                        $pickup->day.'|'.
+                        $pickup->size.'|'.
+                        $pickup->user->fname.' '.$pickup->user->lname.'|'.                    
+                        $pickup->user->phone.'|'.                    
+                        $addons;  
+                endif;              
 
             endforeach;
 
