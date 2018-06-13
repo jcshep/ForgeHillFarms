@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div> <!--col-->
 		<div class="col-sm-4 text-right">
 			<div class="spacer30"></div>
-			<a href="" class="btn btn-success"><i class="fa fa-download"></i> Export</a>
+			<a target="_blank" href="/admin/export-pickups" class="btn btn-success"><i class="fa fa-download"></i> Export</a>
 		</div> <!--col-->
 	</div> <!--row-->
 	

@@ -4,18 +4,13 @@
 	  	$('#payment-form').on('beforeSubmit', function (event) {
 	  		var form = $(this);
 
-	  		var membership = $('.modal-radio.checked').data('membership-type');
+		    // Disable the submit button to prevent repeated clicks
+		    form.find('button').prop('disabled', true);
 
-	  		if(membership == 'half' || membership == 'full') {
+		    Stripe.card.createToken(form, stripeResponseHandler);
 
-			    // Disable the submit button to prevent repeated clicks
-			    form.find('button').prop('disabled', true);
-
-			    Stripe.card.createToken(form, stripeResponseHandler);
-
-			    // Prevent the form from submitting with the default action
-			    return false;
-			}
+		    // Prevent the form from submitting with the default action
+		    return false;
 		});
   	});
 

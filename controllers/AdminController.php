@@ -7,11 +7,13 @@ use app\models\User;
 use app\models\SearchUser;
 use app\models\LoginForm;
 use app\models\Product;
+use app\models\Charge;
 use app\models\SearchProduct;
 use app\models\ProductWeek;
 use app\models\SearchProductWeek;
 use app\models\SearchEmail;
 use app\models\Email;
+use app\models\Pickup;
 use app\models\AppHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -26,7 +28,7 @@ class AdminController extends Controller
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
-                    [   'actions' => ['index','users','user-view','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups'],
+                    [   'actions' => ['index','users','user-view','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() {
@@ -76,6 +78,7 @@ class AdminController extends Controller
     public function actionUserView($id)
     {
         $model = User::findOne($id);
+        $charge = new Charge();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
@@ -86,13 +89,63 @@ class AdminController extends Controller
                 Yii::$app->session->setFlash('success','User Updated');
                 return $this->redirect(['user-view', 'id' => $model->id]);
             }
+
+            return $this->redirect(Yii::$app->request->referrer);
+        } 
+
+        $charge->cc_token = Yii::$app->request->post('stripeToken');
+        $charge->user_id = $model->id;
+
+        if ($charge->load(Yii::$app->request->post()) && $charge->validate()) {
+
+            // Save customer if new card
+            if($charge->save_cc) {
+                $charge->createCustomer();
+                $model->refresh();
+            }
             
-        } else {
-            return $this->render('user-view', [
-                'model' => $model,
-            ]);
+            // Charge existing customer if they are saved
+            if($model->stripe_id) {
+                $charge->scenario = 'saved_cc';
+                if($charge->chargeCustomer())
+                    Yii::$app->session->setFlash('success','Customer Charged');
+            }
+
+            //One time charge on new card
+            if(!$model->stripe_id) {
+                $charge->scenario = 'new_cc';
+                if($charge->singleCharge())
+                    Yii::$app->session->setFlash('success','Customer Charged');
+            }
+
+
+
+            return $this->redirect(Yii::$app->request->referrer);
         }
+
+        
+        
+        return $this->render('user-view', [
+            'model' => $model,
+            'charge' => $charge,
+        ]);
+        
     }
+
+
+
+    public function actionRemoveCc($id)
+    {
+        $user = User::findOne($id);
+        $user->stripe_id = NULL;
+        $user->stripe_last_4 = NULL;
+        $user->save();
+
+        Yii::$app->session->setFlash('error','Saved Card Removed');
+
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
 
 
 
@@ -234,6 +287,58 @@ class AdminController extends Controller
         return $this->renderPartial('/mail/email-template', [
             'model'=>$model
         ]);
+
+    }
+
+
+
+
+    public function actionExportPickups() {
+        $filename = 'pick-ups.csv';
+
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename="'.$filename.'"');
+
+
+        // CSV headers
+        $list = ["Pickup Day|Pickup Size|Customer Name|Customer Phone|Addons"];
+
+
+        $pickups = Pickup::find()->joinWith('user')->where([
+                'week'=>AppHelper::getCurrentWeekDates()['start'],
+            ])->orderBy('user.membership_type')->all();
+        
+        if ($pickups) :
+            
+            foreach ($pickups as $pickup):
+
+                $addons = '';
+                if ($pickup->addons):
+                    foreach (json_decode($pickup->addons) as $addon):
+                        $addons .= $addon.', ';
+                    endforeach;
+                endif;
+
+                $list[] = 
+                    $pickup->day.'|'.
+                    $pickup->size.'|'.
+                    $pickup->user->fname.' '.$pickup->user->lname.'|'.                    
+                    $pickup->user->phone.'|'.                    
+                    $addons;                
+
+            endforeach;
+
+        endif;
+
+        // Export file 
+        $file = fopen('php://output', 'w');
+        foreach ($list as $line) {
+            fputcsv($file, explode('|',$line));
+        }
+        fclose($file);
+        
+        exit;
+        // return $this->redirect(Yii::$app->request->referrer);
 
     }
 

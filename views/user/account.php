@@ -38,6 +38,8 @@ $membership_type = Yii::$app->user->identity->membership_type;
 						<h3 class="text-center">Select your pickup day</h3>
 
 						
+						<?php if ($membership_type != 'free'): ?>
+
 						<div id="pickup-selection">
 
 							<form action="/user/set-pickup" method="POST">
@@ -104,8 +106,12 @@ $membership_type = Yii::$app->user->identity->membership_type;
 
 							</form>
 						</div>
+
+						<?php else: ?>
 						
+							<p class="text-center">Sorry, we are not offering buyers club pickups for opening week. Please check back next week.</p>
 						
+						<?php endif; ?>
 						
 					</div>	
 				</div>
