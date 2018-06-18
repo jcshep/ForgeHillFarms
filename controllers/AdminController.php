@@ -114,7 +114,7 @@ class AdminController extends Controller
             //One time charge on new card
             if(!$model->stripe_id) {
                 $charge->scenario = 'new_cc';
-                if($charge->singleCharge())
+                if($charge->singleCharge('Manual Admin Charge'))
                     Yii::$app->session->setFlash('success','Customer Charged');
             }
 

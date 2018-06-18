@@ -181,11 +181,14 @@ a:hover {color: #B93A26}
 #pickup-selection .btn i {font-size: 22px; position: absolute; bottom: 12px; left: 15px; color: #FFF; opacity: 0; }
 #pickup-selection .btn.active i {opacity: 1;}
 #pickup-selection .alert {display: none; margin: 0;}
-#pickup-selection input[type="submit"] {display: block; text-align: center; border: 1px solid #174375;}
+#pickup-selection input[type="submit"] {text-align: center; border: 1px solid #174375; padding: 0 20px}
 #pickup-selection input[type="submit"]:hover {background: #174375; color: #FFF}
 #pickup-selection input[type="checkbox"] {border: 1px solid #174375; border-radius: 0; margin: 0 0 5px;}
 #pickup-selection label {display: block; text-align: center;}
-
+#pickup-selection .btn.btn-danger {border: 1px solid #B93A26; background: transparent; color: #B93A26; font-size: 11px; letter-spacing: 2px;}
+#pickup-selection .modal-content {border-radius: 0px }
+#pickup-selection .modal-content {background: #FEF8EB;}
+#pickup-selection .charge-amount {border: none; width: 40px; text-align: left; font-size: 24px; line-height: 15px; font-weight: 900; margin: 0; padding: 0;}
 
 .payment-errors {color: #B93A26;}
 

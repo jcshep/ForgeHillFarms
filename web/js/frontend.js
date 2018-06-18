@@ -24,6 +24,21 @@ $(document).ready(function() {
 
 
 
+	// Free member checkout
+	$('#pay-modal').click(function(evt) {
+
+		if(!$('input[name="Pickup[day]"').is(':checked')) { 
+			alert("Please select a Pickup Day"); 
+			return false;
+		}
+
+		if(!$('input[name="Pickup[size]"').is(':checked')) { 
+			alert("Please select a Share Size"); 
+			return false;
+		}
+
+	});
+
 
 
 
@@ -115,6 +130,13 @@ $(document).ready(function() {
 		$(this).addClass('active');
 		
 		$("input[type=radio]."+size).prop("checked", true);
+
+		if(size=="half") {
+			$(".charge-amount").val(18);	
+		} else {
+			$(".charge-amount").val(32);	
+		}
+		
 
 		return false;
 	});

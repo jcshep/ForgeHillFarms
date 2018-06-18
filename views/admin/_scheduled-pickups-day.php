@@ -32,14 +32,11 @@ use app\models\AppHelper;
 							</small>
 						</td>
 						<td>
-							<?php  
-							if($pickup->user->membership_type == 'free') 
-								echo '<div class="text-center"><div class="btn btn-xs btn-success">FREE</div></div>';                                    
-
-							if($pickup->user->membership_type == 'half') 
+							<?php                                  
+							if($pickup->size == 'half') 
 								echo '<div class="text-center"><div class="btn btn-xs btn-primary">HALF</div></div>';       
 
-							if($pickup->user->membership_type == 'full') 
+							if($pickup->size == 'full') 
 								echo '<div class="text-center"><div class="btn btn-xs btn-info">FULL</div></div>';  
 							?>
 						</td>

@@ -11,6 +11,7 @@ use app\models\AppHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Charge;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -56,6 +57,9 @@ class UserController extends Controller
 
     public function actionAccount()
     {
+
+        $charge = new Charge();
+
         // Get pickup if exists
         $pickup = Pickup::find()->where([
             'week'=>AppHelper::getCurrentWeekDates()['start'],
@@ -69,7 +73,8 @@ class UserController extends Controller
 
         return $this->render('account', [
             'pickup'=>$pickup,
-            'addons'=>$addons
+            'addons'=>$addons,
+            'charge'=>$charge
         ]);
     }
 
@@ -275,6 +280,10 @@ class UserController extends Controller
     {
         Yii::$app->controller->enableCsrfValidation = false;
 
+
+
+
+
         if(Yii::$app->request->post('id')) {
             $model = Pickup::findOne(Yii::$app->request->post('id'));
         } else {
@@ -284,9 +293,22 @@ class UserController extends Controller
         }
 
         // If user is free member
-            // perform charge
-            // If successful, save 
+        if(Yii::$app->request->post('stripeToken')) {
+            $charge = new Charge();
+            $charge->cc_token = Yii::$app->request->post('stripeToken');
+            $charge->user_id = Yii::$app->user->identity->id;
 
+            if ($charge->load(Yii::$app->request->post()) && $charge->validate()) {
+                $charge->scenario = 'new_cc';
+                if(!$charge->singleCharge('Buyers Club Purchase')) {
+                    Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
+                    // return $this->redirect(Yii::$app->request->referrer);
+                }
+            }
+        }
+
+
+        // Save pickup time
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success','Your pickup day has been saved.');
         } 

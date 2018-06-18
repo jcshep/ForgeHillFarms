@@ -105,18 +105,17 @@ class Charge extends \yii\db\ActiveRecord
 
 
 
-    public function singleCharge() {
+    public function singleCharge($description = NULL) {
 
         \Stripe\Stripe::setApiKey(Yii::$app->params['stripeSecretKey']);
 
-
-
+    
         try {
             $response = \Stripe\Charge::create(array(
               "amount" => $this->amount * 100,
               "currency" => "usd",
               "source" => $this->cc_token, // obtained with Stripe.js
-              "description" => "Manual Admin charge for ".$this->user->email
+              "description" => $description." - ".$this->user->email
             ));
 
             // $this->stripe_id = $customer->id;
