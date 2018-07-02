@@ -12,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Charge;
+use app\models\Setting;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -33,7 +34,7 @@ class UserController extends Controller
                                                 }
                     ],
                     [
-                        'actions' => ['account','sign-up', 'payment-revision','set-pickup'],
+                        'actions' => ['account','sign-up', 'payment-revision','set-pickup','remove-cc'],
                         'roles' => ['@'],
                         'allow' => true,
                     ],
@@ -57,6 +58,7 @@ class UserController extends Controller
 
     public function actionAccount()
     {
+        $user = User::findOne(Yii::$app->user->identity->id);
 
         $charge = new Charge();
 
@@ -66,6 +68,7 @@ class UserController extends Controller
             'user_id'=>Yii::$app->user->identity->id
         ])->one();
 
+
         $addons = NULL;
         if ($pickup && $pickup->addons) {
             $addons = json_decode($pickup->addons);
@@ -74,8 +77,21 @@ class UserController extends Controller
         return $this->render('account', [
             'pickup'=>$pickup,
             'addons'=>$addons,
-            'charge'=>$charge
+            'charge'=>$charge,
+            'user' => $user
         ]);
+    }
+
+    public function actionRemoveCc()
+    {
+        $user = User::findOne(Yii::$app->user->identity->id);
+        $user->stripe_id = NULL;
+        $user->stripe_last_4 = NULL;
+        $user->save();
+
+        Yii::$app->session->setFlash('error','Saved Card Removed');
+
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
 
@@ -280,9 +296,7 @@ class UserController extends Controller
     {
         Yii::$app->controller->enableCsrfValidation = false;
 
-
-
-
+        $user = User::findOne(Yii::$app->user->identity->id);
 
         if(Yii::$app->request->post('id')) {
             $model = Pickup::findOne(Yii::$app->request->post('id'));
@@ -293,17 +307,38 @@ class UserController extends Controller
         }
 
         // If user is free member
-        if(Yii::$app->request->post('stripeToken')) {
+        if(Yii::$app->request->post('membership-type') == 'free') {
+
             $charge = new Charge();
             $charge->cc_token = Yii::$app->request->post('stripeToken');
-            $charge->user_id = Yii::$app->user->identity->id;
+            $charge->user_id = $user->id;
 
             if ($charge->load(Yii::$app->request->post()) && $charge->validate()) {
-                $charge->scenario = 'new_cc';
-                if(!$charge->singleCharge('Buyers Club Purchase')) {
-                    Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
-                    // return $this->redirect(Yii::$app->request->referrer);
+
+                // Save customer if new card
+                if($charge->save_cc) {
+                    $charge->createCustomer();
+                    $user->refresh();
                 }
+
+                // Charge existing customer if they are saved
+                if($user->stripe_id) {
+                    $charge->scenario = 'saved_cc';
+                    if(!$charge->chargeCustomer()) {
+                        Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
+                        return $this->redirect(Yii::$app->request->referrer);
+                    }
+                }
+
+                //One time charge on new card
+                if(!$user->stripe_id) {
+                    $charge->scenario = 'new_cc';
+                    if(!$charge->singleCharge('Buyers Club Purchase')) {
+                        Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
+                        return $this->redirect(Yii::$app->request->referrer);
+                    }
+                }
+
             }
         }
 
@@ -311,6 +346,20 @@ class UserController extends Controller
         // Save pickup time
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success','Your pickup day has been saved.');
+
+            // If successful, deduct an available corresponding box
+            if($model->size == 'half') {
+                $half_boxes_available = Setting::findOne(['setting'=>'half-boxes-available']);
+                $half_boxes_available->value = ($half_boxes_available->value - 1);
+                $half_boxes_available->save();
+            }
+
+            if($model->size == 'full') {
+                $full_boxes_available = Setting::findOne(['setting'=>'full-boxes-available']);
+                $full_boxes_available->value = ($full_boxes_available->value - 1);
+                $full_boxes_available->save();
+            }
+
         } 
 
         return $this->redirect(Yii::$app->request->referrer);

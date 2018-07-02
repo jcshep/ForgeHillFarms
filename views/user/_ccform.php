@@ -25,7 +25,7 @@
 
 
 <div class="row">
-	<div class="col-md-3 col-xs-3">
+	<div class="col-sm-3 col-xs-6">
 	<label>Exp. Month</label>
 	<?php 
 	$months = cal_info(0);
@@ -35,7 +35,7 @@
 	<div class="spacer15 visible-sm visible-xs"></div>
 	</div>
 
-	<div class="col-md-3 col-xs-3">
+	<div class="col-sm-3 col-xs-6">
 		<label>Exp. Year</label>
 		<?php 
 			$year = date('Y');
@@ -49,11 +49,11 @@
     	<div class="spacer15 visible-sm visible-xs"></div>
 	</div>
 
-	<div class="col-md-3 col-xs-3">
+	<div class="col-sm-3 col-xs-6">
 		<?= $form->field($model, 'cvc')->textInput(['data-stripe'=> 'cvc']) ?>
 	</div>
 
-	<div class="col-md-3 col-xs-3">
+	<div class="col-sm-3 col-xs-6">
 		<?= $form->field($model, 'cc_zip')->textInput() ?>
 	</div>
 

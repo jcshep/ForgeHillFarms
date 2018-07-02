@@ -18,6 +18,7 @@ use app\models\AppHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Setting;
 
 
 class AdminController extends Controller
@@ -56,9 +57,24 @@ class AdminController extends Controller
 
     public function actionScheduledPickups()
     {
- 
+
+
+        if ($post = Yii::$app->request->post()) {
+
+            $half_boxes_available = Setting::findOne(['setting'=>'half-boxes-available']);
+            $half_boxes_available->value = $post['half-boxes-available'];
+            $half_boxes_available->save();
+
+            $full_boxes_available = Setting::findOne(['setting'=>'full-boxes-available']);
+            $full_boxes_available->value = $post['full-boxes-available'];
+            $full_boxes_available->save();
+
+            return $this->redirect(Yii::$app->request->referrer);
+
+        }
+
         return $this->render('scheduled-pickups', [
-            // 'searchModel' => $searchModel,
+            // 'setting' => $setting,
             // 'dataProvider' => $dataProvider,
         ]);
     }
@@ -117,8 +133,6 @@ class AdminController extends Controller
                 if($charge->singleCharge('Manual Admin Charge'))
                     Yii::$app->session->setFlash('success','Customer Charged');
             }
-
-
 
             return $this->redirect(Yii::$app->request->referrer);
         }

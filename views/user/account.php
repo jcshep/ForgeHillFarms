@@ -1,6 +1,7 @@
 <?php  
 
 use app\models\ProductWeek;
+use app\models\Setting;
 use yii\widgets\ActiveForm;
 
 $membership_type = Yii::$app->user->identity->membership_type;
@@ -56,7 +57,7 @@ if($membership_type == 'free') {
 
 						<div id="pickup-selection">
 
-							<?php $form = ActiveForm::begin(['action'=>'/user/set-pickup', 'id'=> $membership_type == 'free' ? 'payment-form' : 'pickup-form']); ?>
+							<?php $form = ActiveForm::begin(['action'=>'/user/set-pickup', 'id'=> $membership_type == 'free' && !$user->stripe_last_4 ? 'payment-form' : 'pickup-form']); ?>
 
 							<!-- <form action="/user/set-pickup" method="POST" <?php if ($membership_type == 'free'): ?>id="payment-form"<?php endif; ?>> -->
 							
@@ -76,9 +77,22 @@ if($membership_type == 'free') {
 							<?php if ($membership_type == 'free'): ?>
 								<div class="spacer15"></div>
 								<h3 class="text-center">Select share size</h3>
-								<a href="" data-size="full" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Full $32</a>
-								<a href="" data-size="half" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Half $18</a>
 
+								<?php if (Setting::findOne(['setting'=>'full-boxes-available'])->value == 0): ?>
+									<a href="" data-size="full" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Full $32 - Sold Out</a>
+								<?php else: ?>
+									<a href="" data-size="full" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Full $32</a>
+								<?php endif ?>
+
+
+								<?php if (Setting::findOne(['setting'=>'half-boxes-available'])->value == 0): ?>
+									<a href="" data-size="half" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Half $18 - Sold Out</a>
+								<?php else: ?>
+									<a href="" data-size="half" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Half $18</a>
+								<?php endif ?>
+									
+
+								
 							<?php endif ?>
 
 
@@ -120,10 +134,12 @@ if($membership_type == 'free') {
 
 
 							<?php if ($membership_type != 'free'): ?>
-
+								
 								<input type="submit" name="confirm" value="Confirm" class="btn btn-block btn-primary">
 							
 							<?php else: ?>
+								
+								<input type="hidden" name="membership-type" value="<?= $membership_type ?>">
 
 								<a data-toggle="modal" data-target="#modal-pay" class="btn btn-block btn-primary" id="pay-modal">Purchase</a>
 								
@@ -132,15 +148,40 @@ if($membership_type == 'free') {
 								    <div class="modal-dialog" role="document">
 								        <div class="modal-content">
 								            <div class="modal-body">
-								                <?php echo $this->render('/user/_ccform', [
-													'model'=>$charge,
-													'form'=>$form]
-												); ?>
+								            	<?php if ($user->stripe_id) { ?>
+								            		
+								            		<h3>Using Saved Credit Card</h3>
+													<div class="saved-cc"><span>xxxx xxxx xxxx </span> <?= $user->stripe_last_4 ?> </div>
+								            	<?php } ?>
+
+								                <?php 
+								                if (!$user->stripe_id) {
+									                echo $this->render('/user/_ccform', [
+														'model'=>$charge,
+														'form'=>$form]
+													); 
+												}
+												?>
 								            </div>
 								            <div class="modal-footer">
-								            	$<input type="text" name="Charge[amount]" value="" class="charge-amount">
-								            	<button type="submit" class="btn btn-primary">Confirm</button>
-								                <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>            -->
+								            	<div class="row">
+								            		<div class="col-sm-6 save-cc">
+								            			<?php 
+								            			if (!$user->stripe_id) 
+								            				echo $form->field($charge, 'save_cc')->checkbox();
+								            			?>	
+
+								            			<?php if ($user->stripe_id) { ?>
+								            				<a href="/user/remove-cc" class="remove-card"><i class="fa fa-close"></i> Remove Saved Credit Card</a>
+								            			<?php } ?>	
+
+								            		</div> <!--col-->
+								            		<div class="col-sm-6">
+								            			$<input type="text" name="Charge[amount]" value="" class="charge-amount">
+								            			<button type="submit" class="btn btn-primary">Confirm</button>
+								            		</div> <!--col-->
+								            	</div> <!--row-->
+								            	
 								            </div>
 								        </div>
 								    </div>

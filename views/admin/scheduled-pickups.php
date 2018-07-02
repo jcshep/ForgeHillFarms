@@ -6,6 +6,7 @@ use app\models\AppHelper;
 use app\models\User;
 use app\models\Pickup;
 use yii\widgets\ActiveForm;
+use app\models\Setting;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SearchUser */
@@ -30,13 +31,48 @@ $this->params['breadcrumbs'][] = $this->title;
 			<a target="_blank" href="/admin/export-pickups" class="btn btn-success"><i class="fa fa-download"></i> Export</a>
 		</div> <!--col-->
 	</div> <!--row-->
+
+	<div class="spacer30"></div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading"><h4>Share Box Availability</h4></div>
+			<div class="panel-body">
+				<p>Enter in the amount of boxes available for Buyers Club members. This does not affect Full & Half share memberships.</p>
+				<div class="spacer15"></div>
+				<?= Html::beginForm(['admin/scheduled-pickups'],'POST'); ?>
+					<div class="row">
+						<div class="col-sm-3">
+							<label for="">Half Boxes Available</label>
+							<?= Html::textInput('half-boxes-available', Setting::findOne(['setting'=>'half-boxes-available'])->value, ['class'=>'form-control']); ?>						
+						</div> <!--col-->
+						<div class="col-sm-3">
+							<label for="">Full Boxes Available</label>
+							<?= Html::textInput('full-boxes-available', Setting::findOne(['setting'=>'full-boxes-available'])->value, ['class'=>'form-control']); ?>
+						</div> <!--col-->
+						<div class="col-sm-6 text-right">
+							<div class="form-group">     
+								<label class="control-label">&nbsp;</label> <br>
+						        <?= Html::submitButton('Update', ['class' => 'btn btn-success']) ?>
+						    </div>
+						</div> <!--col-->
+					</div> <!--row-->
+				<?php Html::endForm() ?>
+
+				   
+
+				    
+
+			    
+			</div>
+		</div>
+	</div>
+
 	
 	
 	<div class="spacer30"></div>
 
 
 	<div class="row">
-		
 		
 		<div class="col-sm-6">
 			<div class="panel panel-default">

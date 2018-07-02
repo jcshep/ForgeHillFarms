@@ -84,12 +84,14 @@ class Charge extends \yii\db\ActiveRecord
         try {
             // Charge the order:
             $charge = \Stripe\Charge::create(array(
-                'customer'    => $this->user->stripe_id,
+                'customer' => $this->user->stripe_id,
                 "amount" => $this->amount * 100,
                 "currency" => "usd",
                 "description" => "Manual Admin Charge",
                 )
             );
+
+
 
             return true;
         }
@@ -98,6 +100,8 @@ class Charge extends \yii\db\ActiveRecord
             $error = $e->getMessage();
             $this->addError('cc',$error );
         }
+
+
 
         $this->addError('cc', 'There was an error processing your card.');
         return false;

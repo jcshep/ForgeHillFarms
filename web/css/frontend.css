@@ -189,6 +189,10 @@ a:hover {color: #B93A26}
 #pickup-selection .modal-content {border-radius: 0px }
 #pickup-selection .modal-content {background: #FEF8EB;}
 #pickup-selection .charge-amount {border: none; width: 40px; text-align: left; font-size: 24px; line-height: 15px; font-weight: 900; margin: 0; padding: 0;}
+#pickup-selection .modal-content .save-cc label {line-height: 40px; text-align: left;}
+#pickup-selection .modal-content .saved-cc {font-size: 25px;}
+#pickup-selection .modal-content .remove-card {line-height: 40px; font-size: 11px; text-align: left; display: block; text-transform: uppercase; letter-spacing: 0.4px}
+#pickup-selection .modal-content .saved-cc span {opacity: 0.8; font-size: 16px;}
 
 .payment-errors {color: #B93A26;}
 
