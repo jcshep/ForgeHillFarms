@@ -67,6 +67,7 @@ class Email extends \yii\db\ActiveRecord
 
         $users = User::find()->select('email')->where(['membership_type'=>$this->send_to])->asArray()->all();
 
+
         if($test)
             $users = array(['email'=>$this->test_email]);
 
@@ -83,9 +84,9 @@ class Email extends \yii\db\ActiveRecord
                 $messages[] = Yii::$app->mailer->compose('/mail/email-template', [
                     'model'=>$this
                 ])
-                ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
-                ->setSubject( $subject)
-                ->setTo($user['email']);
+                    ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
+                    ->setSubject($subject)
+                    ->setTo($user['email']);
             }
 
             Yii::$app->mailer->sendMultiple($messages);

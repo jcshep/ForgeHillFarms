@@ -63,22 +63,33 @@ class ProductWeek extends \yii\db\ActiveRecord
 
         $week = AppHelper::getCurrentWeekDates();
         
-        $products = ProductWeek::find()->where(['week_start' => $week['start']])->all();
-        
+        $products = ProductWeek::find()->joinWith('product')->where(['week_start' => $week['start'], 'product.type'=>'product'])->all();
+        $addons = ProductWeek::find()->joinWith('product')->where(['week_start' => $week['start'], 'product.type'=>'addon'])->all();
+
         $html = ''; 
 
         if($products) {
 
             $html .= '<ul class="weekly-product-list">';
-            foreach ($products as $product) {                
+            foreach ($products as $product) {  
                 $html .= '<li>'.$product->product->name.'</li>';
             }
             $html .= '</ul>';
+
+            if($addons) {
+                $html .= '<h3 style="color:#FFF; ">Addons</h3>';
+                $html .= '<ul class="weekly-product-list" style="padding-top:0">';
+                foreach ($addons as $addons) {                
+                    $html .= '<li>'.$addons->product->name.'</li>';
+                }
+                $html .= '</ul>';
+            }
+
             return $html;
 
         } else {
             return '
-                <p>Please check back with us to view this weeks haul</p>
+                <p>Please check back with us later to view this weeks haul</p>
                 <p>You can also enter your email to receive notifications of events, weekly harvest updates, and more.</p>';
         }
     }

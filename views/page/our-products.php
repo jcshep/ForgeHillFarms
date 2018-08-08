@@ -9,7 +9,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 <div id="hero">
 	<div class="container">
 		<?= Page::editBlock('hero-image-'.$model->slug,'image','Edit Image', 'hero'); ?>
-		<img src="/uploads/<?= Page::renderBlock('hero-image-'.$model->slug); ?>" alt="">
+		<img src="/uploads/<?= Page::renderBlock('hero-image-'.$model->slug); ?>?cache=1" alt="">
 	</div>
 </div>
 
