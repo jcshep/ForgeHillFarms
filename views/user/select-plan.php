@@ -1,39 +1,45 @@
-<?php
+<?php  
 
+use app\models\ProductWeek;
+use app\models\Setting;
+use yii\widgets\ActiveForm;
 use app\models\Page;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Project */
-
-$this->title = 'Register for the 2019 Season';
-// $this->params['breadcrumbs'][] = ['label' => 'Projects', 'url' => ['index']];
-// $this->params['breadcrumbs'][] = $this->title;
+$membership_type = Yii::$app->user->identity->membership_type;
 
 
 $this->registerJsFile('https://js.stripe.com/v2/');
 $this->registerJs("Stripe.setPublishableKey('".Yii::$app->params['stripePublishableKey']."');",  yii\web\View::POS_END);
 $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
+
 ?>
 
-<div id="content" class="page user-create">
 
-	<div class="spacer30"></div>
+
+<div class="spacer30"></div>
+
+<div id="account">
 	
 	<div class="container">
-	<div class="row">
 
-		<div class="col-sm-8 col-sm-offset-2 bg-white">
-			
-			<h2><?= Html::encode($this->title) ?></h2>
-			
-			<p>Please create an account using the form below.</p>
+		<?php if($flashMessage = Yii::$app->session->getFlash('error')): ?>
+			<div class="alert alert-danger"><?= $flashMessage ?></div>
+		<?php endif; ?>
 
-			<div class="project-form">
+		<?php if($flashMessage = Yii::$app->session->getFlash('success')): ?>
+			<div class="alert alert-success"><?= $flashMessage ?></div>
+		<?php endif; ?>
+		
+		<div id="content">
+		
+	
+			<div class="user-create">
 
+					<h2>Please select your plan for the 2019 season</h2>
 
+					<p>Your previous account information will stay the same.</p>
 
 					<?php $form = ActiveForm::begin(['id'=>'payment-form']); ?>
 
@@ -43,24 +49,7 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
 					</div>
 					<?php } ?>
 
-					<div class="row">
-						<div class="col-md-6"><?= $form->field($model, 'fname')->textInput() ?></div>
-						<div class="col-md-6"><?= $form->field($model, 'lname')->textInput() ?></div>
-					</div>
 					
-
-					<div class="form-group">
-						<?= $form->field($model, 'email')->textInput() ?>
-					</div>
-
-					<div class="form-group">
-						<?= $form->field($model, 'phone')->textInput() ?>
-					</div>
-
-					<div class="row">
-						<div class="col-md-6"><?= $form->field($model, 'password')->passwordInput() ?></div>
-						<div class="col-md-6"><?= $form->field($model, 'password_repeat')->passwordInput() ?></div>
-					</div>
 					
 					<div class="spacer30"></div>
 					<?php  
@@ -123,20 +112,21 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
 
 
 					<div class="form-group submit-group text-center" style="display:<?php if($model->membership_type) {echo 'block';} else {echo 'none';} ?>"">
-						<?= Html::submitButton($model->isNewRecord ? 'Create Account' : 'Update', ['class' => 'btn btn-primary btn-lg']) ?>
+						<?= Html::submitButton($model->isNewRecord ? 'Create Account' : 'Select', ['class' => 'btn btn-primary btn-lg']) ?>
 						<div></div>
-						<a href="login" class="btn btn-default">Already a member?</a>
 					</div>
 
 					<?php ActiveForm::end(); ?>
 
 			</div>
+		
+		
+		
+		
 
 
-		</div>
-	</div> <!-- row -->
-
-	</div><!-- container -->
-
+		<div class="spacer30"></div>
+		</div> <!-- content -->
+	</div>	
 
 </div>

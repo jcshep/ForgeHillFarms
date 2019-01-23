@@ -34,7 +34,7 @@ class UserController extends Controller
                                                 }
                     ],
                     [
-                        'actions' => ['account','sign-up', 'payment-revision','set-pickup','remove-cc'],
+                        'actions' => ['account','sign-up', 'payment-revision','set-pickup','remove-cc','select-plan'],
                         'roles' => ['@'],
                         'allow' => true,
                     ],
@@ -58,7 +58,13 @@ class UserController extends Controller
 
     public function actionAccount()
     {
+
+
         $user = User::findOne(Yii::$app->user->identity->id);
+
+        // Check if user doesn't have a membership level set
+        if(!$user->membership_type) 
+            return $this->redirect(['/user/select-plan']);
 
         $charge = new Charge();
 
@@ -81,6 +87,12 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+
+
+    
+
+
 
     public function actionRemoveCc()
     {
@@ -168,6 +180,32 @@ class UserController extends Controller
             'model' => $model,
         ]);
     }
+
+
+
+
+    public function actionSelectPlan()
+    {
+
+        $model = User::findOne(Yii::$app->user->identity->id);
+
+        $model->membership_type = Yii::$app->request->get('type');
+        $model->cc_token = Yii::$app->request->post('stripeToken');
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            
+            if($model->charge() && $model->save()) {
+                return $this->redirect(['/user/account']);
+            }
+            
+        }
+
+        return $this->render('select-plan', [
+            'model' => $model
+        ]);
+
+    }
+
 
 
 

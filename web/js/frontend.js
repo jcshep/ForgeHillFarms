@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 		var membership = $(this).data('membership-type');
 
-		console.log(membership);
+		// console.log(membership);
 
 		$(this).addClass('checked');
 		$('.membership-selection .modal-radio').not(this).removeClass('checked');

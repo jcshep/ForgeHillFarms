@@ -6,6 +6,9 @@
 
 	  		var membership = $('.modal-radio.checked').data('membership-type');
 
+	  		console.log('test');
+	  		console.log(membership);
+	  		
 	  		if(membership == 'half' || membership == 'full') {
 
 			    // Disable the submit button to prevent repeated clicks

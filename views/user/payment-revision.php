@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Project */
 
-$this->title = 'Register for the 2018 Season';
+$this->title = 'Register for the 2019 Season';
 // $this->params['breadcrumbs'][] = ['label' => 'Projects', 'url' => ['index']];
 // $this->params['breadcrumbs'][] = $this->title;
 
