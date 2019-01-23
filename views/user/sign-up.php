@@ -84,21 +84,21 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
                                 			case 'full': # code... break;
 											$return .= '<h3>' . ucwords($label) . '</h3>';
 	                                    	$return .= '<p>Suitable for a family of four or more.</p>';
-	                                    	$return .= '<h3>$650 SHARE</h3>';
+	                                    	$return .= '<h3>$'.Page::renderBlock('option-1-price').'</h3>';
                                 		}
 
                                 		switch ($value) {
                                 			case 'half': # code... break;
 											$return .= '<h3>' . ucwords($label) . '</h3>';
 	                                    	$return .= '<p>Suitable for an individual or a couple</p>';
-	                                    	$return .= '<h3>$375 SHARE</h3>';
+	                                    	$return .= '<h3>$'.Page::renderBlock('option-2-price').'</h3>';
                                 		}
 
                                 		switch ($value) {
                                 			case 'free': # code... break;
 											$return .= '<h3>' . ucwords($label) . '</h3>';
 	                                    	$return .= '<p>Purchase share boxes individually</p>';
-	                                    	$return .= '<h3><small>FULL SHARE</small> $32 <br> <small>HALF SHARE</small> $18</h3>';
+	                                    	$return .= '<h3><small>FULL SHARE</small> $'.Page::renderBlock('full-share-week-price').' <br> <small>HALF SHARE</small> $'.Page::renderBlock('half-share-week-price').'</h3>';
                                 		}
 
 	                                    
