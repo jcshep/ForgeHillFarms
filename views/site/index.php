@@ -57,7 +57,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 											<?= Page::editBlock('option-1','text','Edit Plan Name', 'top', 'share-box-selection'); ?>
 											<h2><?= Page::renderBlock('option-1'); ?></h2>
 										</div> <!--col-->
-										<div class="col-sm-4 text-right">$650</div> <!--col-->
+										<div class="col-sm-4 text-right">$<?= Page::editBlock('option-1-price','text','Edit Plan Price', 'top', 'share-box-selection'); ?><?= Page::renderBlock('option-1-price'); ?></div> <!--col-->
 									</div> <!--row-->
 
 									<span class="spacer"></span>
@@ -84,7 +84,7 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 											<?= Page::editBlock('option-2','text','Edit Plan Name', 'bottom', 'share-box-selection'); ?>
 											<h2><?= Page::renderBlock('option-2'); ?></h2>
 										</div> <!--col-->
-										<div class="col-sm-4 text-right">$375</div> <!--col-->
+										<div class="col-sm-4 text-right">$<?= Page::editBlock('option-2-price','text','Edit Plan Price', 'top', 'share-box-selection'); ?><?= Page::renderBlock('option-2-price'); ?></div> <!--col-->
 									</div> <!--row-->
 
 									<span class="spacer"></span>
@@ -113,8 +113,8 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 									<h2><?= Page::renderBlock('option-3'); ?></h2>
 								</div> <!--col-->
 								<div class="col-sm-6 text-right pricing">
-									<small>FULL SHARE</small> $32<br>
-									<small>HALF SHARE</small> $18
+									<small>FULL SHARE</small> $<?= Page::editBlock('full-share-week-price','text','Edit Plan Price', 'right', 'share-box-selection'); ?><?= Page::renderBlock('full-share-week-price'); ?><br>
+									<small>HALF SHARE</small> $<?= Page::editBlock('half-share-week-price','text','Edit Plan Price', 'bottom right', 'share-box-selection'); ?><?= Page::renderBlock('half-share-week-price'); ?>
 								</div> <!--col-->
 							</div> <!--row-->
 

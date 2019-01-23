@@ -132,9 +132,10 @@ $(document).ready(function() {
 		$("input[type=radio]."+size).prop("checked", true);
 
 		if(size=="half") {
-			$(".charge-amount").val(18);	
+			$(".charge-amount").val(parseInt($('#half-value').html()));
+
 		} else {
-			$(".charge-amount").val(32);	
+			$(".charge-amount").val(parseInt($('#full-value').html()));	
 		}
 		
 

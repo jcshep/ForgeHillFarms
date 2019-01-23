@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\Security;
 use yii\web\IdentityInterface;
 use kartik\password\StrengthValidator;
+use app\models\Page;
 
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -118,9 +119,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
         \Stripe\Stripe::setApiKey(Yii::$app->params['stripeSecretKey']);
 
+        if ($this->membership_type == 'full') {
+            $price = Page::renderBlock('option-1-price') * 100;
+        } else {
+            $price = Page::renderBlock('option-2-price') * 100;
+        }
+
         try {
             $response = \Stripe\Charge::create(array(
-              "amount" => $this->membership_type == 'full' ? 65000 : 37500,
+              "amount" => $price,
               "currency" => "usd",
               "source" => $this->cc_token, // obtained with Stripe.js
               "description" => "Charge for ".$this->fname." ".$this->lname

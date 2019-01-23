@@ -3,6 +3,7 @@
 use app\models\ProductWeek;
 use app\models\Setting;
 use yii\widgets\ActiveForm;
+use app\models\Page;
 
 $membership_type = Yii::$app->user->identity->membership_type;
 
@@ -79,16 +80,16 @@ if($membership_type == 'free') {
 								<h3 class="text-center">Select share size</h3>
 
 								<?php if (Setting::findOne(['setting'=>'full-boxes-available'])->value == 0): ?>
-									<a href="" data-size="full" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Full $32 - Sold Out</a>
+									<a href="" data-size="full" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Full $<?= Page::renderBlock('full-share-week-price'); ?> - Sold Out</a>
 								<?php else: ?>
-									<a href="" data-size="full" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Full $32</a>
+									<a href="" data-size="full" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Full $<span id="full-value"><?= Page::renderBlock('full-share-week-price'); ?></span></a>
 								<?php endif ?>
 
 
 								<?php if (Setting::findOne(['setting'=>'half-boxes-available'])->value == 0): ?>
-									<a href="" data-size="half" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Half $18 - Sold Out</a>
+									<a href="" data-size="half" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Half $<?= Page::renderBlock('half-share-week-price'); ?> - Sold Out</a>
 								<?php else: ?>
-									<a href="" data-size="half" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Half $18</a>
+									<a href="" data-size="half" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Half $<span id="half-value"><?= Page::renderBlock('half-share-week-price'); ?></span></a>
 								<?php endif ?>
 									
 
