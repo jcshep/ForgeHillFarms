@@ -246,7 +246,7 @@ class AdminController extends Controller
                 Yii::$app->session->setFlash('success','Email Saved');
                 $model->status = 'saved';
                 $model->save();
-                return $this->redirect(Yii::$app->request->referrer);
+                return $this->redirect(['admin/email-generator', 'id'=>$model->id]);
             }
 
             if (Yii::$app->request->post('scheduled')) { 

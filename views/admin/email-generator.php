@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = 'Update';
 		            <?php 
 						if($model->send_to) $model->send_to = json_decode($model->send_to);
 						echo $form->field($model, 'send_to')->checkboxList(
-							['full' => 'Full Members', 'half' => 'Half Members', 'free' => 'Free Members (Buyers Club)', 'newsletter' => 'Newsletter']
+							['all' => 'All', 'full' => 'Full Members', 'half' => 'Half Members', 'free' => 'Free Members (Buyers Club)', 'newsletter' => 'Newsletter']
 				   		);
 				   	?>
 					<div class="spacer30"></div>

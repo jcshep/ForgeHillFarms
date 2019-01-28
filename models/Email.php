@@ -66,10 +66,17 @@ class Email extends \yii\db\ActiveRecord
     {
 
         $users = User::find()->select('email')->where(['membership_type'=>$this->send_to])->asArray()->all();
-
+        
+        if(in_array('all', $this->send_to)) 
+             $users = User::find()->select(['email'])->asArray()->all();
 
         if($test)
             $users = array(['email'=>$this->test_email]);
+
+        // echo '<pre>';
+        // var_dump($users);
+        // echo '</pre>';
+        // die();
 
         $subject = 'Forge Hill Farms | Weekly Pickup Notification';
 
