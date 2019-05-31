@@ -45,7 +45,11 @@ if($membership_type == 'free') {
 				<div class="box">
 					<span class="membership-type">Membership Level: <strong><?= $membership_type ?></strong></span>
 					<div class="inner">
+
+						<p>Please check back when season begins to select your pickup day.</p>
 						
+
+						<?php /* 
 						<?php if ($pickup && $membership_type == 'free'): ?>
 							<div class="spacer30"></div>
 							<h3 class="text-center">Confirmed</h3>
@@ -57,7 +61,8 @@ if($membership_type == 'free') {
 						<h3 class="text-center">Select your pickup day</h3>
 
 						<div id="pickup-selection">
-
+							
+							
 							<?php $form = ActiveForm::begin(['action'=>'/user/set-pickup', 'id'=> $membership_type == 'free' && !$user->stripe_last_4 ? 'payment-form' : 'pickup-form']); ?>
 
 							<!-- <form action="/user/set-pickup" method="POST" <?php if ($membership_type == 'free'): ?>id="payment-form"<?php endif; ?>> -->
@@ -191,10 +196,12 @@ if($membership_type == 'free') {
 							<?php endif; ?>
 
 							<?php ActiveForm::end(); ?>
+
 						</div>
 
 						
 						<?php endif //End if user is free / already purchased ?>	
+						*/ ?>
 					</div> <!-- inner -->		
 				</div>
 			</div> <!--col-->
