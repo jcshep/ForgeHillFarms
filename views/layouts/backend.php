@@ -91,6 +91,11 @@ BackendAsset::register($this);
                                 ]
                             ],
 
+                            ['label' => 'Newsletter Signups', 
+                                'options'=>['class'=>'dropdown'],
+                                'url' => ['/admin/newsletter-list'],
+                            ],
+
                             ['label' => 'Emails', 
                                 'url' => ['admin/emails'],
                                 'options'=>['class'=>'dropdown'],

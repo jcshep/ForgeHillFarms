@@ -338,10 +338,13 @@ class UserController extends Controller
 
         if(Yii::$app->request->post('id')) {
             $model = Pickup::findOne(Yii::$app->request->post('id'));
+            $new_model = false;
+            $previous_day = $model->day;
         } else {
             $model = new Pickup();
             $model->user_id = Yii::$app->user->identity->id;
             $model->week = AppHelper::getCurrentWeekDates()['start'];
+            $new_model = true;
         }
 
         // If user is free member
@@ -383,20 +386,32 @@ class UserController extends Controller
 
         // Save pickup time
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             Yii::$app->session->setFlash('success','Your pickup day has been saved.');
 
-            // If successful, deduct an available corresponding box
-            if($model->size == 'half') {
-                $half_boxes_available = Setting::findOne(['setting'=>'half-boxes-available']);
-                $half_boxes_available->value = ($half_boxes_available->value - 1);
-                $half_boxes_available->save();
+            // Only do incrementation on new pickup
+            if($new_model && $model->day != 'opt-out') {
+                // If successful, deduct an available corresponding box
+                $boxes_available = Setting::findOne(['setting'=>$model->size.'-boxes-available']);
+                $boxes_available->value = ($boxes_available->value - 1);
+                $boxes_available->save();
             }
 
-            if($model->size == 'full') {
-                $full_boxes_available = Setting::findOne(['setting'=>'full-boxes-available']);
-                $full_boxes_available->value = ($full_boxes_available->value - 1);
-                $full_boxes_available->save();
+            // Check if CHANGING TOO opting out and increase by 1
+            if(!$new_model && $previous_day != 'opt-out' && $model->day == 'opt-out') {
+                $boxes_available = Setting::findOne(['setting'=>$model->size.'-boxes-available']);
+                $boxes_available->value = ($boxes_available->value + 1);
+                $boxes_available->save();
             }
+
+
+            // Check if previously selected opt-out, then changed to day
+            if(!$new_model && $previous_day == 'opt-out' && $model->day != 'opt-out') {
+                $boxes_available = Setting::findOne(['setting'=>$model->size.'-boxes-available']);
+                $boxes_available->value = ($boxes_available->value - 1);
+                $boxes_available->save();
+            }
+
 
         } 
 

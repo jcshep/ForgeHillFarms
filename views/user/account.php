@@ -46,10 +46,10 @@ if($membership_type == 'free') {
 					<span class="membership-type">Membership Level: <strong><?= $membership_type ?></strong></span>
 					<div class="inner">
 
-						<p>Please check back when season begins to select your pickup day.</p>
+						<!-- <p>Please check back when season begins to select your pickup day.</p> -->
 						
 
-						<?php /* 
+						
 						<?php if ($pickup && $membership_type == 'free'): ?>
 							<div class="spacer30"></div>
 							<h3 class="text-center">Confirmed</h3>
@@ -201,7 +201,7 @@ if($membership_type == 'free') {
 
 						
 						<?php endif //End if user is free / already purchased ?>	
-						*/ ?>
+						
 					</div> <!-- inner -->		
 				</div>
 			</div> <!--col-->

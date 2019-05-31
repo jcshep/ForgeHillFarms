@@ -19,6 +19,8 @@
 	<div class="border"></div>
 	<div class="spacer30"></div>
 
+	<h3>Newsletter</h3>
+
 	<form id="newsletter-signup" method="POST">
 		<h3>Sign Up For Updates</h3>
 

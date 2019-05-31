@@ -9,6 +9,7 @@ use app\models\LoginForm;
 use app\models\Product;
 use app\models\Charge;
 use app\models\SearchProduct;
+use app\models\SearchNewsletter;
 use app\models\ProductWeek;
 use app\models\SearchProductWeek;
 use app\models\SearchEmail;
@@ -29,7 +30,7 @@ class AdminController extends Controller
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
-                    [   'actions' => ['index','users','user-view','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc'],
+                    [   'actions' => ['index','users','user-view','newsletter-list','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() {
@@ -80,6 +81,18 @@ class AdminController extends Controller
     }
 
 
+    public function actionNewsletterList()
+    {
+        $searchModel = new SearchNewsletter();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('newsletter-list', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
     public function actionUsers()
     {
         $searchModel = new SearchUser();
@@ -90,6 +103,10 @@ class AdminController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+
+
+
 
     public function actionUserView($id)
     {
@@ -201,6 +218,8 @@ class AdminController extends Controller
 
     }
 
+
+
     public function actionRemoveProduct($id)
     {
         ProductWeek::findOne($id)->delete();
@@ -285,6 +304,8 @@ class AdminController extends Controller
         $searchModel = new SearchEmail();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+
+
         return $this->render('emails', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -301,6 +322,40 @@ class AdminController extends Controller
         return $this->renderPartial('/mail/email-template', [
             'model'=>$model
         ]);
+
+    }
+
+
+    public function actionRemoveEmail($id)
+    {
+        Email::findOne($id)->delete();
+        Yii::$app->session->setFlash('error','Email Deleted');
+        return $this->redirect(Yii::$app->request->referrer);
+
+    }
+
+
+    public function actionDuplicateEmail($id)
+    {
+        $original = Email::findOne($id);
+
+        $new = new Email;
+        $new->type = $original->type;
+        $new->status = $original->status;
+        $new->content_area_1 = $original->content_area_1;
+        $new->content_area_2 = $original->content_area_2;
+        $new->content_area_3 = $original->content_area_3;
+        $new->created = $original->created;
+        $new->send_to = $original->send_to;
+
+        if ($new->save()) {
+            Yii::$app->session->setFlash('success','Email Duplicated');
+        } else {
+            Yii::$app->session->setFlash('error','Email Not Saved');
+        }
+        
+        
+        return $this->redirect('/admin/emails');
 
     }
 

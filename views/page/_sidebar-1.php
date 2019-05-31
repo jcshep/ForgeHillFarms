@@ -19,6 +19,7 @@
 		<div class="border"></div>
 		<div class="spacer30"></div>
 		
+		<h3>Sign Up For Updates</h3>
 		<form id="newsletter-signup" method="POST">
 			<div class="alert alert-success static">Thank You! Your email has been added.</div>
 			

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Email;
+use app\models\Newsletter;
 
 /**
- * SearchEmail represents the model behind the search form of `app\models\Email`.
+ * SearchNewsletter represents the model behind the search form of `app\models\Newsletter`.
  */
-class SearchEmail extends Email
+class SearchNewsletter extends Newsletter
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class SearchEmail extends Email
     public function rules()
     {
         return [
-            [['id', 'send_date', 'created'], 'integer'],
-            [['type', 'content_area_1', 'content_area_2', 'content_area_3', 'send_to'], 'safe'],
+            [['id'], 'integer'],
+            [['email', 'name'], 'safe'],
         ];
     }
 
@@ -41,13 +41,12 @@ class SearchEmail extends Email
      */
     public function search($params)
     {
-        $query = Email::find();
+        $query = Newsletter::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> ['defaultOrder' => ['created'=>SORT_DESC]]
         ]);
 
         $this->load($params);
@@ -61,15 +60,10 @@ class SearchEmail extends Email
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'send_date' => $this->send_date,
-            'created' => $this->created,
         ]);
 
-        $query->andFilterWhere(['like', 'type', $this->type])
-            ->andFilterWhere(['like', 'content_area_1', $this->content_area_1])
-            ->andFilterWhere(['like', 'content_area_2', $this->content_area_2])
-            ->andFilterWhere(['like', 'content_area_3', $this->content_area_3])
-            ->andFilterWhere(['like', 'send_to', $this->send_to]);
+        $query->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

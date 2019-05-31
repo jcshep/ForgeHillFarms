@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<div class="row">
 		<div class="col-sm-5">
-			<h3>All Products</h3>
+			<h3>Products</h3>
 			
 			<?= $this->render('_product-add.php',[
 					'dataProvider'=>$productDataProvider,
@@ -60,7 +60,38 @@ $this->params['breadcrumbs'][] = $this->title;
 
 		<div class="col-sm-6 col-sm-offset-1">
 			<div class="well">
-				<h3>Available This Week</h3>
+				<h3>Products Available This Week</h3>
+
+				<?= GridView::widget([
+				    'dataProvider' => $productWeekDataProvider,
+				    // 'filterModel' => $searchProductWeek,
+				    'layout'=>"{items}\n{pager}",
+				    'tableOptions' => ['class' => 'table table-condensed'],
+				    'columns' => [
+				        [
+				        	'attribute' => 'product.name',
+				        	'label' => false,
+				        ],  	
+				        ['class' => 'yii\grid\ActionColumn',
+				                                'headerOptions' => ['width' => '25'],
+				                                'template' => '{delete}',
+				                                'buttons'=>[
+				                                    'delete' => function ($url, $model) {     
+				                                         return Html::a('<i class="fa fa-close"></i>', ['remove-product', 'id' => $model->id], [
+				                                         	'class' => 'text-danger',
+				                                         	'data' => [
+				                                         		'confirm' => 'Are you sure you want to remove this product from the weekly listing?',
+				                                         		'method' => 'post',
+				                                         	]]);
+				                                     },				                                     
+				                                ], 
+				                ],
+				    ],
+				]); ?>
+			</div>
+
+			<div class="well">
+				<h3>Addons Available This Week</h3>
 
 				<?= GridView::widget([
 				    'dataProvider' => $productWeekDataProvider,
