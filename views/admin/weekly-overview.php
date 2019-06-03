@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<h3>Addons Available This Week</h3>
 
 				<?= GridView::widget([
-				    'dataProvider' => $productWeekDataProvider,
+				    'dataProvider' => $addonWeekDataProvider,
 				    // 'filterModel' => $searchProductWeek,
 				    'layout'=>"{items}\n{pager}",
 				    'tableOptions' => ['class' => 'table table-condensed'],

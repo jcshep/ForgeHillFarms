@@ -191,7 +191,14 @@ class AdminController extends Controller
         $productWeekDataProvider = $searchProductWeek->search(
                                                             Yii::$app->request->queryParams, 
                                                             AppHelper::getCurrentWeekDates()['start'],
-                                                            AppHelper::getCurrentWeekDates()['end']
+                                                            AppHelper::getCurrentWeekDates()['end'],
+                                                            'product'
+                                                        );
+        $addonWeekDataProvider = $searchProductWeek->search(
+                                                            Yii::$app->request->queryParams, 
+                                                            AppHelper::getCurrentWeekDates()['start'],
+                                                            AppHelper::getCurrentWeekDates()['end'],
+                                                            'addon'
                                                         );
 
         if ($product->load(Yii::$app->request->post()) && $product->save()) {
@@ -206,6 +213,7 @@ class AdminController extends Controller
             'addonDataProvider' => $addonDataProvider,
             'searchProductWeek' => $searchProductWeek,
             'productWeekDataProvider' => $productWeekDataProvider,
+            'addonWeekDataProvider' => $addonWeekDataProvider,
         ]);
     }
 

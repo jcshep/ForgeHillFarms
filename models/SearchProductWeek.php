@@ -38,9 +38,12 @@ class SearchProductWeek extends ProductWeek
      *
      * @return ActiveDataProvider
      */
-    public function search($params, $week_start, $week_end)
+    public function search($params, $week_start, $week_end, $type = NULL)
     {
-        $query = ProductWeek::find();
+        $query = ProductWeek::find()->joinWith('product');
+
+        if($type)
+            $query->where(['product.type'=>$type]);
 
         // add conditions that should always apply here
 
