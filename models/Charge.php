@@ -66,7 +66,7 @@ class Charge extends \yii\db\ActiveRecord
 
         if(isset($customer->id)) {
             $this->user->stripe_id = $customer->id;
-            $this->user->stripe_last_4 =$customer->sources->data[0]->last4;
+            $this->user->stripe_last_4 = $customer->sources->data[0]->last4;
             $this->user->save();
 
             return true;
