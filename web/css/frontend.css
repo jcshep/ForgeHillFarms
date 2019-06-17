@@ -175,6 +175,9 @@ a:hover {color: #B93A26}
 #account h4 {margin: 0 auto; padding: 0 0 10px; line-height: 20px;}
 #account h4 span {font-size: 11px; text-transform: uppercase; padding-left: 20px; color: #5cb85c}
 #account .btn.disabled {color: #777; border-color: #777;}
+#account .add-ons label {line-height: 20px;}
+#account .add-ons label {border-bottom: 1px dashed #DDD9CD;}
+#account #content h3 {color: #174375 !important}
 
 #pickup-selection .btn {position: relative;}
 #pickup-selection .btn.active {background: #9A1F0D; color: #FFF}
@@ -184,15 +187,18 @@ a:hover {color: #B93A26}
 #pickup-selection input[type="submit"] {text-align: center; border: 1px solid #174375; padding: 0 20px}
 #pickup-selection input[type="submit"]:hover {background: #174375; color: #FFF}
 #pickup-selection input[type="checkbox"] {border: 1px solid #174375; border-radius: 0; margin: 0 0 5px;}
-#pickup-selection label {display: block; text-align: center;}
+
+#pickup-selection label {display: block; text-align: left;}
+
 #pickup-selection .btn.btn-danger {border: 1px solid #B93A26; background: transparent; color: #B93A26; font-size: 11px; letter-spacing: 2px;}
 #pickup-selection .modal-content {border-radius: 0px }
 #pickup-selection .modal-content {background: #FEF8EB;}
-#pickup-selection .charge-amount {border: none; width: 40px; text-align: left; font-size: 24px; line-height: 15px; font-weight: 900; margin: 0; padding: 0;}
+#pickup-selection .charge-amount {border: none; width:100px; text-align: left; font-size: 24px; line-height: 15px; font-weight: 900; margin: 0; padding: 0; pointer-events: none;}
 #pickup-selection .modal-content .save-cc label {line-height: 40px; text-align: left;}
 #pickup-selection .modal-content .saved-cc {font-size: 25px;}
 #pickup-selection .modal-content .remove-card {line-height: 40px; font-size: 11px; text-align: left; display: block; text-transform: uppercase; letter-spacing: 0.4px}
 #pickup-selection .modal-content .saved-cc span {opacity: 0.8; font-size: 16px;}
+#pickup-selection .description {font-family: 'Roboto Mono', monospace; font-size: 11px; letter-spacing: 0; color: #777}
 
 .payment-errors {color: #B93A26;}
 

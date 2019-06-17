@@ -13,11 +13,25 @@ use yii\widgets\ActiveForm;
     'filterModel' => $searchProduct,
     'layout'=>"{items}\n{pager}",
     'tableOptions' => ['class' => 'table table-striped table-condensed'],
+    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => ''],
     'columns' => [
         [
         	'attribute' => 'name',
         	'label' => false,
         ],  	
+        [
+            'headerOptions' => ['width' => '70'],                
+            'label' => false,
+            'attribute' => 'allow_prepayment',
+            'format' => 'html',    
+            'value' => function ($data) {
+                if($data->allow_prepayment == 1 && $data->price) {
+                    return '<div class="text-success purchasable"><i class="fa fa-credit-card"></i> $'. $data->getPrice() .'</div>';
+                } elseif ($data->price){
+                    return '<div class="purchasable">$'.$data->getPrice().'</div>';
+                }                
+            },
+        ],
         ['class' => 'yii\grid\ActionColumn',
                                 'headerOptions' => ['width' => '75'],
                                 'template' => '{delete} {view}',
@@ -55,10 +69,21 @@ use yii\widgets\ActiveForm;
 					<?php echo $form->errorSummary($product); ?>
 
 					<?= $form->field($product, 'name')->textInput(['maxlength' => true])->label('Product Name') ?>
-
-                    <?= $form->field($product, 'description')->textInput(['maxlength' => true])->label('Pricing') ?>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?= $form->field($product, 'price')->textInput(['maxlength' => true])->label('Pricing') ?>
+                        </div> <!--col-->
+                        <div class="col-md-6">
+                            <label for="">&nbsp;</label>
+                            <?= $form->field($product, 'allow_prepayment')->checkbox(); ?>
+                        </div> <!--col-->
+                    </div> <!--row-->
+                    
 					
 					<?= $form->field($product, 'type')->hiddenInput(['value' => $type])->label(false) ?>
+
+                    
 
 				
 			</div>

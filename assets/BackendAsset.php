@@ -20,13 +20,13 @@ class BackendAsset extends AssetBundle
     public $css = [        
         'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',        
         'js/trumbo/ui/trumbowyg.min.css',
-        'css/backend.css',
+        'css/backend.css?cache=1',
     ];
     public $js = [
         'js/trumbo/plugins/cleanpaste/trumbowyg.cleanpaste.min.js',
         'js/trumbo/trumbowyg.min.js',
 
-        'js/backend.js',
+        'js/backend.js?cache=1',
     ];
     public $depends = [
         'yii\web\YiiAsset',

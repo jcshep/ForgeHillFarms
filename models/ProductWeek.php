@@ -100,4 +100,23 @@ class ProductWeek extends \yii\db\ActiveRecord
         return $products;
     }
 
+    public static function getWeeklyAddonsNonpayment() {
+        $week = AppHelper::getCurrentWeekDates();        
+        $products = ProductWeek::find()->joinWith(['product'])
+                        ->where(['week_start' => $week['start'], 'product.type' =>'addon'])
+                        ->andWhere(['product.allow_prepayment' => null])
+                        ->all();
+        return $products;
+    }
+
+
+    public static function getWeeklyAddonsPaid() {
+        $week = AppHelper::getCurrentWeekDates();        
+        $products = ProductWeek::find()->joinWith(['product'])
+                        ->where(['week_start' => $week['start'], 'product.type' =>'addon'])
+                        ->andWhere(['not', ['product.allow_prepayment' => null]])
+                        ->all();
+        return $products;
+    }
+
 }

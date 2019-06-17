@@ -11,6 +11,10 @@ if($membership_type == 'free') {
 	$this->registerJsFile('https://js.stripe.com/v2/');
 	$this->registerJs("Stripe.setPublishableKey('".Yii::$app->params['stripePublishableKey']."');",  yii\web\View::POS_END);
 	$this->registerJsFile('/js/manual-payment-form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+} else {
+	$this->registerJsFile('https://js.stripe.com/v2/');
+	$this->registerJs("Stripe.setPublishableKey('".Yii::$app->params['stripePublishableKey']."');",  yii\web\View::POS_END);
+	$this->registerJsFile('/js/member-addon-payment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 }
 
 ?>
@@ -53,7 +57,7 @@ if($membership_type == 'free') {
 						<?php if ($pickup && $membership_type == 'free'): ?>
 							<div class="spacer30"></div>
 							<h3 class="text-center">Confirmed</h3>
-							<center>You have purchased a <?= $pickup->size ?> share pickup for <?= ucfirst($pickup->day) ?></center>
+							<center>Your purchase has been confirmed. Thank you!</center>
 							<div class="spacer30"></div>
 						<?php else: ?>
 						
@@ -113,24 +117,64 @@ if($membership_type == 'free') {
 							
 							<div class="spacer30"></div>
 							
-							<?php if(ProductWeek::getWeeklyAddons()): ?>	
+							<input type="hidden" name="Pickup[addons]" value="">
+
+							<?php if(ProductWeek::getWeeklyAddonsNonpayment()): ?>	
 
 
 								<div class="text-center add-ons">
-									<label>I'm Interested in the following Add Ons</label>
-									<div class="spacer15"></div>
-									<input type="hidden" name="Pickup[addons]" value="">
-									<?php  foreach (ProductWeek::getWeeklyAddons() as $addon): ?>
+									<h3>Reserve Addons</h3>
+									
+									<?php foreach (ProductWeek::getWeeklyAddonsNonpayment() as $addon): ?>
 										
 										<label>
 											<input type="checkbox" name="Pickup[addons][]" value="<?= $addon->product->name; ?>" <?php if($addons && in_array($addon->product->name, $addons)){echo 'checked';} ?>>
 											<?= $addon->product->name; ?>
+											<?php if ($addon->product->price): ?>
+												<span class="pull-right">$<?= $addon->product->getPrice(); ?></span>	
+											<?php endif ?>
+											
 										</label>
 									
 									<?php endforeach; ?>
-								<div class="spacer15"></div>
+									
+									<div class="spacer15"></div>
+									<div class="description">
+										Reserved addons are not guaranteed but will help us in estimating the demand so we can be prepared.
+									</div>
+									<div class="spacer30"></div>
 								</div>
+
+
 							<?php endif;  ?>
+
+
+
+
+
+							<?php if(ProductWeek::getWeeklyAddonsPaid()): ?>	
+
+
+								<div class="text-center add-ons purchase">
+									<h3>Purchase AddOns</h3>
+
+									<?php foreach (ProductWeek::getWeeklyAddonsPaid() as $addon): ?>
+										
+										<label>
+											<input class="purchaseble-add-on" data-price="<?= $addon->product->price; ?>" type="checkbox" name="Pickup[addons][]" value="<?= $addon->product->name; ?>" <?php if($addons && in_array($addon->product->name, $addons)){echo 'checked';} ?>>
+											<?= $addon->product->name; ?>
+											<span class="pull-right">$<?= $addon->product->getPrice(); ?></span>
+										</label>
+									
+									<?php endforeach; ?>
+									<div class="spacer30"></div>
+								</div>
+
+								
+							<?php endif;  ?>
+
+
+
 							
 							<?php if($pickup) : ?>
 								<input type="hidden" name="id" value="<?= $pickup->id ?>">								
@@ -141,8 +185,19 @@ if($membership_type == 'free') {
 
 							<?php if ($membership_type != 'free'): ?>
 								
-								<input type="submit" name="confirm" value="Confirm" class="btn btn-block btn-primary">
-							
+								<input type="submit" name="confirm" value="Confirm" class="btn btn-block btn-primary btn-submit">
+
+								<a data-toggle="modal" data-target="#modal-pay" class="btn btn-block btn-secondary hidden" id="addon-modal">Purchase AddOns & Confirm</a>
+								
+								<?php  
+									echo $this->render('/user/_addon-payment', [
+										'charge'=>$charge,
+										'form'=>$form]
+									); 
+								?>
+				
+
+
 							<?php else: ?>
 								
 								<input type="hidden" name="membership-type" value="<?= $membership_type ?>">

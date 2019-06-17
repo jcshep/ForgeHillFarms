@@ -347,6 +347,8 @@ class UserController extends Controller
             $new_model = true;
         }
 
+
+
         // If user is free member
         if(Yii::$app->request->post('membership-type') == 'free') {
 
@@ -385,10 +387,51 @@ class UserController extends Controller
 
 
         // Save pickup time
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
-            Yii::$app->session->setFlash('success','Your pickup day has been saved.');
+            if (!$model->day) {
+                Yii::$app->session->setFlash('error','Please verify you selected a pickup day.');
+                return $this->redirect(['/user/account']);
+            }
+            
+            
 
+            // Charge (if necessary)
+            $charge = new Charge();
+            if ($charge->load(Yii::$app->request->post()) && $charge->amount && $charge->validate()) {
+                
+                $charge->cc_token = Yii::$app->request->post('stripeToken');
+                $charge->user_id = $user->id;
+
+                // Charge existing customer if they are saved
+                if($user->stripe_id) {
+                    $charge->scenario = 'saved_cc';
+                    if(!$charge->chargeCustomer()) {
+                        Yii::$app->session->setFlash('error','There was an issue charging your account. Please try again.');
+                        return $this->redirect(['/user/account']);
+                    }
+                }
+
+                //One time charge on new card
+                if(!$user->stripe_id) {
+                    $charge->scenario = 'new_cc';
+
+
+                    if(!$charge->singleCharge('Add On Purchase')) {
+                        Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
+                        return $this->redirect(['/user/account']);
+                    }
+                }
+
+                Yii::$app->session->setFlash('success','Your addons have been purchased.');
+            }
+            
+            if ($model->save()) 
+                Yii::$app->session->setFlash('success','Your pickup day has been saved.');
+
+
+
+            
             // Only do incrementation on new pickup
             if($new_model && $model->day != 'opt-out') {
                 // If successful, deduct an available corresponding box

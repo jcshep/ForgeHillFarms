@@ -103,7 +103,7 @@ class Charge extends \yii\db\ActiveRecord
 
 
 
-        $this->addError('cc', 'There was an error processing your card.');
+        $this->addError('cc', 'There was an error charging the card on your account.');
         return false;
     }
 

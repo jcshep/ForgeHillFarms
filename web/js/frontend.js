@@ -37,6 +37,28 @@ $(document).ready(function() {
 			return false;
 		}
 
+		var size = $('#pickup-selection .size.active').data('size');
+		var total;
+
+
+		if(size=="half") {
+			total = parseInt($('#half-value').html());
+		} else {
+			total = parseInt($('#full-value').html());
+		}
+
+		// Loop through addons
+		$('.purchaseble-add-on').each(function () {
+			if(this.checked) {
+				var addonPrice = $(this).data('price');
+				total = addonPrice + total;
+			}
+		});
+
+		
+		$(".charge-amount").val(total.toFixed(2));
+		console.log(total.toFixed(2));
+
 	});
 
 
@@ -125,19 +147,32 @@ $(document).ready(function() {
 	// Account - Select Pickup Size
 	$("#pickup-selection .size").click(function() {
 		var size = $(this).data('size');
+		// var total;
 
 		$("#pickup-selection .size").not(this).removeClass('active');
 		$(this).addClass('active');
 		
 		$("input[type=radio]."+size).prop("checked", true);
 
-		if(size=="half") {
-			$(".charge-amount").val(parseInt($('#half-value').html()));
 
-		} else {
-			$(".charge-amount").val(parseInt($('#full-value').html()));	
-		}
+		// if(size=="half") {
+		// 	total = parseInt($('#half-value').html());
+
+		// } else {
+		// 	total = parseInt($('#half-value').html());
+		// }
+
+		// // Loop through addons
+		// $('.purchaseble-add-on').each(function () {
+		// 	if(this.checked) {
+		// 		var addonPrice = $(this).data('price');
+		// 		total = addonPrice + total;
+		// 	}
+		// });
 		
+
+		// console.log(total);
+		// $(".charge-amount").val(total);
 
 		return false;
 	});

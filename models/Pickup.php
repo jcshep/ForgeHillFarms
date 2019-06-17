@@ -64,9 +64,11 @@ class Pickup extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
+            
 
             if($this->addons && is_array($this->addons)) {                
                 $this->addons = json_encode($this->addons);
+
             } else {
                 $this->addons = NULL;
             }

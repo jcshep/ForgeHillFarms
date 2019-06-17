@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="spacer30"></div>
 
 	<div class="row">
-		<div class="col-sm-5">
+		<div class="col-sm-6">
 			<h3>Products</h3>
 			
 			<?= $this->render('_product-add.php',[
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<div class="spacer60"></div>
 
 
-			<h3>Add On Items</h3>
+			<h3>Addon Items</h3>
 			<?= $this->render('_product-add.php',[
 					'dataProvider'=>$addonDataProvider,
 					'searchProduct'=>$searchProduct,
@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 		</div> <!--col-->
 
-		<div class="col-sm-6 col-sm-offset-1">
+		<div class="col-sm-5 col-sm-offset-1">
 			<div class="well">
 				<h3>Products Available This Week</h3>
 
@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<?= GridView::widget([
 				    'dataProvider' => $addonWeekDataProvider,
-				    // 'filterModel' => $searchProductWeek,
+				    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => ''],
 				    'layout'=>"{items}\n{pager}",
 				    'tableOptions' => ['class' => 'table table-condensed'],
 				    'columns' => [
@@ -103,6 +103,19 @@ $this->params['breadcrumbs'][] = $this->title;
 				        	'attribute' => 'product.name',
 				        	'label' => false,
 				        ],  	
+				        [
+				            'headerOptions' => ['width' => '80'],                
+				            'label' => false,
+				            'attribute' => 'allow_prepayment',
+				            'format' => 'html',    
+				            'value' => function ($data) {
+				                if($data->product->allow_prepayment == 1 && $data->product->price) {
+				                    return '<div class="text-success purchasable"><i class="fa fa-credit-card"></i> $'. $data->product->getPrice() .'</div>';
+				                } elseif ($data->product->price){
+				                    return '<div class="purchasable">$'.$data->product->getPrice().'</div>';
+				                }                
+				            },
+				        ],
 				        ['class' => 'yii\grid\ActionColumn',
 				                                'headerOptions' => ['width' => '25'],
 				                                'template' => '{delete}',
