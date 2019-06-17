@@ -11,7 +11,9 @@ $(document).ready(function() {
 		if ($(".purchaseble-add-on:checkbox:checked").length > 0) {
 	    	$('#addon-modal').removeClass('hidden');
 	    	$('.btn-submit').addClass('hidden');	
-	    	doStripeStuff(); 
+
+	    	if($('.using-saved-cc').val() != 1)
+	    		doStripeStuff(); 
 
 		} else {
 		   $('#addon-modal').addClass('hidden');

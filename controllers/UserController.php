@@ -403,6 +403,12 @@ class UserController extends Controller
                 $charge->cc_token = Yii::$app->request->post('stripeToken');
                 $charge->user_id = $user->id;
 
+                // Save customer if new card
+                if($charge->save_cc) {
+                    $charge->createCustomer();
+                    $user->refresh();
+                }
+
                 // Charge existing customer if they are saved
                 if($user->stripe_id) {
                     $charge->scenario = 'saved_cc';

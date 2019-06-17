@@ -191,6 +191,7 @@ if($membership_type == 'free') {
 								
 								<?php  
 									echo $this->render('/user/_addon-payment', [
+										'user'=>$user,
 										'charge'=>$charge,
 										'form'=>$form]
 									); 
