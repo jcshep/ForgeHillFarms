@@ -104,7 +104,7 @@ class ProductWeek extends \yii\db\ActiveRecord
         $week = AppHelper::getCurrentWeekDates();        
         $products = ProductWeek::find()->joinWith(['product'])
                         ->where(['week_start' => $week['start'], 'product.type' =>'addon'])
-                        ->andWhere(['product.allow_prepayment' => null])
+                        ->andWhere(['product.allow_prepayment' => null, 'product.allow_prepayment' => 0])
                         ->all();
         return $products;
     }
@@ -115,6 +115,7 @@ class ProductWeek extends \yii\db\ActiveRecord
         $products = ProductWeek::find()->joinWith(['product'])
                         ->where(['week_start' => $week['start'], 'product.type' =>'addon'])
                         ->andWhere(['not', ['product.allow_prepayment' => null]])
+                        ->andWhere(['not', ['product.allow_prepayment' => 0]])
                         ->all();
         return $products;
     }
