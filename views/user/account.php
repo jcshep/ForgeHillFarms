@@ -66,8 +66,17 @@ if($membership_type == 'free') {
 
 						<div id="pickup-selection">
 							
+							<?php if ($membership_type == 'free' && !$user->stripe_id): ?>
+								<?php $form = ActiveForm::begin(['action'=>'/user/set-pickup', 'id'=> 'payment-form']); ?>	
+							<?php else: ?>
+								<?php $form = ActiveForm::begin(['action'=>'/user/set-pickup', 'id'=> 'pickup-form']); ?>	
+							<?php endif ?>
 							
-							<?php $form = ActiveForm::begin(['action'=>'/user/set-pickup', 'id'=> $membership_type == 'free' && !$user->stripe_last_4 ? 'payment-form' : 'pickup-form']); ?>
+							
+
+							
+
+
 
 							<!-- <form action="/user/set-pickup" method="POST" <?php if ($membership_type == 'free'): ?>id="payment-form"<?php endif; ?>> -->
 							

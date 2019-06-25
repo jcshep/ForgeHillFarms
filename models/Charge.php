@@ -77,7 +77,7 @@ class Charge extends \yii\db\ActiveRecord
 
 
 
-    public function chargeCustomer() {
+    public function chargeCustomer($description = "Manual Admin Charge") {
         
         \Stripe\Stripe::setApiKey(Yii::$app->params['stripeSecretKey']);
 
@@ -87,7 +87,7 @@ class Charge extends \yii\db\ActiveRecord
                 'customer' => $this->user->stripe_id,
                 "amount" => $this->amount * 100,
                 "currency" => "usd",
-                "description" => "Manual Admin Charge",
+                "description" => $description,
                 )
             );
 
@@ -113,7 +113,6 @@ class Charge extends \yii\db\ActiveRecord
 
         \Stripe\Stripe::setApiKey(Yii::$app->params['stripeSecretKey']);
 
-    
         try {
             $response = \Stripe\Charge::create(array(
               "amount" => $this->amount * 100,
@@ -147,6 +146,7 @@ class Charge extends \yii\db\ActiveRecord
             $error = $e->getMessage();
             $this->addError('cc',$error );
         }
+
 
         $this->addError('cc', 'There was an error processing your card.');
         return false;

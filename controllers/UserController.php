@@ -350,40 +350,42 @@ class UserController extends Controller
 
 
         // If user is free member
-        if(Yii::$app->request->post('membership-type') == 'free') {
+        // if(Yii::$app->request->post('membership-type') == 'free') {
 
-            $charge = new Charge();
-            $charge->cc_token = Yii::$app->request->post('stripeToken');
-            $charge->user_id = $user->id;
+        //     $charge = new Charge();
+        //     $charge->cc_token = Yii::$app->request->post('stripeToken');
+        //     $charge->user_id = $user->id;
 
-            if ($charge->load(Yii::$app->request->post()) && $charge->validate()) {
+        //     if ($charge->load(Yii::$app->request->post()) && $charge->validate()) {
 
-                // Save customer if new card
-                if($charge->save_cc) {
-                    $charge->createCustomer();
-                    $user->refresh();
-                }
+        //         // Save customer if new card
+        //         if($charge->save_cc) {
+        //             $charge->createCustomer();
+        //             $user->refresh();
+        //         }
 
-                // Charge existing customer if they are saved
-                if($user->stripe_id) {
-                    $charge->scenario = 'saved_cc';
-                    if(!$charge->chargeCustomer()) {
-                        Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
-                        return $this->redirect(Yii::$app->request->referrer);
-                    }
-                }
+        //         // Charge existing customer if they are saved
+        //         if($user->stripe_id) {
+        //             $charge->scenario = 'saved_cc';
+        //             if(!$charge->chargeCustomer()) {
+        //                 Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
+        //                 return $this->redirect(Yii::$app->request->referrer);
+        //             }
+        //         }
 
-                //One time charge on new card
-                if(!$user->stripe_id) {
-                    $charge->scenario = 'new_cc';
-                    if(!$charge->singleCharge('Buyers Club Purchase')) {
-                        Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
-                        return $this->redirect(Yii::$app->request->referrer);
-                    }
-                }
+        //         //One time charge on new card
+        //         if(!$user->stripe_id) {
+        //             $charge->scenario = 'new_cc';
+        //             if(!$charge->singleCharge('Buyers Club Purchase')) {
+        //                 Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
+        //                 return $this->redirect(Yii::$app->request->referrer);
+        //             }
+        //         }
 
-            }
-        }
+        //     }
+        // }
+        // End if user is free member
+
 
 
         // Save pickup time
@@ -393,8 +395,7 @@ class UserController extends Controller
                 Yii::$app->session->setFlash('error','Please verify you selected a pickup day.');
                 return $this->redirect(['/user/account']);
             }
-            
-            
+                        
 
             // Charge (if necessary)
             $charge = new Charge();
@@ -412,28 +413,39 @@ class UserController extends Controller
                 // Charge existing customer if they are saved
                 if($user->stripe_id) {
                     $charge->scenario = 'saved_cc';
-                    if(!$charge->chargeCustomer()) {
+
+                    $description = 'Add On Purchase';
+                    if(Yii::$app->request->post('membership-type') == 'free')
+                        $description = 'Buyers Club Purchase';
+
+                    if(!$charge->chargeCustomer($description)) {
                         Yii::$app->session->setFlash('error','There was an issue charging your account. Please try again.');
                         return $this->redirect(['/user/account']);
                     }
                 }
 
+
                 //One time charge on new card
                 if(!$user->stripe_id) {
                     $charge->scenario = 'new_cc';
 
+                    $description = 'Add On Purchase';
+                    if(Yii::$app->request->post('membership-type') == 'free')
+                        $description = 'Buyers Club Purchase';
 
-                    if(!$charge->singleCharge('Add On Purchase')) {
+                    if(!$charge->singleCharge($description)) {
                         Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
                         return $this->redirect(['/user/account']);
                     }
                 }
 
-                Yii::$app->session->setFlash('success','Your addons have been purchased.');
+                
             }
-            
+
+
+            // Save model
             if ($model->save()) 
-                Yii::$app->session->setFlash('success','Your pickup day has been saved.');
+                Yii::$app->session->setFlash('success','Your pickup has been saved.');
 
 
 
