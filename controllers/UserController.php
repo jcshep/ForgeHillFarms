@@ -395,6 +395,20 @@ class UserController extends Controller
                 Yii::$app->session->setFlash('error','Please verify you selected a pickup day.');
                 return $this->redirect(['/user/account']);
             }
+
+
+            if(Yii::$app->request->post('membership-type') == 'free' && !Yii::$app->request->post('Charge[amount]')) {
+                Yii::$app->session->setFlash('error','There was an issue charging your account. Please try again.');
+
+                Yii::$app->mailer->compose()
+                    ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
+                    ->setTo('john@sheppard.dev')
+                    ->setTextBody('Issue Charging Free Memeber: '.Yii::$app->user->identity->id)
+                    ->setSubject('Forge Hill Farms Error')
+                    ->send();
+
+                return $this->redirect(['/user/account']);
+            }
                         
 
             // Charge (if necessary)
@@ -440,13 +454,12 @@ class UserController extends Controller
                 }
 
                 
-            }
+            } //end if charged
 
 
             // Save model
             if ($model->save()) 
                 Yii::$app->session->setFlash('success','Your pickup has been saved.');
-
 
 
             
@@ -472,6 +485,7 @@ class UserController extends Controller
                 $boxes_available->value = ($boxes_available->value - 1);
                 $boxes_available->save();
             }
+            // End incrementations
 
 
         } 
