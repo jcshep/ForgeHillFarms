@@ -19,9 +19,14 @@
 		{
 			"folder_exclude_patterns":
 			[
-				"assets","feeds","images"
+				"assets",
+				"feeds",
+				"images"
 			],
 			"path": "web"
+		},
+		{
+			"path": "commands"
 		}
 	]
 }

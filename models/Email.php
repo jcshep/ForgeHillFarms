@@ -81,7 +81,7 @@ class Email extends \yii\db\ActiveRecord
         $subject = 'Forge Hill Farms | Weekly Pickup Notification';
 
         if($this->type == 'newsletter')
-            $subject = 'A message from Forge Hill Farms';
+            $subject = 'A Message From Forge Hill Farms';
 
         $messages = [];
 
