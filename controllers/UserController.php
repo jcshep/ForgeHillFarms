@@ -396,18 +396,24 @@ class UserController extends Controller
                 return $this->redirect(['/user/account']);
             }
 
+            $charge_amount = Yii::$app->request->post('Charge');
 
-            if(Yii::$app->request->post('membership-type') == 'free' && !Yii::$app->request->post('Charge[amount]')) {
-                Yii::$app->session->setFlash('error','There was an issue charging your account. Please try again.');
 
-                Yii::$app->mailer->compose()
-                    ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
-                    ->setTo('john@sheppard.dev')
-                    ->setTextBody('Issue Charging Free Memeber: '.Yii::$app->user->identity->id)
-                    ->setSubject('Forge Hill Farms Error')
-                    ->send();
 
-                return $this->redirect(['/user/account']);
+            if(Yii::$app->request->post('membership-type') == 'free') {
+                if (!isset($charge_amount['amount']) || $charge_amount['amount'] == '') {
+                
+                    Yii::$app->session->setFlash('error','There was an issue charging your account. Please try again.');
+
+                    Yii::$app->mailer->compose()
+                        ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
+                        ->setTo('john@sheppard.dev')
+                        ->setTextBody('Issue Charging Free Memeber: '.Yii::$app->user->identity->id)
+                        ->setSubject('Forge Hill Farms Error')
+                        ->send();
+
+                    return $this->redirect(['/user/account']);
+                }
             }
                         
 
