@@ -27,7 +27,7 @@ class FrontendAsset extends AssetBundle
     public $js = [
         'js/trumbo/trumbowyg.min.js',
         'js/trumbo/plugins/cleanpaste/trumbowyg.cleanpaste.min.js',
-        'js/frontend.js?cache=5',
+        'js/frontend.js?cache=10',
     ];
     public $depends = [
         'yii\web\YiiAsset',
