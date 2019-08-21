@@ -45,12 +45,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             ['class' => 'yii\grid\ActionColumn',
-                                    'headerOptions' => ['width' => '70'],
-                                    'template' => '{view}',
+                                    'headerOptions' => ['width' => '130'],
+                                    'template' => '{view} {delete}',
                                     'buttons'=>[
                                         // 'view' => function ($url, $model) {     
                                         //      return Html::a('<button class="btn btn-primary btn-xs">Update</button>', '/'.$model->slug);
                                         //  },
+                                        'delete' => function ($url, $model) {     
+                                                         return Html::a('<i class="fa fa-close text-danger"></i>', ['delete-user', 'id' => $model->id], [
+                                                            'class' => 'text-danger btn btn-default btn-sm',
+                                                            'data' => [
+                                                                'confirm' => 'Are you sure you want to remove this user?',
+                                                                'method' => 'post',
+                                                            ]]);
+                                                     }, 
                                          'view' => function ($url, $model) {     
                                              return Html::a('<button class="btn btn-default btn-sm">View User</button>', '/admin/user-view/'.$model->id);
                                          }
