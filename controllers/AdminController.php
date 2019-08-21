@@ -30,7 +30,7 @@ class AdminController extends Controller
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
-                    [   'actions' => ['index','users','user-view','newsletter-list','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email'],
+                    [   'actions' => ['index','users','user-view','newsletter-list','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() {
@@ -102,6 +102,18 @@ class AdminController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+
+    public function actionDeleteUser($id)
+    {
+        User::findOne($id)->delete();
+        Pickup::deleteAll(['user_id'=>$id]); 
+
+        Yii::$app->session->setFlash('error','User Deleted');
+        return $this->redirect(Yii::$app->request->referrer);
+
     }
 
 
@@ -216,6 +228,9 @@ class AdminController extends Controller
             'addonWeekDataProvider' => $addonWeekDataProvider,
         ]);
     }
+
+
+
 
 
     public function actionDeleteProduct($id)
