@@ -73,10 +73,13 @@ class Email extends \yii\db\ActiveRecord
         if($test)
             $users = array(['email'=>$this->test_email]);
 
+        // $users = array(['email'=>'jcshep@gmail.com']);
+        
         // echo '<pre>';
         // var_dump($users);
         // echo '</pre>';
         // die();
+
 
         $subject = 'Forge Hill Farms | Weekly Pickup Notification';
 
