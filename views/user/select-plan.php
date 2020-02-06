@@ -37,7 +37,7 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
 	
 			<div class="user-create">
 
-					<h2>Please select your plan for the 2019 season</h2>
+					<h2>Please select your plan for the 2020 season</h2>
 
 					<p>Your previous account information will stay the same.</p>
 
