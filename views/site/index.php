@@ -53,11 +53,11 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 							<div class="box">
 								<span class="inner">
 									<div class="row upper">
-										<div class="col-sm-8 editable text-uppercase">
+										<div class="col-sm-12 editable text-uppercase">
 											<?= Page::editBlock('option-1','text','Edit Plan Name', 'top', 'share-box-selection'); ?>
 											<h2><?= Page::renderBlock('option-1'); ?></h2>
 										</div> <!--col-->
-										<div class="col-sm-4 text-right">$<?= Page::editBlock('option-1-price','text','Edit Plan Price', 'top', 'share-box-selection'); ?><?= Page::renderBlock('option-1-price'); ?></div> <!--col-->
+										<div class="col-sm-12 text-right">$<?= Page::editBlock('option-1-price','text','Edit Plan Price', 'top', 'share-box-selection'); ?><?= Page::renderBlock('option-1-price'); ?></div> <!--col-->
 									</div> <!--row-->
 
 									<span class="spacer"></span>
@@ -80,11 +80,11 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 							<div class="box">
 								<span class="inner">
 									<div class="row upper">
-										<div class="col-sm-8 editable text-uppercase">
+										<div class="col-sm-12 editable text-uppercase">
 											<?= Page::editBlock('option-2','text','Edit Plan Name', 'bottom', 'share-box-selection'); ?>
 											<h2><?= Page::renderBlock('option-2'); ?></h2>
 										</div> <!--col-->
-										<div class="col-sm-4 text-right">$<?= Page::editBlock('option-2-price','text','Edit Plan Price', 'top', 'share-box-selection'); ?><?= Page::renderBlock('option-2-price'); ?></div> <!--col-->
+										<div class="col-sm-12 text-right">$<?= Page::editBlock('option-2-price','text','Edit Plan Price', 'top', 'share-box-selection'); ?><?= Page::renderBlock('option-2-price'); ?></div> <!--col-->
 									</div> <!--row-->
 
 									<span class="spacer"></span>
