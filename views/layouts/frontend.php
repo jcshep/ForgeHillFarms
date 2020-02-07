@@ -43,7 +43,7 @@ RedactorAsset::register($this);
 	<div class="container">
 		
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-3">
 				<?php if (!\Yii::$app->user->isGuest) { ?>
 					<a href="/user/logout">LOGOUT</a>						
 				<?php } else { ?>											
@@ -51,14 +51,16 @@ RedactorAsset::register($this);
 				<?php } ?>		
 				
 			</div> <!--col-->
-			<div class="col-xs-6 text-right">
+			<div class="col-xs-9 text-right">
 				<?php if (!\Yii::$app->user->isGuest) { ?>
 					<span class="hidden-xs">Welcome, <?= Yii::$app->user->identity->fname ?> <?= Yii::$app->user->identity->lname ?></span>
 					<div class="hspacer"></div>
-					<a href="/user/account">MY ACCOUNT</a>
+					<a href="/store" class="btn btn-secondary">Farm Store</a>					
+					<a href="/user/account" class="btn btn-secondary">Share Box Pickup</a>
 
-				<?php } else { ?>						
-					<a href="/user/sign-up">SIGNUP</a>
+				<?php } else { ?>				
+					<a href="/store" class="btn btn-secondary">Farm Store</a>		
+					<a href="/user/sign-up" class="btn btn-secondary">SIGNUP</a>
 				<?php } ?>				
 			</div> <!--col-->
 		</div> <!--row-->

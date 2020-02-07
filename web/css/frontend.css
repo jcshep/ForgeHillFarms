@@ -6,6 +6,7 @@ font-family: 'Roboto', sans-serif;
 body {font-family: 'Roboto Mono', monospace; font-size: 13px; background:#FEF8EB; color: #174375; letter-spacing: 0.1em; -webkit-font-smoothing: antialiased;}
 
 .container {position: relative;}
+.container.narrow {max-width: 900px;}
 
 img {max-width: 100%;}
 
@@ -31,9 +32,16 @@ a:hover {color: #B93A26}
 	-webkit-transition: all .3s linear;
 	-moz-transition: all .3s linear;
 }
+
+.btn-xs {padding: 0 !important; line-height: 30px;}
+
 .btn-primary {background: #B93A26; border-color: #B93A26; color: #FEF8EB}
 .btn-primary:hover {background: #9A1F0D; border-color: #9A1F0D;}
 .btn-primary[disabled], .btn-primary[disabled]:hover {background: #B93A26; border-color: #B93A26; color: #FEF8EB}
+
+.btn-blue {background: #1B4278; border-color: #1B4278; color: #FFF}
+.btn-blue:hover {background: #1B4278; border-color: #1B4278; color: #FFF}
+.btn-blue[disabled], .btn-blue[disabled]:hover {background: #1B4278; border-color: #1B4278; color: #FEF8EB}
 
 .btn-secondary {background: transparent; border-color: #B93A26; color: #B93A26}
 .btn-secondary:hover {background:#B93A26 ; border-color: #9A1F0D; color: #FEF8EB}
@@ -86,7 +94,7 @@ a:hover {color: #B93A26}
 
 #top {}
 #top .container {}
-#top a {padding: 20px 0; display: inline-block;}
+#top a {padding: 5px 10px; display: inline-block; margin: 10px 0; line-height: 20px;}
 #top .account {padding: 20px 0; display: inline-block; text-transform: uppercase;}
 #top .border {border-bottom: 2px solid #174375;}
 
@@ -202,8 +210,22 @@ a:hover {color: #B93A26}
 
 .payment-errors {color: #B93A26;}
 
+#store {padding: 15px 0 60px}
+#store .btn.btn-checkout i {font-size: 31px; position: relative; left: 0px; bottom: -5px;}
+#store .btn.btn-checkout {position: relative; padding-left: 50px;}
+#store .count {position: absolute; left: 17px; color: #9A1F0D !important; z-index: 10; top: 12px; line-height: 20px; font-size: 13px; font-weight: 900; background: #FFF; height: 20px; width: 20px; border-radius: 100px;}
+#store .product-thumb {width: 100%; display: block; padding-top: 100%; background-size: cover; background-position: center center; border: 1px solid #b5c8e3;}
+#store .title {height: 40px;}
+#store .product {margin-bottom: 60px}
 
-
+#store.cart {min-height: 50vh;}
+#store.cart h1 {padding-top: 0; margin-top: 0;}
+#store.cart .container {max-width: 900px;}
+#store.cart .cart-item {border-top: 1px solid #1B4278; padding-top: 15px; padding-bottom: 15px; line-height: 45px;}
+#store.cart .cart-item .product-thumb {height: 45px; padding: 0; }
+#store.cart .cart-items {}
+#store.cart .cart-items .cart-item .btn {margin-top: 7px;}
+#store.cart .cart-items .cart-item:last-child {border-bottom: 1px solid #1B4278;}
 
 
 /*Editor Functions*/

@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="row">
 		<div class="col-sm-8">
 			<h1>
-				Weekly Overview <br>
+				Weekly Share Items <br>
 				<small><?= AppHelper::getCurrentWeekDates()['start-formatted']; ?> to <?= AppHelper::getCurrentWeekDates()['end-formatted']; ?></small>
 			</h1>
 		</div> <!--col-->
