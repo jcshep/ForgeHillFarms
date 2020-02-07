@@ -12,7 +12,7 @@
 
 <div class="row">
 	<div class="col-sm-12">
-		<?php echo $form->field($model, 'cc')->textInput(['data-stripe'=> 'number', 'value'=>4111111111111111]) ?>
+		<?php echo $form->field($model, 'cc')->textInput(['data-stripe'=> 'number', /*'value'=>4111111111111111*/]) ?>
 	</div> <!--col-->
 </div>
 
@@ -42,11 +42,11 @@
 	</div>
 
 	<div class="col-sm-3 col-xs-6">
-		<?= $form->field($model, 'cvc')->textInput(['data-stripe'=> 'cvc','value'=>411]) ?>
+		<?= $form->field($model, 'cvc')->textInput(['data-stripe'=> 'cvc',/*'value'=>411*/]) ?>
 	</div>
 
 	<div class="col-sm-3 col-xs-6">
-		<?= $form->field($model, 'cc_zip')->textInput(['value'=>33401]) ?>
+		<?= $form->field($model, 'cc_zip')->textInput(/*['value'=>33401]*/) ?>
 	</div>
 
 </div> <!--row-->
