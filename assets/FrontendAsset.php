@@ -18,8 +18,8 @@ class FrontendAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/frontend.css?cache=3',
-        'css/frontend-mediaqueries.css?cache=3',
+        'css/frontend.css?cache=5',
+        'css/frontend-mediaqueries.css?cache=5',
         'js/trumbo/ui/trumbowyg.min.css',
         'https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:400,500,700',
         'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',  
