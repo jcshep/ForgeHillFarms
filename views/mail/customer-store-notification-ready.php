@@ -22,7 +22,7 @@ $products = Product::find()->where(['id'=>$cart])->all();
 		<h1 style="text-align:center">Your Order is Ready</h1> 
 
 		<p style="margin-bottom:40px;">Thank you for your patience.  Your order is now ready for pickup.</p>
-		<p style="margin-bottom:40px;">{Insert Pickup Information Here} (bring ID / where to pickup / etc.</p>
+		<p style="margin-bottom:40px;">We operate on the honor system.  You are free to come at a time that is convenient for you any day of the week from 9-7 pm.  Please feel free to pull up to the CSA pick up areas.  Your frozen items will be in the upright freezer in the CSA pickup area.  They will be labeled with your name.  Eggs are located in the mini fridge next to the freezer and any dry items will be on the table next to the mini fridge.  </p>
 		
 		<table style="width: 100%; color:#05426b; text-align:left; font-family: 'Roboto Mono',monospace">
 	
