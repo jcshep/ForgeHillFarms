@@ -8,8 +8,8 @@
 		
 		<div id="content" class="text-center container narrow">
 			<h2>FARM STORE</h2>
-			<p>Purchase products online and we will place them in our pickup area at 404 Creek Rd.</p>			
-			<p><strong>After your purchase is complete, we will begin preparing your order. Once your order is prepared, you will receive an email notification letting you know that your product is ready for pickup. Items are usually ready within 24-48 hours.</strong></p>
+			<p>Purchase products online and we will place frozen items located in the freezer and eggs in the small fridge in the CSA pick up area.  Your items will be labeled with your name.  Any dry items like honey will be next to the egg fridge.</p>			
+			<p><strong>Please email <a href="info@forgehillfarms.com" target="_blank">info@forgehillfarms.com</a> if you need to directions to the CSA pick up area.</strong></p>
 		</div>
 		
 

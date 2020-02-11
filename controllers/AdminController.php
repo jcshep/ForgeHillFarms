@@ -23,6 +23,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Setting;
 use yii\web\UploadedFile;
+use richardfan\sortable\SortableAction;
 
 
 class AdminController extends Controller
@@ -33,7 +34,7 @@ class AdminController extends Controller
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
-                    [   'actions' => ['index','users','user-view','newsletter-list','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user','store-items','edit-product','add-product', 'store-pickups','fulfill-order'],
+                    [   'actions' => ['index','users','user-view','newsletter-list','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user','store-items','edit-product','add-product', 'store-pickups','fulfill-order','sortItem'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() {
@@ -46,11 +47,24 @@ class AdminController extends Controller
         ];
     }
 
+    public function actions(){
+        return [
+            'sortItem' => [
+                'class' => SortableAction::className(),
+                'activeRecordClassName' => Product::className(),
+                'orderColumn' => 'order',
+            ],
+            // your other actions
+        ];
+    }
+
+
     public function beforeAction($action)
     {
         $this->layout = 'backend';
         return parent::beforeAction($action);
     }
+
 
 
     public function actionIndex()
@@ -275,7 +289,10 @@ class AdminController extends Controller
         $searchModel = new SearchProduct();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->setSort([
-            'defaultOrder' => ['in_store'=>SORT_DESC]
+            'defaultOrder' => [
+                'in_store'=>SORT_DESC,
+                'order'=>SORT_ASC
+            ]
         ]);
 
 

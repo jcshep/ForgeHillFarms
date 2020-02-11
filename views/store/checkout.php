@@ -21,7 +21,8 @@ $this->registerJsFile('/js/payment-form-store.js', ['depends' => [\yii\web\Jquer
 
 		<div id="content" class="text-center">
 			<h2>CHECKOUT</h2>
-			<p><strong>After your purchase is complete, we will begin preparing your order. Once your order is prepared, you will receive an email notification letting you know that your product is ready for pickup. Items are usually ready within 24-48 hours.</strong></p>
+			<p><strong>After your purchase is complete, we will begin preparing your order. Once your order is prepared, you will receive an email notification letting you know that your product is ready for pickup.</strong></p>
+			<p>We will place frozen items located in the freezer and eggs in the small fridge in the CSA pick up area.  Your items will be labeled with your name.  Any dry items like honey will be next to the egg fridge.</p>
 		</div>
 	
 

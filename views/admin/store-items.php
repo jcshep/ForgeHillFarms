@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
+use richardfan\sortable\SortableGridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SearchUser */
@@ -24,9 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 
-    <?= GridView::widget([
+    <?= SortableGridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'sortUrl' => Url::to(['sortItem']),
         'layout'=>"{items}\n{pager}",
         'tableOptions' => ['class' => 'table table-striped'],
         'rowOptions'=>function($data){

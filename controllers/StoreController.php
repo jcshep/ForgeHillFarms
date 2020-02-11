@@ -38,7 +38,7 @@ class StoreController extends Controller
 
     public function actionIndex()
     {
-        $products = Product::find()->where(['in_store'=>1])->all();
+        $products = Product::find()->where(['in_store'=>1])->orderBy('order ASC')->all();
 
         return $this->render('index', [
             'products' => $products
