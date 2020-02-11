@@ -37,10 +37,10 @@
 					<div class="product-thumb" style="background-image:url(/<?php echo $product->getImage(); ?>)"></div>
 					<div class="spacer15"></div>
 					<div class="row title">
-						<div class="col-xs-8">
+						<div class="col-xs-9">
 							<strong><?= $product->name ?></strong>
 						</div> <!--col-->
-						<div class="col-xs-4 text-right">
+						<div class="col-xs-3 text-right">
 							<strong>$<?= number_format($product->price, 2) ?></strong>
 						</div> <!--col-->
 					</div> <!--row-->
