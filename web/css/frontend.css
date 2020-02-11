@@ -215,7 +215,7 @@ a:hover {color: #B93A26}
 #store .btn.btn-checkout {position: relative; padding-left: 50px;}
 #store .count {position: absolute; left: 17px; color: #9A1F0D !important; z-index: 10; top: 12px; line-height: 20px; font-size: 13px; font-weight: 900; background: #FFF; height: 20px; width: 20px; border-radius: 100px;}
 #store .product-thumb {width: 100%; display: block; padding-top: 100%; background-size: cover; background-position: center center; border: 1px solid #b5c8e3;}
-#store .title {height: 40px;}
+#store .title {height: 60px;}
 #store .product {margin-bottom: 60px}
 
 #store.cart {min-height: 50vh;}
