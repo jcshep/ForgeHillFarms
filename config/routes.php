@@ -8,6 +8,7 @@ return  [
 
     'home' => 'site/home',
     'admin' => 'admin/index',
+    'store' => 'store/index',
 
     'page/remove-image/<slug:\w+(-\w+)*>' => 'page/remove-image',
 

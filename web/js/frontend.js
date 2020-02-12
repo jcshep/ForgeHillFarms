@@ -3,6 +3,16 @@
 
 $(document).ready(function() {
 
+	// Hide flash notifications
+	window.setTimeout(function() {
+		$('.alert').not('.static').fadeTo(500, 0).slideUp(500, function(){
+			$(this).remove(); 
+		});
+	}, 3000);
+
+
+
+
 	$('.membership-selection .modal-radio').click(function(evt) {
 
 		var membership = $(this).data('membership-type');

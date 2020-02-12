@@ -63,9 +63,41 @@ BackendAsset::register($this);
                         'submenuTemplate' => "\n<ul class='dropdown-menu' role='menu'>\n{items}\n</ul>\n",
                         'items' => [
                             // ['label' => 'Dashboard', 'url' => ['site/dashboard']],
-                            ['label' => 'Weekly Overview', 'url' => ['admin/weekly-overview']],
+
+                            [
+                                'label' => 'Weekly Share', 
+                                'url' => NULL,
+                                'options'=>['class'=>'nav-location'],
+                            ],
+
+                            ['label' => 'Available Items', 'url' => ['admin/weekly-overview']],
                             
                             ['label' => 'Scheduled Pickups', 'url' => ['admin/scheduled-pickups']],
+
+                            [
+                                'label' => 'Divider',
+                                'options'=>['class'=>'nav-divider'],
+
+                            ],
+
+                            [
+                                'label' => 'Store', 
+                                'url' => NULL,
+                                'options'=>['class'=>'nav-location'],
+                            ],
+
+                            ['label' => 'Products', 'url' => ['admin/store-items']],
+
+                            ['label' => 'Pickups', 'url' => ['admin/store-pickups']],
+
+
+                            [
+                                'label' => 'Divider',
+                                'options'=>['class'=>'nav-divider'],
+
+                            ],
+
+
 
                             ['label' => 'Pages', 
                                 'options'=>['class'=>'dropdown'],
@@ -139,7 +171,7 @@ BackendAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Swine & Sons <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Forge Hill Farms <?= date('Y') ?></p>
     </div>
 </footer>
 

@@ -12,6 +12,8 @@ use app\models\SearchProduct;
 use app\models\SearchNewsletter;
 use app\models\ProductWeek;
 use app\models\SearchProductWeek;
+use app\models\SearchStoreOrder;
+use app\models\Cart;
 use app\models\SearchEmail;
 use app\models\Email;
 use app\models\Pickup;
@@ -20,6 +22,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Setting;
+use yii\web\UploadedFile;
+use richardfan\sortable\SortableAction;
 
 
 class AdminController extends Controller
@@ -30,7 +34,7 @@ class AdminController extends Controller
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
-                    [   'actions' => ['index','users','user-view','newsletter-list','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user'],
+                    [   'actions' => ['index','users','user-view','newsletter-list','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user','store-items','edit-product','add-product', 'store-pickups','fulfill-order','sortItem'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() {
@@ -43,11 +47,24 @@ class AdminController extends Controller
         ];
     }
 
+    public function actions(){
+        return [
+            'sortItem' => [
+                'class' => SortableAction::className(),
+                'activeRecordClassName' => Product::className(),
+                'orderColumn' => 'order',
+            ],
+            // your other actions
+        ];
+    }
+
+
     public function beforeAction($action)
     {
         $this->layout = 'backend';
         return parent::beforeAction($action);
     }
+
 
 
     public function actionIndex()
@@ -233,6 +250,107 @@ class AdminController extends Controller
 
 
 
+
+    public function actionStorePickups() {
+        
+        $searchModel = new SearchStoreOrder();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        $dataProvider->setSort([
+            'defaultOrder' => ['order_date'=>SORT_DESC]
+        ]);
+
+
+        return $this->render('store-pickups', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+        ]);
+
+    }
+
+
+    public function actionFulfillOrder($id) {
+        $order = Cart::findOne($id);
+        $order->ready = time();
+        $order->save(); 
+
+        $order->sendCustomerNotificationReady();
+
+        Yii::$app->session->setFlash('success','The Order has been fulfilled and the customer has been notified.');
+
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+
+
+
+    public function actionStoreItems() {
+        
+        $searchModel = new SearchProduct();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->setSort([
+            'defaultOrder' => [
+                'in_store'=>SORT_DESC,
+                'order'=>SORT_ASC
+            ]
+        ]);
+
+
+        return $this->render('store-items', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+        ]);
+
+    }
+
+
+    public function actionEditProduct($id)
+    {
+        $model = Product::findOne($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            $model->save();
+
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->imageFile) {                
+                $model->upload();
+            }
+            
+            Yii::$app->session->setFlash('success','Product Updated');
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
+        return $this->render('edit-product', [
+            'model' => $model,            
+        ]);
+    }
+
+
+    public function actionAddProduct()
+    {
+
+        $model = new Product;
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            $model->save();
+
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->imageFile) {                
+                $model->upload();
+            }
+                        
+            Yii::$app->session->setFlash('success','Product Added');
+            return $this->redirect(['edit-product', 'id' => $model->id]);
+        }
+
+        return $this->render('edit-product', [
+            'model' => $model,            
+        ]);
+    }
+
+
     public function actionDeleteProduct($id)
     {
         Product::findOne($id)->delete();
@@ -381,6 +499,7 @@ class AdminController extends Controller
         return $this->redirect('/admin/emails');
 
     }
+
 
 
 
