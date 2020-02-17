@@ -120,9 +120,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         \Stripe\Stripe::setApiKey(Yii::$app->params['stripeSecretKey']);
 
         if ($this->membership_type == 'full') {
-            $price = Page::renderBlock('option-1-price') * 100;
+            $price = 725 * 100;
         } else {
-            $price = Page::renderBlock('option-2-price') * 100;
+            $price = 420 * 100;
         }
 
         try {
