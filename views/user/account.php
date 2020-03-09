@@ -36,6 +36,15 @@ if($membership_type == 'free') {
 		<?php endif; ?>
 		
 		<div id="content">
+
+			<div class="spacer60"></div>
+			
+			<h3>Please check back when season begins to select your pickup day.</h3>
+
+			<div class="spacer60"></div>
+			<div class="spacer60"></div>
+
+		<?php /* 
 		<div class="row">
 			<div class="col-sm-6">
 				<h3>This Week's Haul</h3>		
@@ -50,7 +59,7 @@ if($membership_type == 'free') {
 					<span class="membership-type">Membership Level: <strong><?= $membership_type ?></strong></span>
 					<div class="inner">
 
-						<!-- <p>Please check back when season begins to select your pickup day.</p> -->
+						
 						
 
 						
@@ -272,7 +281,7 @@ if($membership_type == 'free') {
 				</div>
 			</div> <!--col-->
 		</div> <!--row-->
-	
+		*/ ?>
 
 		
 		

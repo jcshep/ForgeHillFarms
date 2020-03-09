@@ -89,7 +89,7 @@ class ProductWeek extends \yii\db\ActiveRecord
 
         } else {
             return '
-                <p>Please check back with us later to view this weeks haul</p>
+                <p>Please check back with us later to view this weeks haul</p
                 <p>You can also enter your email to receive notifications of events, weekly harvest updates, and more.</p>';
         }
     }
