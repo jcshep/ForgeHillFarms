@@ -38,8 +38,8 @@ if($membership_type == 'free') {
 		<div id="content">
 
 			<div class="spacer60"></div>
-			
-			<h3>Please check back when season begins to select your pickup day.</h3>
+
+			<h3>Please check back when season begins in June to select your pickup day.</h3>
 
 			<div class="spacer60"></div>
 			<div class="spacer60"></div>
