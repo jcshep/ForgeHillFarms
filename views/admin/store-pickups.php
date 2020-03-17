@@ -70,7 +70,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function ($data){
                     $html = '<small>';
                     $cart = unserialize($data->cart);
-                    $products = Product::find()->where(['id'=>$cart])->all();
+                    $cart = unserialize($data->cart);
+                    $products = [];
+                    foreach ($cart as $cart_item) {
+                        $products[] = Product::find()->where(['id'=>$cart_item])->one();
+                    }
+
                     foreach ($products as $product) {
                         $html .= '<div>'.$product->name .'</div>';
                     }

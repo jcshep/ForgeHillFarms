@@ -217,6 +217,8 @@ a:hover {color: #B93A26}
 #store .product-thumb {width: 100%; display: block; padding-top: 100%; background-size: cover; background-position: center center; border: 1px solid #b5c8e3;}
 #store .title {height: 60px;}
 #store .product {margin-bottom: 60px}
+#store .product input[type="text"] {border: 1px solid #B93A26; border-radius: 0; background: transparent; height: 32px; padding-left: 0; padding-right: 0; display: block; width: 100%; min-width: 30px; text-align: center;}
+
 
 #store.cart {min-height: 50vh;}
 #store.cart h1 {padding-top: 0; margin-top: 0;}

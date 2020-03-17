@@ -49,9 +49,10 @@ class StoreController extends Controller
     public function actionCart()
     {
         $cart = Yii::$app->session->get('cart');
-
-        $products = Product::find()->where(['id'=>$cart])->all();
-
+        $products = [];
+        foreach ($cart as $cart_item) {
+            $products[] = Product::find()->where(['id'=>$cart_item])->one();
+        }
 
         return $this->render('cart', [
             'products' => $products,
@@ -60,14 +61,7 @@ class StoreController extends Controller
     }
 
 
-    public function actionEmailTest()
-    {
-        $model = Cart::findOne(12);
-
-        return $this->renderPartial('/mail/customer-store-notification-ready', [
-            'model' => $model,
-        ]);
-    }
+    
 
     public function actionCheckout()
     {
@@ -76,7 +70,10 @@ class StoreController extends Controller
         if(empty($cart))
             return $this->redirect(['/store']);
 
-        $products = Product::find()->where(['id'=>$cart])->all();
+        $products = [];
+        foreach ($cart as $cart_item) {
+            $products[] = Product::find()->where(['id'=>$cart_item])->one();
+        }
 
         $model = new Cart;
         $model->cc_token = Yii::$app->request->post('stripeToken');
@@ -118,11 +115,18 @@ class StoreController extends Controller
     public function actionAddToCart ($id)
     {
         
-        Yii::$app->session->open();
-        $cart = Yii::$app->session->get('cart');
-        $cart[] = (int)$id;
-        Yii::$app->session->set('cart', $cart);
-        Yii::$app->session->close();
+        $quantity = Yii::$app->request->post('quantity');
+
+        $i=1;
+        while ($i <= $quantity) {
+            Yii::$app->session->open();
+            $cart = Yii::$app->session->get('cart');
+            $cart[] = (int)$id;
+            Yii::$app->session->set('cart', $cart);
+            Yii::$app->session->close();
+            $i++;
+        }
+        
 
         Yii::$app->session->setFlash('success','Product Added to Cart');
 
@@ -155,7 +159,12 @@ class StoreController extends Controller
         $cart = Yii::$app->session->get('cart');
         Yii::$app->session->close();
 
-        $products = Product::find()->where(['id'=>$cart])->all();
+        $cart = Yii::$app->session->get('cart');
+        $products = [];
+        foreach ($cart as $cart_item) {
+            $products[] = Product::find()->where(['id'=>$cart_item])->one();
+        }
+
         $total = 0;
         foreach ($products as $product) {
             $total = $total + $product->price;
@@ -165,7 +174,14 @@ class StoreController extends Controller
     }
 
     
+    public function actionEmailTest()
+    {
+        $model = Cart::findOne(12);
 
+        return $this->renderPartial('/mail/customer-store-notification-ready', [
+            'model' => $model,
+        ]);
+    }
 
 
 
