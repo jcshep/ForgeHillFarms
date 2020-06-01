@@ -76,14 +76,14 @@ class ProductWeek extends \yii\db\ActiveRecord
             }
             $html .= '</ul>';
 
-            if($addons) {
-                $html .= '<h3 style="color:#FFF; ">Addons</h3>';
-                $html .= '<ul class="weekly-product-list" style="padding-top:0">';
-                foreach ($addons as $addons) {                
-                    $html .= '<li>'.$addons->product->name.'</li>';
-                }
-                $html .= '</ul>';
-            }
+            // if($addons) {
+            //     $html .= '<h3 style="color:#FFF; ">Addons</h3>';
+            //     $html .= '<ul class="weekly-product-list" style="padding-top:0">';
+            //     foreach ($addons as $addons) {                
+            //         $html .= '<li>'.$addons->product->name.'</li>';
+            //     }
+            //     $html .= '</ul>';
+            // }
 
             return $html;
 
