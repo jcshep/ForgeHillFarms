@@ -26,7 +26,8 @@
         "stripe/stripe-php": "^6.4",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "alexandernst/yii2-device-detect": "0.0.12",
-        "richardfan1126/yii2-sortable-gridview": "*"
+        "richardfan1126/yii2-sortable-gridview": "*",
+        "sendgrid/sendgrid": "~7"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -156,11 +156,17 @@ class UserController extends Controller
             if($model->charge() && $model->save()) {
 
                 //Send activation email
-                Yii::$app->mailer->compose('/mail/welcome')
-                    ->setFrom(Yii::$app->params['adminEmail'])
-                    ->setTo($model->email)
-                    ->setSubject('Welcome')
-                    ->send();
+                $email = new \SendGrid\Mail\Mail(); 
+                $email->setFrom(Yii::$app->params['adminEmail']);
+                $email->addTo($model->email);
+                $email->setSubject('Welcome');
+                $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/welcome'));
+                $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+                try {
+                    $response = $sendgrid->send($email);
+                } catch (Exception $e) {            
+                    // Yii::$app->session->setFlash('error', $e->getMessage());  
+                }
 
                 // Yii::$app->session->setFlash('accountCreated');
 
@@ -219,14 +225,18 @@ class UserController extends Controller
             $user = User::findOne(['email' => $model->email]);
 
             if($user) {
-                //Send activation email
-                Yii::$app->mailer->compose('/mail/passwordReset',[
-                    'auth_key' => $user->auth_key
-                    ])
-                ->setFrom(Yii::$app->params['adminEmail'])
-                ->setTo($user->email)
-                ->setSubject('Password Reset')
-                ->send();
+
+                $email = new \SendGrid\Mail\Mail(); 
+                $email->setFrom(Yii::$app->params['adminEmail']);
+                $email->addTo($user->email);
+                $email->setSubject('Password Reset');
+                $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/passwordReset', ['auth_key' => $user->auth_key]));
+                $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+                try {
+                    $response = $sendgrid->send($email);
+                } catch (Exception $e) {            
+                    // Yii::$app->session->setFlash('error', $e->getMessage());  
+                }
 
                 Yii::$app->session->setFlash('passwordResetEmailSent');
 
@@ -405,12 +415,6 @@ class UserController extends Controller
                 
                     Yii::$app->session->setFlash('error','There was an issue charging your account. Please try again.');
 
-                    Yii::$app->mailer->compose()
-                        ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
-                        ->setTo('john@sheppard.dev')
-                        ->setTextBody('Issue Charging Free Memeber: '.Yii::$app->user->identity->id)
-                        ->setSubject('Forge Hill Farms Error')
-                        ->send();
 
                     return $this->redirect(['/user/account']);
                 }

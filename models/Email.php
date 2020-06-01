@@ -91,15 +91,29 @@ class Email extends \yii\db\ActiveRecord
         if ($users) {
                     
             foreach ($users as $user) {
-                $messages[] = Yii::$app->mailer->compose('/mail/email-template', [
-                    'model'=>$this
-                ])
-                    ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
-                    ->setSubject($subject)
-                    ->setTo($user['email']);
-            }
+                // $messages[] = Yii::$app->mailer->compose('/mail/email-template', [
+                //     'model'=>$this
+                // ])
+                //     ->setFrom([Yii::$app->params['adminEmail'] => 'Forge Hill Farms'])
+                //     ->setSubject($subject)
+                //     ->setTo($user['email']);
 
-            Yii::$app->mailer->sendMultiple($messages);
+                $email = new \SendGrid\Mail\Mail(); 
+                $email->setFrom(Yii::$app->params['adminEmail']);
+                $email->addTo($user['email']);
+                $email->setSubject($subject);
+                $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/email-template', ['model'=>$this]));
+                $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+                try {
+                    $response = $sendgrid->send($email);
+                } catch (Exception $e) {            
+                    // Yii::$app->session->setFlash('error', $e->getMessage());  
+                }
+
+
+            } //end foreach
+
+            // Yii::$app->mailer->sendMultiple($messages);
         }
 
     }

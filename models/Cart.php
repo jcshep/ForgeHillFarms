@@ -51,13 +51,17 @@ class Cart extends \yii\db\ActiveRecord
     public function sendAdminNotification()
     {
 
-    	Yii::$app->mailer->compose('/mail/admin-store-notification', [
-                    'model'=>$this
-                ])
-                ->setTo(Yii::$app->params['adminEmail'])
-                // ->setFrom([Yii::$app->params['adminEmail'] => $this->name])
-                ->setSubject('New Farm Store Purchase | Waiting for Pickup')
-                ->send();
+        $email = new \SendGrid\Mail\Mail(); 
+        $email->setFrom(Yii::$app->params['adminEmail']);
+        $email->addTo(Yii::$app->params['adminEmail']);
+        $email->setSubject('New Farm Store Purchase | Waiting for Pickup');
+        $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/admin-store-notification', ['model'=>$this]));
+        $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+        try {
+            $response = $sendgrid->send($email);
+        } catch (Exception $e) {            
+                    // Yii::$app->session->setFlash('error', $e->getMessage());  
+        }
 		
 		return true;           
     }
@@ -66,13 +70,18 @@ class Cart extends \yii\db\ActiveRecord
     public function sendCustomerNotification()
     {
 
-    	$mail = Yii::$app->mailer->compose('/mail/customer-store-notification', [
-                    'model'=>$this
-                ])
-                ->setTo($this->email)
-                ->setFrom(Yii::$app->params['adminEmail'])
-                ->setSubject('Forge Hill Farms | Preparing Your Order')
-                ->send();
+
+        $email = new \SendGrid\Mail\Mail(); 
+        $email->setFrom(Yii::$app->params['adminEmail']);
+        $email->addTo($this->email);
+        $email->setSubject('Forge Hill Farms | Preparing Your Order');
+        $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/customer-store-notification', ['model'=>$this]));
+        $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+        try {
+            $response = $sendgrid->send($email);
+        } catch (Exception $e) {            
+                    // Yii::$app->session->setFlash('error', $e->getMessage());  
+        }
         
         return true;
     }
@@ -81,13 +90,17 @@ class Cart extends \yii\db\ActiveRecord
     public function sendCustomerNotificationReady()
     {
 
-        $mail = Yii::$app->mailer->compose('/mail/customer-store-notification-ready', [
-                    'model'=>$this
-                ])
-                ->setTo($this->email)
-                ->setFrom(Yii::$app->params['adminEmail'])
-                ->setSubject('Forge Hill Farms | Order Ready For Pickup')
-                ->send();
+        $email = new \SendGrid\Mail\Mail(); 
+        $email->setFrom(Yii::$app->params['adminEmail']);
+        $email->addTo($this->email);
+        $email->setSubject('Forge Hill Farms | Order Ready For Pickup');
+        $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/customer-store-notification-ready', ['model'=>$this]));
+        $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+        try {
+            $response = $sendgrid->send($email);
+        } catch (Exception $e) {            
+                    // Yii::$app->session->setFlash('error', $e->getMessage());  
+        }
         
         return true;
     }
