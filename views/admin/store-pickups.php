@@ -77,7 +77,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
 
                     foreach ($products as $product) {
-                        $html .= '<div>'.$product->name .'</div>';
+                        if($product) {
+                            $html .= '<div>'.$product->name .'</div>';
+                        } else {
+                            $html .= '<div><em>(This product was deleted)</em></div>';
+                        }
                     }
                     $html .= '</small>';
                     return $html;

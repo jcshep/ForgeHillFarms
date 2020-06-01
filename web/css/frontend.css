@@ -76,6 +76,7 @@ a:hover {color: #B93A26}
 .user-create .membership-selection label input {display: none}
 .user-create .membership-selection label.checked {background: #174375; color: #FFF}
 .user-create .membership-selection label .inside {border: 2px solid #174375; padding: 15px 20px 0; height: 190px; }
+.user-create .membership-selection label.disabled {opacity: 0.5; pointer-events: none; cursor: auto}
 .user-create .membership-selection label h3 {line-height: 19px !important;}
 #user-membership_type label:nth-child(1) {margin-left: 0;}
 #user-membership_type label:nth-child(2) {margin: 0 3.5%; }
