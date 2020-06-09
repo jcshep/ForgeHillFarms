@@ -7,6 +7,8 @@ use app\models\User;
 use app\models\SearchUser;
 use app\models\LoginForm;
 use app\models\Product;
+use app\models\Category;
+use app\models\SearchCategory;
 use app\models\Charge;
 use app\models\SearchProduct;
 use app\models\SearchNewsletter;
@@ -34,7 +36,7 @@ class AdminController extends Controller
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
-                    [   'actions' => ['index','users','user-view','newsletter-list','weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user','store-items','edit-product','add-product', 'store-pickups','fulfill-order','sortItem'],
+                    [   'actions' => ['index','users','user-view','newsletter-list', 'categories', 'weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user','store-items','edit-product','add-product', 'store-pickups','fulfill-order','sortItem','sortCategory','category-create','category-delete','category-update',],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() {
@@ -54,7 +56,11 @@ class AdminController extends Controller
                 'activeRecordClassName' => Product::className(),
                 'orderColumn' => 'order',
             ],
-            // your other actions
+            'sortCategory' => [
+                'class' => SortableAction::className(),
+                'activeRecordClassName' => Category::className(),
+                'orderColumn' => 'order',
+            ],
         ];
     }
 
@@ -382,6 +388,71 @@ class AdminController extends Controller
         return $this->redirect(Yii::$app->request->referrer);
     }
 
+
+    public function actionCategories()
+    {
+        $searchModel = new SearchCategory();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('/category/index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionCategoryCreate()
+    {
+        $model = new Category();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            Yii::$app->session->setFlash('success', 'Category created');
+            return $this->redirect(['category-update', 'id'=>$model->id]);
+        
+        } else {
+            return $this->render('/category/create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing MenuCategory model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionCategoryUpdate($id)
+    {
+        $model = Category::findOne($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            
+            if ($model->save()) 
+                Yii::$app->session->setFlash('success', 'Category updated'); 
+
+            return $this->redirect(['category-update', 'id'=>$model->id]);
+
+        } else {
+            return $this->render('/category/update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Deletes an existing MenuCategory model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionCategoryDelete($id)
+    {
+        $model = Category::findOne($id);
+        $model->delete();
+
+        return $this->redirect(['/admin/categories']);
+    }
 
 
     public function actionEmailGenerator($id = NULL)

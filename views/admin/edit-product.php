@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\switchinput\SwitchInput;
+use app\models\Category;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -30,8 +32,18 @@ $this->params['breadcrumbs'][] = 'Update';
 			<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
 			<?php echo $form->errorSummary($model); ?>
+			
+			
 
-
+			<div class="row">
+				<div class="col-sm-6">
+					<?php 
+						$categories = app\models\Category::find()->asArray()->all();
+						$categories = ArrayHelper::map($categories, 'id', 'title');
+						echo $form->field($model, 'category_id')->dropDownList($categories)->label('Category');
+					?>
+				</div> <!--col-->
+			</div>
 			<div class="row">
 				<div class="col-sm-3">
 					<?php  

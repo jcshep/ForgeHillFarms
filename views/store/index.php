@@ -1,4 +1,7 @@
-<?php use yii\helpers\Html; ?>
+<?php 
+use app\models\Page;
+use yii\helpers\Html; 
+?>
 
 
 
@@ -8,11 +11,14 @@
 		
 		<div id="content" class="text-center container narrow">
 			<h2>FARM STORE</h2>
-			<p>Purchase products online and we will place frozen items located in the freezer and eggs in the small fridge in the CSA pick up area.  Your items will be labeled with your name.  Any dry items like honey will be next to the egg fridge.</p>			
-			<p><strong>Please email <a href="info@forgehillfarms.com" target="_blank">info@forgehillfarms.com</a> if you have any questions or need to directions to the CSA pick up area.</strong></p>
-			<p>In addition to the items in the online stores, we have more products available for purchase by request.  Please click this link to see what else is available and email <a href="info@forgehillfarms.com" target="_blank">info@forgehillfarms.com</a> with your order or your questions.  </p>
+			
+			
+			<?= Page::editBlock('farm-store-content-1','wysiwyg', 'Edit Content', 'corner', 'content'); ?>
+			<?= Page::renderBlock('farm-store-content-1'); ?>
+			
+
 			<div class="text-center">
-				<a href="/farm-store-menu.pdf" class="btn btn-primary">Download Full Product List</a>
+				<a href="/farm-store-menu.pdf" target="_blank" class="btn btn-primary">Download Full Product List</a>
 			</div>
 		</div>
 		

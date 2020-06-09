@@ -88,6 +88,8 @@ BackendAsset::register($this);
 
                             ['label' => 'Products', 'url' => ['admin/store-items']],
 
+                            ['label' => 'Categories', 'url' => ['admin/categories']],
+
                             ['label' => 'Pickups', 'url' => ['admin/store-pickups']],
 
 
