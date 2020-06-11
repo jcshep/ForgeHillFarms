@@ -212,14 +212,16 @@ a:hover {color: #B93A26}
 .payment-errors {color: #B93A26;}
 
 #store {padding: 15px 0 60px}
+#store #content p {margin-bottom: 15px;}
 #store .btn.btn-checkout i {font-size: 31px; position: relative; left: 0px; bottom: -5px;}
 #store .btn.btn-checkout {position: relative; padding-left: 50px;}
 #store .count {position: absolute; left: 17px; color: #9A1F0D !important; z-index: 10; top: 12px; line-height: 20px; font-size: 13px; font-weight: 900; background: #FFF; height: 20px; width: 20px; border-radius: 100px;}
 #store .product-thumb {width: 100%; display: block; padding-top: 100%; background-size: cover; background-position: center center; border: 1px solid #b5c8e3;}
-#store .title {height: 60px;}
+#store .title {height: 60px; letter-spacing: 0}
 #store .product {margin-bottom: 60px}
 #store .product input[type="text"] {border: 1px solid #B93A26; border-radius: 0; background: transparent; height: 32px; padding-left: 0; padding-right: 0; display: block; width: 100%; min-width: 30px; text-align: center;}
-
+#store form label {color: #9b9187}
+#store .tab-content h2 {text-transform: uppercase; text-align: center; margin: 0; padding: 0 0 15px;}
 
 #store.cart {min-height: 50vh;}
 #store.cart h1 {padding-top: 0; margin-top: 0;}
@@ -230,6 +232,16 @@ a:hover {color: #B93A26}
 #store.cart .cart-items .cart-item .btn {margin-top: 7px;}
 #store.cart .cart-items .cart-item:last-child {border-bottom: 1px solid #1B4278;}
 
+#store #categories {padding:50px 0 0; margin: 0; border-bottom: 0;}
+#store #categories li {list-style: none; margin: 0; padding: 0; text-transform: uppercase; font-size: 14px; letter-spacing: 0px; margin-bottom: 15px; display: block; width: 100%;}
+#store #categories li a {display: block; background: #f7eadc;  padding: 15px 10px; border: 1px solid #e5ded7;}
+#store #categories li a:hover {border:1px solid #c04d3b;}
+#store #categories li.active a {background: #2e5985; color: #FFF; border: 1px solid #2e5985 !important;}
+
+#store .panel {padding: 0 !important; margin-bottom: 10px; border: none;}
+#store .panel-heading {padding: 0; border: none; box-shadow: none;}
+#store .panel-body {padding: 0;}
+#store .panel a {display: block; background: #f7eadc;  padding: 15px 10px; border: 1px solid #e5ded7;}
 
 /*Editor Functions*/
 .editable {position: relative;}

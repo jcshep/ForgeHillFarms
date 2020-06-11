@@ -1,6 +1,9 @@
 <?php 
 use app\models\Page;
+use app\models\Category;
 use yii\helpers\Html; 
+
+$categories = Category::find()->orderBy('order')->all();
 ?>
 
 
@@ -9,17 +12,17 @@ use yii\helpers\Html;
 
 	<div class="container">
 		
-		<div id="content" class="text-center container narrow">
+		<div id="content" class="text-center container">
 			<h2>FARM STORE</h2>
 			
 			
 			<?= Page::editBlock('farm-store-content-1','wysiwyg', 'Edit Content', 'corner', 'content'); ?>
 			<?= Page::renderBlock('farm-store-content-1'); ?>
 			
-
 			<div class="text-center">
-				<a href="/farm-store-menu.pdf" target="_blank" class="btn btn-primary">Download Full Product List</a>
+				<a href="/farm-store-menu.pdf" target="_blank" class="btn btn-secondary">Download Full Product List</a>
 			</div>
+			<div class="spacer30"></div>
 		</div>
 		
 
@@ -41,36 +44,73 @@ use yii\helpers\Html;
 
 		<div class="spacer30"></div>
 
-		<div class="row">
-			<?php foreach ($products as $product): ?>
-				<div class="col-sm-3 product">
-					<div class="product-thumb" style="background-image:url(/<?php echo $product->getImage(); ?>)"></div>
-					<div class="spacer15"></div>
-					<div class="row title">
-						<div class="col-xs-9">
-							<strong><?= $product->name ?></strong>
-						</div> <!--col-->
-						<div class="col-xs-3 text-right">
-							<strong>$<?= number_format($product->price, 2) ?></strong>
-						</div> <!--col-->
-					</div> <!--row-->
-					<?= Html::beginForm(['/store/add-to-cart/'.$product->id], 'post', ['enctype' => 'multipart/form-data']) ?>
+		
+		<!-- Desktop -->
+		<div class="row hidden-sm hidden-xs hidden-md">
+			<div class="col-md-3">
+				<ul id="categories" class="nav nav-tabs">
+				<?php $i=0; foreach ($categories as $category): ?>			
+					<li <?= ($i==0 ? 'class="active"' : NULL) ?>>
+						<a href="#<?= $category->slug ?>" aria-controls="<?= $category->slug ?>" role="tab" data-toggle="tab"><?= $category->title ?></a>
+					</li>
+				<?php $i++; endforeach ?>
+				</ul>
+			</div> <!--col-->
+
+			<div class="col-md-9">
+				<div class="tab-content">
+				<?php $i=0; foreach ($categories as $category): ?>
+					<div class="tab-pane fade in <?= ($i==0 ? 'active' : NULL) ?>" id="<?= $category->slug ?>">
+						<h2><?= $category->title ?></h2>
 						<div class="row">
-							<div class="col-xs-3">
-								<label for="quantity">QTY</label>
-								<input type="text" name="quantity" class="form-control quantity" value="1">
-							</div> <!--col-->
-							<div class="col-xs-9">
-								<label>&nbsp;</label>
-								<input type="submit" class="btn btn-secondary btn-xs btn-block" name="submit" value="Add To Cart">
-							</div> <!--col-->
-						</div> <!--row-->
+						<?php foreach ($category->items as $product): ?>
+							
+							<?= $this->render('farm-store-product',[
+											'product'=>$product, 
+											]) ?>
+
+						<?php endforeach ?>
+						</div>
 						
-						
-					<?= Html::endForm() ?>
-				</div> <!--col-->
-			<?php endforeach ?>
+					</div>
+				<?php $i++; endforeach ?>	
+				</div>
+			</div> <!--col-->
 		</div> <!--row-->
+		
+
+
+
+
+		<!-- Mobile -->
+		<div class="visible-sm visible-xs visible-md">
+			<div class="panel-group mobile-menu" id="accordion" role="tablist" aria-multiselectable="true">
+				<?php $i=0; foreach ($categories as $category): ?>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading-<?= $category->slug ?>">
+						<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-<?= $category->slug ?>" aria-controls="collapse-<?= $category->slug ?>">
+							<?= $category->title ?>
+						</a>
+					</div>
+				</div>
+
+				<div id="collapse-<?= $category->slug ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-<?= $category->slug ?>">
+					<div class="panel-body">
+						<div class="row">
+						<?php foreach ($category->items as $product): ?>
+							
+							<?= $this->render('farm-store-product',[
+											'product'=>$product, 
+											]) ?>
+
+						<?php endforeach ?>
+						</div>
+					</div>
+				</div>
+				<?php endforeach ?>
+			</div>
+		</div>
+
 
 
 

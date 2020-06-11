@@ -80,8 +80,10 @@ class Category extends \yii\db\ActiveRecord
     }
 
     public function getItems() {
-        return $this->hasMany(MenuItem::className(), ['category_id' => 'id'])->orderBy('order ASC');
+        return $this->hasMany(Product::className(), ['category_id' => 'id'])->orderBy('order ASC');
     }
+
+
 
 
     public static function getCategoryList() {
