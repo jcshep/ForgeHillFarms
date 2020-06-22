@@ -46,7 +46,9 @@ $membership_type = Yii::$app->user->identity->membership_type;
 
 				<h3 class="text-center">This Week's Haul</h3>		
 				
+				<div class="text-center">
 				<div class="date"><?php echo date('m.d.Y') ?></div>
+				</div>
 				<?php echo ProductWeek::generateWeeklyList(); ?>
 
 
