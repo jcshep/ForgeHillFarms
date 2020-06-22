@@ -67,4 +67,5 @@
 	#account #add-ons #items {column-count: 1}
 	#account #add-ons label {letter-spacing: 0;}
 	#account #add-ons input {font-size: 12px; width: 40px; padding: 2px !important; margin-left: -10px}
+	#account .weekly-product-list {column-count: 1}
 }

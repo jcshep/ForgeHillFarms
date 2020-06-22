@@ -163,8 +163,10 @@ a:hover {color: #B93A26}
 #sidebar #product-list label {text-transform: uppercase; font-size: 11px;}
 #sidebar #product-list input[type="submit"] {border: none; color: #FFF; text-align: left; padding: 0; text-transform: uppercase; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 0;}
 
-.weekly-product-list {padding: 0 0 40px; margin: 0;}
+.weekly-product-list {padding: 0 0 40px; margin: 0; }
 .weekly-product-list li {list-style-type: none; font-size: 15px; margin-bottom: 5px; color: #FFF;}
+
+#accoutn .weekly-product-list {text-align: center; column-count: 4}
 
 #account .date {background: #174375; color: #FFF; margin: 0 auto; display: inline-block; font-weight: 700; padding: 0 10px; line-height: 22px; margin: 0 0 25px;}
 #account .weekly-product-list li {color: #174375}
