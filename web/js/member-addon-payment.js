@@ -79,7 +79,7 @@ $(document).ready(function() {
 
 		if(membershipType == 'free') {
 			if(!$('input[name="Pickup[size]"]').is(':checked')) { 
-				alert("Please select a Pickup Day"); 
+				alert("Please select a Size"); 
 				return false;
 			}
 
