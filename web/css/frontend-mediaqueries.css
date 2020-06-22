@@ -56,4 +56,15 @@
 	#footer {text-align: center; padding: 40px 0 20px;}
 	#footer img {margin-bottom: 20px;}
 	#footer .text-right {text-align: center;}
+
+	#pickup-selection .btn {margin-bottom: 15px;}
+	#account #categories li {margin: 0;}
+	#account #categories li a {padding: 5px 5px;}
+	#account #categories li.active a {margin-bottom: 0;}
+	#account #add-ons {padding-top: 0;}
+	#account .box {border: none;}
+	#account .box .inner {padding: 0; border: none;}
+	#account #add-ons #items {column-count: 1}
+	#account #add-ons label {letter-spacing: 0;}
+	#account #add-ons input {font-size: 12px; width: 40px; padding: 2px !important; margin-left: -10px}
 }

@@ -16,8 +16,8 @@ use app\models\AppHelper;
 	        <?php if ($pickups): ?>
 	        	<table class="table table-condensed small">
 				<tr>
-					<th width="40%">Name</th>
-					<th width="50%">Addons</th>
+					<th width="25%">Name</th>
+					<th width="65%">Addons</th>
 					<th width="10%"></th>
 				</tr>
 	        	<?php foreach ($pickups as $pickup): ?>
@@ -26,7 +26,7 @@ use app\models\AppHelper;
 						<td><small>
 							<?php if ($pickup->addons): ?>
 								<?php foreach (json_decode($pickup->addons) as $addon): ?>
-									<?= $addon ?>,
+									<?= $addon ?> <br>									
 								<?php endforeach ?>
 							<?php endif ?>
 							</small>

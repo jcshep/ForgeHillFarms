@@ -4,18 +4,19 @@ use app\models\ProductWeek;
 use app\models\Setting;
 use yii\widgets\ActiveForm;
 use app\models\Page;
+use app\models\Category;
 
 $membership_type = Yii::$app->user->identity->membership_type;
 
-if($membership_type == 'free') {
+// if($membership_type == 'free') {
+// 	$this->registerJsFile('https://js.stripe.com/v2/');
+// 	$this->registerJs("Stripe.setPublishableKey('".Yii::$app->params['stripePublishableKey']."');",  yii\web\View::POS_END);
+// 	$this->registerJsFile('/js/manual-payment-form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+// } else {
 	$this->registerJsFile('https://js.stripe.com/v2/');
 	$this->registerJs("Stripe.setPublishableKey('".Yii::$app->params['stripePublishableKey']."');",  yii\web\View::POS_END);
-	$this->registerJsFile('/js/manual-payment-form.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-} else {
-	$this->registerJsFile('https://js.stripe.com/v2/');
-	$this->registerJs("Stripe.setPublishableKey('".Yii::$app->params['stripePublishableKey']."');",  yii\web\View::POS_END);
-	$this->registerJsFile('/js/member-addon-payment.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
-}
+	$this->registerJsFile('/js/member-addon-payment.js?cache=5', ['depends' => [\yii\web\JqueryAsset::className()]]);
+// }
 
 ?>
 
@@ -42,24 +43,19 @@ if($membership_type == 'free') {
 
 
 		
-		<div class="row">
-			<div class="col-sm-6">
+
 				<h3>This Week's Haul</h3>		
 				
 				<div class="date"><?php echo date('m.d.Y') ?></div>
 				<?php echo ProductWeek::generateWeeklyList(); ?>
 
-			</div> <!--col-->
-			<div class="col-sm-6">
+
 
 				<div class="box">
 					<span class="membership-type">Membership Level: <strong><?= $membership_type ?></strong></span>
 					<div class="inner">
 
-						
-						
-
-						
+																		
 						<?php if ($pickup && $membership_type == 'free'): ?>
 							<div class="spacer30"></div>
 							<h3 class="text-center">Confirmed</h3>
@@ -72,49 +68,70 @@ if($membership_type == 'free') {
 
 						<div id="pickup-selection">
 							
-							<?php if ($membership_type == 'free' && !$user->stripe_id): ?>
+
+							<?php if ($user->stripe_id): ?>
 								<?php $form = ActiveForm::begin(['action'=>'/user/set-pickup', 'id'=> 'payment-form']); ?>	
 							<?php else: ?>
 								<?php $form = ActiveForm::begin(['action'=>'/user/set-pickup', 'id'=> 'pickup-form']); ?>	
 							<?php endif ?>
 							
-							
-
-							
-
 
 
 							<!-- <form action="/user/set-pickup" method="POST" <?php if ($membership_type == 'free'): ?>id="payment-form"<?php endif; ?>> -->
 							
-							<?php if (date('w') < 4): ?>
-								<a href="" data-day="thursday" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'thursday') echo 'active' ?>"><i class="fa fa-check"></i> Thursday <?php echo date('F j', strtotime('next thursday')) ?></a>			
-							<?php else: ?>
-								<a href="" class="btn btn-secondary btn-block disabled <?php if($pickup && $pickup->day == 'thursday') echo 'active' ?>"><i class="fa fa-check"></i> Thursday</a>			
-							<?php endif ?>
-								
-								<a href="" data-day="saturday" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'saturday') echo 'active' ?>"><i class="fa fa-check"></i> Saturday <?php echo date('F j', strtotime('next saturday')) ?></a>
+							<div class="row">
+
+								<div class="col-md-<?= $membership_type == 'free' ? '6' : '4'?>">
+									<?php if (date('w') < 4): ?>
+										<a href="" data-day="thursday" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'thursday') echo 'active' ?>"><i class="fa fa-check"></i> Thursday <?php echo date('F j', strtotime('next thursday')) ?></a>			
+									<?php else: ?>
+										<a href="" class="btn btn-secondary btn-block disabled <?php if($pickup && $pickup->day == 'thursday') echo 'active' ?>"><i class="fa fa-check"></i> Thursday</a>			
+									<?php endif ?>
+								</div> <!--col-->
+
+								<div class="col-md-<?= $membership_type == 'free' ? '6' : '4'?>">
+									<a href="" data-day="saturday" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'saturday') echo 'active' ?>"><i class="fa fa-check"></i> Saturday <?php echo date('F j', strtotime('next saturday')) ?></a>
+								</div> <!--col-->
+
+								<div class="col-md-4">
+									<?php if ($membership_type != 'free'): ?>
+										<a href="" data-day="opt-out" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'opt-out') echo 'active' ?>"><i class="fa fa-check"></i> Opt Out</a>
+									<?php endif ?>
+								</div> <!--col-->
+							</div> <!--row-->
+
 							
-							<?php if ($membership_type != 'free'): ?>
-								<a href="" data-day="opt-out" class="btn btn-secondary btn-block day <?php if($pickup && $pickup->day == 'opt-out') echo 'active' ?>"><i class="fa fa-check"></i> Opt Out</a>
-							<?php endif ?>
+								
+								
+							
+							
 							
 							
 							<?php if ($membership_type == 'free'): ?>
 								<div class="spacer15"></div>
 								<h3 class="text-center">Select share size</h3>
 
-								<?php if (Setting::findOne(['setting'=>'full-boxes-available'])->value == 0): ?>
-									<a href="" data-size="full" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Full $<?= Page::renderBlock('full-share-week-price'); ?> - Sold Out</a>
-								<?php else: ?>
-									<a href="" data-size="full" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Full $<span id="full-value"><?= Page::renderBlock('full-share-week-price'); ?></span></a>
-								<?php endif ?>
+								<div class="row">
+									<div class="col-md-6">
+										<?php if (Setting::findOne(['setting'=>'full-boxes-available'])->value == 0): ?>
+											<a href="" data-size="full" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Full $<?= Page::renderBlock('full-share-week-price'); ?> - Sold Out</a>
+										<?php else: ?>
+											<a href="" data-size="full" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Full $<span id="full-value"><?= Page::renderBlock('full-share-week-price'); ?></span></a>
+										<?php endif ?>
+									</div> <!--col-->
+									<div class="col-md-6">
+										<?php if (Setting::findOne(['setting'=>'half-boxes-available'])->value == 0): ?>
+											<a href="" data-size="half" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Half $<?= Page::renderBlock('half-share-week-price'); ?> - Sold Out</a>
+										<?php else: ?>
+											<a href="" data-size="half" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Half $<span id="half-value"><?= Page::renderBlock('half-share-week-price'); ?></span></a>
+										<?php endif ?>
+									</div> <!--col-->
+								</div> <!--row-->
+
+								
 
 
-								<?php if (Setting::findOne(['setting'=>'half-boxes-available'])->value == 0): ?>
-									<a href="" data-size="half" class="btn btn-secondary btn-block size disabled"><i class="fa fa-check"></i> Half $<?= Page::renderBlock('half-share-week-price'); ?> - Sold Out</a>
-								<?php else: ?>
-									<a href="" data-size="half" class="btn btn-secondary btn-block size"><i class="fa fa-check"></i> Half $<span id="half-value"><?= Page::renderBlock('half-share-week-price'); ?></span></a>
-								<?php endif ?>
+								
 									
 
 								
@@ -132,9 +149,13 @@ if($membership_type == 'free') {
 							
 							<div class="spacer30"></div>
 							
-							<input type="hidden" name="Pickup[addons]" value="">
+							<?php if (!$pickup) { ?>
+								<input type="hidden" name="Pickup[addons]" class="items-json" value="">	
+							<?php } ?>
+							
 
-							<?php if(ProductWeek::getWeeklyAddonsNonpayment()): ?>	
+
+							<?php /*if(ProductWeek::getWeeklyAddonsNonpayment()): ?>	
 
 
 								<div class="text-center add-ons">
@@ -186,23 +207,60 @@ if($membership_type == 'free') {
 								</div>
 
 								
-							<?php endif;  ?>
-
-
+							<?php endif;  */?>
 
 							
-							<?php if($pickup) : ?>
-								<input type="hidden" name="id" value="<?= $pickup->id ?>">								
-							<?php endif; ?>
-
-
-
-
-							<?php if ($membership_type != 'free'): ?>
+							<?php if (!$pickup): ?>
 								
-								<input type="submit" name="confirm" value="Confirm" class="btn btn-block btn-primary btn-submit">
+							
+							<div id="add-ons">
 
-								<a data-toggle="modal" data-target="#modal-pay" class="btn btn-block btn-secondary hidden" id="addon-modal">Purchase AddOns & Confirm</a>
+								<h3 class="text-center">Add On Products form the Farm Store</h3>
+
+								<ul id="categories" class="nav nav-tabs">
+									<?php $i=0; foreach (Category::find()->orderBy('order')->all() as $category): ?>			
+									<li>
+										<a class="btn-secondary btn" href="#<?= $category->slug ?>" aria-controls="<?= $category->slug ?>" role="tab" data-toggle="tab"><?= $category->title ?></a>
+									</li>
+									<?php $i++; endforeach ?>
+								</ul>
+
+
+								<div class="tab-content">
+									<?php $i=0; foreach (Category::find()->orderBy('order')->all() as $category): ?>
+										<div class="tab-pane fade in" id="<?= $category->slug ?>">
+											<div id="items">
+											<?php foreach ($category->items as $product): ?>
+												
+												<div class="item">													
+												
+													<input min="0" max="10" id="test" type="number" class="addon-number" data-price="<?= $product->price ?>" data-product="<?= $product->name ?>">
+													<label><?= $product->name ?> <strong>$<?= $product->price ?></strong></label>
+												</div>
+
+											<?php endforeach ?>
+											</div>
+											
+										</div>
+									<?php $i++; endforeach ?>	
+								</div>
+
+
+							</div> <!-- add-ons -->
+							<?php endif //nd if pickup already set?>
+
+
+							<input type="hidden" id="membership-type" name="membership-type" value="<?= $membership_type ?>">
+	
+
+							<?php //if ($membership_type != 'free'): ?>
+								
+								<div class="text-center">
+									<input type="submit" name="confirm" value="<?= isset($pickup) ? 'Change' : 'Confirm' ?>" class="btn btn-primary btn-submit">
+									<a data-toggle="modal" data-target="#modal-pay" class="btn btn-secondary btn-purchase hidden" id="addon-modal">Purchase</a>
+								</div>
+
+								
 								
 								<?php  
 									echo $this->render('/user/_addon-payment', [
@@ -215,7 +273,7 @@ if($membership_type == 'free') {
 				
 
 
-							<?php else: ?>
+							<?php /*else: ?>
 								
 								<input type="hidden" name="membership-type" value="<?= $membership_type ?>">
 
@@ -265,7 +323,36 @@ if($membership_type == 'free') {
 								    </div>
 								</div>
 
-							<?php endif; ?>
+							<?php endif; */ ?>
+
+
+
+
+
+							<?php if ($pickup && $pickup->addons) { ?>
+								<div class="text-center">
+									<div class="spacer30"></div>
+									<h3 class="text-center">PURCHASED ADD ONS</h3>
+									<?php foreach (json_decode($pickup->addons) as $addon): ?>
+										<?= $addon ?> <br>									
+									<?php endforeach ?>
+								</div>
+							<?php } ?>
+
+							
+
+							<?php if ($pickup): ?>
+								<input type="hidden" name="id" value="<?= $pickup->id ?>">
+								
+								<div class="spacer60"></div>
+								
+								<div class="text-center">
+									<h3>PURCHASE ITEMS FROM THE FARM STORE TO INCLUDE WITH YOUR PICKUP</h3>
+									<a href="/store" class="btn btn-secondary">FARM STORE</a>
+								</div>
+							<?php endif ?>
+
+
 
 							<?php ActiveForm::end(); ?>
 
@@ -276,14 +363,6 @@ if($membership_type == 'free') {
 						
 					</div> <!-- inner -->		
 				</div>
-			</div> <!--col-->
-		</div> <!--row-->
-		
-
-		
-		
-		
-		
 
 
 		<div class="spacer30"></div>

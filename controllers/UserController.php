@@ -80,6 +80,8 @@ class UserController extends Controller
             $addons = json_decode($pickup->addons);
         }
 
+
+
         return $this->render('account', [
             'pickup'=>$pickup,
             'addons'=>$addons,
@@ -346,10 +348,13 @@ class UserController extends Controller
 
         $user = User::findOne(Yii::$app->user->identity->id);
 
+        // Check if pickup already set and update
         if(Yii::$app->request->post('id')) {
             $model = Pickup::findOne(Yii::$app->request->post('id'));
             $new_model = false;
             $previous_day = $model->day;
+
+        // Create new pickup
         } else {
             $model = new Pickup();
             $model->user_id = Yii::$app->user->identity->id;
@@ -406,25 +411,26 @@ class UserController extends Controller
                 return $this->redirect(['/user/account']);
             }
 
-            $charge_amount = Yii::$app->request->post('Charge');
+            // $charge_amount = Yii::$app->request->post('Charge');
 
 
-
-            if(Yii::$app->request->post('membership-type') == 'free') {
-                if (!isset($charge_amount['amount']) || $charge_amount['amount'] == '') {
+            // // Free Members
+            // if(Yii::$app->request->post('membership-type') == 'free') {
+            //     if (!isset($charge_amount['amount']) || $charge_amount['amount'] == '') {
                 
-                    Yii::$app->session->setFlash('error','There was an issue charging your account. Please try again.');
+            //         Yii::$app->session->setFlash('error','There was an issue charging your account. Please try again.');
 
-
-                    return $this->redirect(['/user/account']);
-                }
-            }
+            //         return $this->redirect(['/user/account']);
+            //     }
+            // }
                         
 
             // Charge (if necessary)
             $charge = new Charge();
+
             if ($charge->load(Yii::$app->request->post()) && $charge->amount && $charge->validate()) {
                 
+
                 $charge->cc_token = Yii::$app->request->post('stripeToken');
                 $charge->user_id = $user->id;
 
@@ -456,7 +462,7 @@ class UserController extends Controller
                     $description = 'Add On Purchase';
                     if(Yii::$app->request->post('membership-type') == 'free')
                         $description = 'Buyers Club Purchase';
-
+                    
                     if(!$charge->singleCharge($description)) {
                         Yii::$app->session->setFlash('error','There was an issue charging your card. Please try again.');
                         return $this->redirect(['/user/account']);
@@ -471,8 +477,7 @@ class UserController extends Controller
             if ($model->save()) 
                 Yii::$app->session->setFlash('success','Your pickup has been saved.');
 
-
-            
+        
             // Only do incrementation on new pickup
             if($new_model && $model->day != 'opt-out') {
                 // If successful, deduct an available corresponding box

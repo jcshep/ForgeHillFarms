@@ -599,7 +599,7 @@ class AdminController extends Controller
                     $addons = '';
                     if ($pickup->addons):
                         foreach (json_decode($pickup->addons) as $addon):
-                            $addons .= $addon.', ';
+                            $addons .= $addon."\r\n";
                         endforeach;
                     endif;
 

@@ -18,8 +18,8 @@ class FrontendAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/frontend.css?cache=140',
-        'css/frontend-mediaqueries.css?cache=30',
+        'css/frontend.css?cache=150',
+        'css/frontend-mediaqueries.css?cache=50',
         'js/trumbo/ui/trumbowyg.min.css',
         'https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:400,500,700',
         'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',  
@@ -27,7 +27,7 @@ class FrontendAsset extends AssetBundle
     public $js = [
         'js/trumbo/trumbowyg.min.js',
         'js/trumbo/plugins/cleanpaste/trumbowyg.cleanpaste.min.js',
-        'js/frontend.js?cache=30',
+        'js/frontend.js?cache=50',
     ];
     public $depends = [
         'yii\web\YiiAsset',

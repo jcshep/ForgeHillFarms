@@ -35,42 +35,42 @@ $(document).ready(function() {
 
 
 	// Free member checkout
-	$('#pay-modal').click(function(evt) {
+	// $('#pay-modal').click(function(evt) {
 
 
-		if(!$('input[name="Pickup[day]"]').is(':checked')) { 
-			alert("Please select a Pickup Day"); 
-			return false;
-		}
+	// 	if(!$('input[name="Pickup[day]"]').is(':checked')) { 
+	// 		alert("Please select a Pickup Day"); 
+	// 		return false;
+	// 	}
 
-		if(!$('input[name="Pickup[size]"]').is(':checked')) { 
-			alert("Please select a Share Size"); 
-			return false;
-		}
+	// 	if(!$('input[name="Pickup[size]"]').is(':checked')) { 
+	// 		alert("Please select a Share Size"); 
+	// 		return false;
+	// 	}
 
-		var size = $('#pickup-selection .size.active').data('size');
-		var total;
+	// 	var size = $('#pickup-selection .size.active').data('size');
+	// 	var total;
 
 
-		if(size=="half") {
-			total = parseInt($('#half-value').html());
-		} else {
-			total = parseInt($('#full-value').html());
-		}
+	// 	if(size=="half") {
+	// 		total = parseInt($('#half-value').html());
+	// 	} else {
+	// 		total = parseInt($('#full-value').html());
+	// 	}
 
-		// Loop through addons
-		$('.purchaseble-add-on').each(function () {
-			if(this.checked) {
-				var addonPrice = $(this).data('price');
-				total = addonPrice + total;
-			}
-		});
+	// 	// Loop through addons
+	// 	$('.purchaseble-add-on').each(function () {
+	// 		if(this.checked) {
+	// 			var addonPrice = $(this).data('price');
+	// 			total = addonPrice + total;
+	// 		}
+	// 	});
 
 		
-		$(".charge-amount").val(total.toFixed(2));
-		console.log(total.toFixed(2));
+	// 	$(".charge-amount").val(total.toFixed(2));
+	// 	console.log(total.toFixed(2));
 
-	});
+	// });
 
 
 
@@ -159,6 +159,8 @@ $(document).ready(function() {
 	$("#pickup-selection .size").click(function() {
 		var size = $(this).data('size');
 		// var total;
+
+		console.log(size);
 
 		$("#pickup-selection .size").not(this).removeClass('active');
 		$(this).addClass('active');
