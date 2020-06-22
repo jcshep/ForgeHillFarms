@@ -217,7 +217,7 @@ $membership_type = Yii::$app->user->identity->membership_type;
 							
 							<div id="add-ons">
 
-								<h3 class="text-center">Add On Products form the Farm Store</h3>
+								<h3 class="text-center">Add On Products from the Farm Store</h3>
 
 								<ul id="categories" class="nav nav-tabs">
 									<?php $i=0; foreach (Category::find()->orderBy('order')->all() as $category): ?>			

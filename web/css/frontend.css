@@ -194,7 +194,7 @@ a:hover {color: #B93A26}
 #account #add-ons input {width: 40px; height: 30px; margin: 0 5px 0 0; line-height: 30px; text-align: center; font-size: 16px; font-weight: 700; border: 2px solid #c0bbb7 !important; margin-bottom: 10px; display: inline-block; float: left;}
 #account #add-ons label {font-size: 11px; letter-spacing: 0px; line-height: 30px;}
 #account #add-ons .item {clear: both;}
-#account #add-ons #items {column-count: 2}
+#account #add-ons #items {column-count: 1}
 #account #add-ons #items strong {color: #9a1f0d}
 #account .btn-submit,
 #account .btn-purchase {width: 250px;}
