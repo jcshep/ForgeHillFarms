@@ -74,7 +74,7 @@ class Cart extends \yii\db\ActiveRecord
         $email = new \SendGrid\Mail\Mail(); 
         $email->setFrom(Yii::$app->params['adminEmail']);
         $email->addTo($this->email);
-        $email->setSubject('Forge Hill Farms | Preparing Your Order');
+        $email->setSubject('Forge Hill Farms | Order Received');
         $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/customer-store-notification', ['model'=>$this]));
         $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
         try {

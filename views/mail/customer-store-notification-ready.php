@@ -20,9 +20,8 @@ $products = Product::find()->where(['id'=>$cart])->all();
 	<td bgcolor="#fef8ec" style="padding: 40px 40px 20px; text-align: center;">
 		
 		<h1 style="text-align:center">Your Order is Ready</h1> 
-
-		<p style="margin-bottom:40px;">Thank you for your patience.  Your order is now ready for pickup.</p>
-		<p style="margin-bottom:40px;">We operate on the honor system.  You are free to come at a time that is convenient for you any day of the week from 9-7 pm.  Please feel free to pull up to the CSA pick up areas.  Your frozen items will be in the upright freezer in the CSA pickup area.  They will be labeled with your name.  Eggs are located in the mini fridge next to the freezer and any dry items will be on the table next to the mini fridge.  </p>
+				
+		<p style="margin-bottom:40px;">You may pick up your order either on Thursdays from 4-7 pm or Saturdays 10 am - 12 noon.  Please drive to the back of the barn to park and then come to the table in the pick up area to let us know your name so we can get your order for you.  We are located at 404 Creek Road Downingtown PA. If you are unable to pick up on these days or if you forget to pick up please email <a href="mailto:jennifer@forgehillfarms.com">jennifer@forgehillfarms.com</a>.</p>
 		
 		<table style="width: 100%; color:#05426b; text-align:left; font-family: 'Roboto Mono',monospace">
 	
