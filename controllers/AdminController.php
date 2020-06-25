@@ -553,7 +553,7 @@ class AdminController extends Controller
 
         $new = new Email;
         $new->type = $original->type;
-        $new->status = $original->status;
+        $new->status = 'saved';
         $new->content_area_1 = $original->content_area_1;
         $new->content_area_2 = $original->content_area_2;
         $new->content_area_3 = $original->content_area_3;
