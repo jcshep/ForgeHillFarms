@@ -48,6 +48,8 @@
             font-size:14px; line-height: 150%
         }
 
+        img {max-width: 100%;}
+
         p {font-family: 'Roboto Mono', monospace; color: #05426b;}
 
         /* What it does: Stops email clients resizing small text. */

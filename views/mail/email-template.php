@@ -53,6 +53,12 @@
 
                                 <?= $model->content_area_3 ?>
 
+                                <?php if ($model->getAttachment()): ?>
+                                    <a target="_blank" href="<?php echo Yii::$app->params['siteUrl'] ?>/<?php echo $model->getAttachment(); ?>" style="background: #B93A26; border: 15px solid #B93A26;  font-size: 13px; line-height: 110%; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fef8ec;">DOWNLOAD ATTACHMENT</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
+                                <?php endif ?>
+
 	                        </td>
 	                        <!-- Column : END -->
                             

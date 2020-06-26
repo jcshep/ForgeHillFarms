@@ -36,7 +36,7 @@ class AdminController extends Controller
             'access' => [
                 'class' => \yii\filters\AccessControl::className(),
                 'rules' => [
-                    [   'actions' => ['index','users','user-view','newsletter-list', 'categories', 'weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user','store-items','edit-product','add-product', 'store-pickups','fulfill-order','sortItem','sortCategory','category-create','category-delete','category-update',],
+                    [   'actions' => ['index','users','user-view','newsletter-list', 'categories', 'weekly-overview','delete-product', 'product-add', 'remove-product','emails','email-generator', 'email-preview','scheduled-pickups','export-pickups','remove-cc', 'remove-email','duplicate-email','delete-user','store-items','edit-product','add-product', 'store-pickups','fulfill-order','sortItem','sortCategory','category-create','category-delete','category-update','upload-file'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function() {
@@ -455,6 +455,22 @@ class AdminController extends Controller
     }
 
 
+    public function actionUploadFile() 
+    {
+        $file = UploadedFile::getInstanceByName('fileToUpload');
+        $path = 'uploads/'.$file->name;
+        $file->saveAs($path);
+
+        $response = [
+            'success' => true, 
+            'file' => Yii::$app->params['siteUrl'].'/'.$path
+        ];
+
+        return json_encode($response);
+
+    }
+
+
     public function actionEmailGenerator($id = NULL)
     {
         $model = new Email;
@@ -463,6 +479,12 @@ class AdminController extends Controller
            $model = Email::findOne($id);
 
         if ($model->load(Yii::$app->request->post())) {
+
+            $model->attachment = UploadedFile::getInstance($model, 'attachment');
+            if ($model->attachment) {                
+                $model->upload();
+            }
+
             
             if (Yii::$app->request->post('send-now')) {                
                 Yii::$app->session->setFlash('success','Email Sent');

@@ -20,6 +20,7 @@ class Email extends \yii\db\ActiveRecord
 {
 
     public $test_email;
+    public $attachment;
 
     /**
      * @inheritdoc
@@ -40,6 +41,7 @@ class Email extends \yii\db\ActiveRecord
             [['test_email'], 'email'],
             [['content_area_1', 'content_area_2', 'content_area_3','send_date', 'status'], 'string'],            
             [['type'], 'string', 'max' => 11],
+            [['attachment'], 'file', 'skipOnEmpty' => true],
         ];
     }
 
@@ -58,6 +60,40 @@ class Email extends \yii\db\ActiveRecord
             'created' => 'Created',
             'send_to' => 'Send To',
         ];
+    }
+
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->attachment->saveAs('uploads/attachment-' . $this->id . '.' . $this->attachment->extension);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function getAttachment() {
+
+        if (file_exists('uploads/attachment-'.$this->id.'.docx')) {
+            return 'uploads/attachment-'.$this->id.'.docx';
+        }
+
+        if (file_exists('uploads/attachment-'.$this->id.'.pdf')) {
+            return 'uploads/attachment-'.$this->id.'.pdf';
+        }
+
+        if (file_exists('uploads/attachment-'.$this->id.'.jpg')) {
+            return 'uploads/attachment-'.$this->id.'.jpg';
+        }
+
+        if (file_exists('uploads/attachment-'.$this->id.'.png')) {
+            return 'uploads/attachment-'.$this->id.'.png';
+        }
+
+        return false;
+
     }
 
 

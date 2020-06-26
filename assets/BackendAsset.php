@@ -25,7 +25,9 @@ class BackendAsset extends AssetBundle
     public $js = [
         'js/trumbo/plugins/cleanpaste/trumbowyg.cleanpaste.min.js',
         'js/trumbo/trumbowyg.min.js',
-
+        'js/trumbo/plugins/fontsize/trumbowyg.fontsize.min.js',
+        'js/trumbo/plugins/upload/trumbowyg.upload.min.js',
+        'js/trumbo/plugins/upload/trumbowyg.upload.min.js',
         'js/backend.js?cache=4',
     ];
     public $depends = [

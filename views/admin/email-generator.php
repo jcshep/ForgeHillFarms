@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
 	<div class="spacer30"></div>
 
-		<?php $form = ActiveForm::begin(); ?>
+		<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
 			<?php echo $form->errorSummary($model); ?>
 			
@@ -59,9 +59,21 @@ $this->params['breadcrumbs'][] = 'Update';
 							['all' => 'All', 'full' => 'Full Members', 'half' => 'Half Members', 'free' => 'Free Members (Buyers Club)', 'newsletter' => 'Newsletter']
 				   		);
 				   	?>
+					
+					<div class="spacer30"></div>
+					<?= $form->field($model, 'attachment')->fileInput() ?>
+					
+					<?php if ($model->getAttachment()): ?>
+						<strong>Uploaded:</strong> <?php echo $model->getAttachment(); ?>
+					<?php endif ?>
+					
+
 					<div class="spacer30"></div>
 					<?= $form->field($model, 'test_email')->textInput(['maxlength' => true])->label('Send to Preview Email') ?>
+					
+					<input type="submit" name="saved" value="Save Changes" class="btn btn-xs btn-success">
 					<input type="submit" name="test-email" value="Send Test" class="btn btn-info btn-xs">
+					
 
 				</div> <!--col-->
 
