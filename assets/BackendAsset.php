@@ -20,7 +20,7 @@ class BackendAsset extends AssetBundle
     public $css = [        
         'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',        
         'js/trumbo/ui/trumbowyg.min.css',
-        'css/backend.css?cache=3',
+        'css/backend.css?cache=6',
     ];
     public $js = [
         'js/trumbo/plugins/cleanpaste/trumbowyg.cleanpaste.min.js',
@@ -28,7 +28,7 @@ class BackendAsset extends AssetBundle
         'js/trumbo/plugins/fontsize/trumbowyg.fontsize.min.js',
         'js/trumbo/plugins/upload/trumbowyg.upload.min.js',
         'js/trumbo/plugins/upload/trumbowyg.upload.min.js',
-        'js/backend.js?cache=4',
+        'js/backend.js?cache=10',
     ];
     public $depends = [
         'yii\web\YiiAsset',

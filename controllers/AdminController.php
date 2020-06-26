@@ -458,7 +458,7 @@ class AdminController extends Controller
     public function actionUploadFile() 
     {
         $file = UploadedFile::getInstanceByName('fileToUpload');
-        $path = 'uploads/'.$file->name;
+        $path = 'uploads/'.urlencode($file->name);
         $file->saveAs($path);
 
         $response = [
