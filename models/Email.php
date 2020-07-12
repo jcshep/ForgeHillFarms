@@ -134,14 +134,15 @@ class Email extends \yii\db\ActiveRecord
                 //     ->setSubject($subject)
                 //     ->setTo($user['email']);
 
-                $email = new \SendGrid\Mail\Mail(); 
+                // $email = new \SendGrid\Mail\Mail(); 
+                $email = Yii::$app->mailer->compose();
                 $email->setFrom(Yii::$app->params['adminEmail']);
-                $email->addTo($user['email']);
+                $email->setTo($user['email']);
                 $email->setSubject($subject);
-                $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/email-template', ['model'=>$this]));
+                $email->setHtmlBody(Yii::$app->controller->renderPartial('/mail/email-template', ['model'=>$this]));
                 $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
                 try {
-                    $response = $sendgrid->send($email);
+                    $response = $email->send();
                 } catch (Exception $e) {            
                     // Yii::$app->session->setFlash('error', $e->getMessage());  
                 }

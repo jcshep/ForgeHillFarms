@@ -158,14 +158,17 @@ class UserController extends Controller
             if($model->charge() && $model->save()) {
 
                 //Send activation email
-                $email = new \SendGrid\Mail\Mail(); 
+                // $email = new \SendGrid\Mail\Mail(); 
+                $email = Yii::$app->mailer->compose();
                 $email->setFrom(Yii::$app->params['adminEmail']);
-                $email->addTo($model->email);
+                $email->setTo($model->email);
                 $email->setSubject('Welcome');
-                $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/welcome'));
-                $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+                $email->setHtmlBody(Yii::$app->controller->renderPartial('/mail/welcome'));
+                // $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+                
+
                 try {
-                    $response = $sendgrid->send($email);
+                    $response = $email->send();
                 } catch (Exception $e) {            
                     // Yii::$app->session->setFlash('error', $e->getMessage());  
                 }
@@ -228,14 +231,15 @@ class UserController extends Controller
 
             if($user) {
 
-                $email = new \SendGrid\Mail\Mail(); 
+                // $email = new \SendGrid\Mail\Mail(); 
+                $email = Yii::$app->mailer->compose();
                 $email->setFrom(Yii::$app->params['adminEmail']);
-                $email->addTo($user->email);
+                $email->setTo($user->email);
                 $email->setSubject('Password Reset');
-                $email->addContent("text/html", Yii::$app->controller->renderPartial('/mail/passwordReset', ['auth_key' => $user->auth_key]));
-                $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
+                $email->setHtmlBody(Yii::$app->controller->renderPartial('/mail/passwordReset', ['auth_key' => $user->auth_key]));
+                // $sendgrid = new \SendGrid(Yii::$app->params['sendgridApiKey']);
                 try {
-                    $response = $sendgrid->send($email);
+                    $response = $email->send();
                 } catch (Exception $e) {            
                     // Yii::$app->session->setFlash('error', $e->getMessage());  
                 }
