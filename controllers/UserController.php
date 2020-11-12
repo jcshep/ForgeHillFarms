@@ -13,6 +13,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Charge;
 use app\models\Setting;
+use szaboolcs\recaptcha\InvisibleRecaptchaValidator;
+use szaboolcs\recaptcha\InvisibleRecaptcha;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -151,7 +153,7 @@ class UserController extends Controller
         $model->membership_type = Yii::$app->request->get('type');
         $model->cc_token = Yii::$app->request->post('stripeToken');
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && InvisibleRecaptchaValidator::validate(Yii::$app->request->post(InvisibleRecaptchaValidator::POST_ELEMENT))) {
 
 
 

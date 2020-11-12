@@ -10,6 +10,12 @@ $config = [
     'defaultRoute' => 'site/home',
     'layout' => 'frontend',
     'components' => [
+        'captcha' => [
+            'name'    => 'captcha',
+            'class' => 'szaboolcs\recaptcha\InvisibleRecaptcha',
+            'siteKey' => '6LcwP-IZAAAAAOp_qp6Fx3WcRJ3Jy3f5ipCkhxk8',
+            'secret' => '6LcwP-IZAAAAANcuUwrSBBtG-av-9R1ZQH1pHO_l',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'D0Eei-d-Q5zBpQRQjMwBLULhgO9kQrfG',

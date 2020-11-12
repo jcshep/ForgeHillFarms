@@ -66,7 +66,7 @@ a:hover {color: #B93A26}
 
 
 .user-create {}
-
+.user-create .grecaptcha-badge {text-align: center; margin: 0 auto 30px;}
 .user-create .membership-selection {text-align: center;}
 .user-create .membership-selection label {width: 31%; text-align: center; font-weight: normal; cursor: pointer; vertical-align: top; display: block; float: left;
 	transition: all .3s ease;

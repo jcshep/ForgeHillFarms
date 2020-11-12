@@ -131,7 +131,13 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
 
 
 					<div class="form-group submit-group text-center" style="display:<?php if($model->membership_type) {echo 'block';} else {echo 'none';} ?>"">
-						<?= Html::submitButton($model->isNewRecord ? 'Create Account' : 'Update', ['class' => 'btn btn-primary btn-lg']) ?>
+						<?= 
+	                        \szaboolcs\recaptcha\InvisibleRecaptcha::widget([
+	                            'name'         => 'Create Account',
+	                            'formSelector' => '#registration-form'
+	                        ]);
+	                    ?>
+						<?php //echo Html::submitButton($model->isNewRecord ? 'Create Account' : 'Update', ['class' => 'btn btn-primary btn-lg']) ?>
 						<div></div>
 						<a href="login" class="btn btn-default">Already a member?</a>
 					</div>

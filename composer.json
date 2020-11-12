@@ -12,7 +12,7 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.5",
@@ -27,7 +27,8 @@
         "kartik-v/yii2-widget-datepicker": "@dev",
         "alexandernst/yii2-device-detect": "0.0.12",
         "richardfan1126/yii2-sortable-gridview": "*",
-        "sendgrid/sendgrid": "~7"
+        "sendgrid/sendgrid": "~7",
+        "szaboolcs/yii2-invisible-recaptcha" : "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
