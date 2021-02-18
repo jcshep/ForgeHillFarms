@@ -18,7 +18,7 @@ $this->title = 'Confirmation';
 			<h2>Confirmation</h2>
 			
 			<h3>Thank you for your purchase.</h3>
-			<p>You may pick up your order either on Thursdays from 4-7 pm or Saturdays 10 am - 12 noon.  Please drive to the back of the barn to park and then come to the table in the pick up area to let us know your name so we can get your order for you.  We are located at 404 Creek Road Downingtown PA. If you are unable to pick up on these days or if you forget to pick up please email <a href="mailto:jennifer@forgehillfarms.com">jennifer@forgehillfarms.com</a>.</p>
+			<p>Thank you for your order.  We will work to get your order ready within 48 hours.  If we are unable to complete your order within that time we will send you an email.  Once your order is ready you will receive an email letting you know that your order is ready for pick up with instructions of where to find your order.</p>
 			<div class="spacer60"></div>
 		</div>
 	

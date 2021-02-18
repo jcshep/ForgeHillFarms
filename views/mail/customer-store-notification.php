@@ -22,7 +22,7 @@ $products = Product::find()->where(['id'=>$cart])->all();
 		<h1 style="text-align:center"> <small>Order Confirmation</small> <br>Order Received</h1> 
 
 		<p style="margin-bottom:40px;">Thank you for your purchase.</p>
-		<p style="margin-bottom:40px;">You may pick up your order Monday through Sunday 8 am - 7 pm.  Please drive to the back of the barn to park and then come to the table in the pick up area to let us know your name so we can get your order for you.  We are located at 404 Creek Road Downingtown PA. If you are unable to pick up on these days or if you forget to pick up please email <a href="mailto:jennifer@forgehillfarms.com">jennifer@forgehillfarms.com</a>.</p>
+		<p style="margin-bottom:40px;">Thank you for your order.  We will work to get your order ready within 48 hours.  If we are unable to complete your order within that time we will send you an email.  Once your order is ready you will receive an email letting you know that your order is ready for pick up with instructions of where to find your order.</p>
 		
 		<table style="width: 100%; color:#05426b; text-align:left; font-family: 'Roboto Mono',monospace">
 	

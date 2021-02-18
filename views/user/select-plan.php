@@ -37,7 +37,7 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
 	
 			<div class="user-create">
 
-					<h2>Please select your plan for the 2020 season</h2>
+					<h2>Please select your plan for the 2021 season</h2>
 
 					<p>Your previous account information will stay the same.</p>
 
@@ -66,11 +66,11 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
                                 		$checked = $value == $model->membership_type ? 'checked' : NULL;
 
                                 		// Temporary: Disable memberships
-	                                    if ($value == 'full' || $value == 'half') {
-	                                    	$return = '<label class="modal-radio disabled '.$checked.'" data-membership-type="' . $value . '">';
-	                                    } else {
+	                                    // if ($value == 'full' || $value == 'half') {
+	                                    // 	$return = '<label class="modal-radio disabled '.$checked.'" data-membership-type="' . $value . '">';
+	                                    // } else {
 	                                    	$return = '<label class="modal-radio '.$checked.'" data-membership-type="' . $value . '">';
-	                                    }
+	                                    // }
                                 		
 	                                    $return .= '<div class="inside">';
 	                                    $return .= '<input type="radio" name="' . $name . '" value="' . $value . '" '. $checked .' tabindex="3">';
