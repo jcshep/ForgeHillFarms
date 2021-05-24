@@ -171,6 +171,12 @@ class UserController extends Controller
 
                 try {
                     $response = $email->send();
+                    // echo '<pre>';
+                    // var_dump($model);
+                    // echo '</pre>';
+                    // die();
+
+
                 } catch (Exception $e) {            
                     // Yii::$app->session->setFlash('error', $e->getMessage());  
                 }

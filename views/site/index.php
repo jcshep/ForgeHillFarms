@@ -67,8 +67,8 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 										<?= Page::renderBlock('full-share-copy'); ?>
 									</p>	
 
-									<a href="/user/sign-up?type=full" class="btn btn-primary">SIGN UP FOR <?= Page::renderBlock('option-1'); ?></a>
-									<!-- <div class="btn btn-primary">SOLD OUT FOR 2020 SEASON</div> -->
+									<!-- <a href="/user/sign-up?type=full" class="btn btn-primary">SIGN UP FOR <?= Page::renderBlock('option-1'); ?></a> -->
+									<div class="btn btn-primary">SOLD OUT FOR 2021 SEASON</div>
 								</span>
 							</div>
 
@@ -95,8 +95,8 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 										<?= Page::renderBlock('half-share-copy'); ?>
 									</p>	
 
-									<a href="/user/sign-up?type=half" class="btn btn-primary">SIGN UP FOR <?= Page::renderBlock('option-2'); ?></a>
-									<!-- <div class="btn btn-primary">SOLD OUT FOR 2020 SEASON</div> -->
+									<!-- <a href="/user/sign-up?type=half" class="btn btn-primary">SIGN UP FOR <?= Page::renderBlock('option-2'); ?></a> -->
+									<div class="btn btn-primary">SOLD OUT FOR 2021 SEASON</div>
 								</span>
 							</div>
 						</div> <!--col-->
@@ -127,7 +127,8 @@ $this->title = 'Forge Hill Farms | Community Supported Farm | CSA by the Brandyw
 								<?= Page::renderBlock('alacarte-copy'); ?>
 							</p>	
 
-							<a href="/user/sign-up?type=free" class="btn btn-secondary">SIGN UP FOR <?= Page::renderBlock('option-3'); ?></a>
+							<!-- <a href="/user/sign-up?type=free" class="btn btn-secondary">SIGN UP FOR <?= Page::renderBlock('option-3'); ?></a> -->
+							<div class="btn btn-primary">SOLD OUT FOR 2021 SEASON</div>
 						</span>
 					</div>
 

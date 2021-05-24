@@ -78,7 +78,7 @@ $this->registerJsFile('/js/payment-form.js', ['depends' => [\yii\web\JqueryAsset
                                 		$checked = $value == $model->membership_type ? 'checked' : NULL;
 
                                 		// Temporary: Disable memberships
-	                                    if ($value == 'full' || $value == 'half') {
+	                                    if ($value == 'full' || $value == 'half' || $value == 'free') {
 	                                    	$return = '<label class="modal-radio disabled '.$checked.'" data-membership-type="' . $value . '">';
 	                                    } else {
 	                                    	$return = '<label class="modal-radio '.$checked.'" data-membership-type="' . $value . '">';
