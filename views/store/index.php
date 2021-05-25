@@ -30,7 +30,9 @@ $categories = Category::find()->orderBy('order')->all();
 			<div class="alert alert-success text-center" id="anchor"><?= $flashMessage ?></div>
 		<?php endif; ?>
 		
-		<?php if($count = count(Yii::$app->session->get('cart'))) { ?>
+
+
+		<?php if(Yii::$app->session->get('cart') && $count = count(Yii::$app->session->get('cart'))) { ?>
 		<div class="row">
 			<div class="col-sm-3 col-sm-offset-9 text-right">
 				<a href="/store/cart" class="btn btn-primary btn-checkout btn-block">				

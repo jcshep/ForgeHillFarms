@@ -22,7 +22,7 @@ $products = Product::find()->where(['id'=>$cart])->all();
 		<h1 style="text-align:center"> <small>Order Confirmation</small> <br>Order Received</h1> 
 
 		<p style="margin-bottom:40px;">Thank you for your purchase.</p>
-		<p style="margin-bottom:40px;">Thank you for your order.  We will work to get your order ready within 48 hours.  If we are unable to complete your order within that time we will send you an email.  Once your order is ready you will receive an email letting you know that your order is ready for pick up with instructions of where to find your order.</p>
+		<p style="margin-bottom:40px;">During the CSA season, all farm store purchases are ready for pick up on Thursdays from 4-7 pm and Saturdays from 10-12 pm.  Please come in the driveway, drive to the right of the barn and park behind it.  You may then walk up to the table in the pickup area and we will hand your order to you.  </p>
 		
 		<table style="width: 100%; color:#05426b; text-align:left; font-family: 'Roboto Mono',monospace">
 	

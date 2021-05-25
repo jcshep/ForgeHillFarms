@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "email".
@@ -103,8 +104,15 @@ class Email extends \yii\db\ActiveRecord
 
         $users = User::find()->select('email')->where(['membership_type'=>$this->send_to])->asArray()->all();
         
-        if(in_array('all', $this->send_to)) 
-             $users = User::find()->select(['email'])->asArray()->all();
+        // Combine with newsletter group
+        if(in_array('all', $this->send_to)) {
+            $users_model = User::find()->select(['email'])->asArray()->all();
+            $newsletter = Newsletter::find()->select(['email'])->asArray()->all();
+            $users = array_merge($users_model, $newsletter);
+            $users = array_map('unserialize', array_unique(array_map('serialize', $users)));
+        }
+             
+
 
         if($test)
             $users = array(['email'=>$this->test_email]);

@@ -21,7 +21,7 @@ $products = Product::find()->where(['id'=>$cart])->all();
 		
 		<h1 style="text-align:center">Your Order is Ready</h1> 
 				
-		<p style="margin-bottom:40px;">Your order is ready.  You may pick up your order Monday through Sunday 8 am - 7 pm.  Pick up is at Forge Hill Farms 404 Creek Road Downingtown, PA 19335.  Please drive, past the house, to the left side of barn and pull up to the first open section.  You will see a small fridge for eggs and produce and a freezer for meat.  If you ordered honey or apparel it will be next to the fridge.  Your items will be labeled with your name.  If you have any questions please either email <a href="mailto:jennifer@forgehillfarms.com">jennifer@forgehillfarms.com</a> or call 610-724-2413.</p>
+		<p style="margin-bottom:40px;">During the CSA season, all farm store purchases are to be picked up either on Thursday from 4-7 pm and Saturday from 10-12 pm. Please come in the driveway, drive to the right of the barn and park behind it. You may then walk up to the table in the pickup area, and we will hand your order to you. If you have any questions please either email <a href="mailto:jennifer@forgehillfarms.com">jennifer@forgehillfarms.com</a> or call 610-724-2413.</p>
 		
 		<table style="width: 100%; color:#05426b; text-align:left; font-family: 'Roboto Mono',monospace">
 	

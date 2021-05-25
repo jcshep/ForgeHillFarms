@@ -481,6 +481,19 @@ class UserController extends Controller
                     }
                 }
 
+
+                // Send confirmation email
+                $email = Yii::$app->mailer->compose();
+                $email->setFrom(Yii::$app->params['adminEmail']);
+                $email->setTo($model->user->email);
+                $email->setSubject('Forge Hill Farms | Order Received');
+                $email->setHtmlBody(Yii::$app->controller->renderPartial('/mail/customer-store-notification-pickup', ['model'=>$model]));
+                try {
+                    $response = $email->send();
+                } catch (Exception $e) {            
+                    // Yii::$app->session->setFlash('error', $e->getMessage());  
+                }
+
                 
             } //end if charged
 
